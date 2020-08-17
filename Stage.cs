@@ -6,9 +6,12 @@ namespace SudokuSolver
     {
         public Table Table { get; private set; }
 
-        public Stage(Table table)
+        public StrategyType StrategyType { get; private set; }
+
+        public Stage(Table table, StrategyType strategyType)
         {
             Table = table;
+            StrategyType = strategyType;
         }
     }
 }

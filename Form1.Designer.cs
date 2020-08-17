@@ -116,6 +116,7 @@
             this.openBtn = new System.Windows.Forms.Button();
             this.infoLabel = new System.Windows.Forms.Label();
             this.copyBtn = new System.Windows.Forms.Button();
+            this.stageTypeLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stageNumber)).BeginInit();
             this.SuspendLayout();
@@ -1182,11 +1183,21 @@
             this.copyBtn.UseVisualStyleBackColor = true;
             this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
             // 
+            // stageTypeLbl
+            // 
+            this.stageTypeLbl.Location = new System.Drawing.Point(558, 89);
+            this.stageTypeLbl.Name = "stageTypeLbl";
+            this.stageTypeLbl.Size = new System.Drawing.Size(177, 19);
+            this.stageTypeLbl.TabIndex = 7;
+            this.stageTypeLbl.Text = "label82";
+            this.stageTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 525);
+            this.Controls.Add(this.stageTypeLbl);
             this.Controls.Add(this.copyBtn);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.openBtn);
@@ -1296,6 +1307,7 @@
         private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Button copyBtn;
+        private System.Windows.Forms.Label stageTypeLbl;
     }
 }
 

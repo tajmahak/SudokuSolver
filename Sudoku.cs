@@ -34,7 +34,7 @@ namespace SudokuSolver
                 }
             }
 
-            AddStage(table);
+            AddStage(table, StrategyType.CreateTable);
 
             Solve();
         }
@@ -43,33 +43,37 @@ namespace SudokuSolver
         {
             Table table = CloneLastTable();
             SetInitialProbabledValues(table);
-            AddStage(table);
+            AddStage(table, StrategyType.InitializeProbableValues);
 
+            StrategyType[] strategyTypes = StrategyHelper.GetStrategies();
             while (true)
             {
                 table = CloneLastTable();
 
-                bool success = SetProbableValue(table);
-                if (success)
+                bool success = false;
+                StrategyInfo successStrategy = null;
+
+                foreach (StrategyType strategyType in strategyTypes)
                 {
-                    AddStage(table);
-                    continue;
+                    StrategyInfo strategyInfo = StrategyHelper.GetStrategy(strategyType);
+                    success = ApplyStrategy(strategyInfo, table);
+                    if (success)
+                    {
+                        successStrategy = strategyInfo;
+                        break;
+                    }
                 }
 
-                success = FilterProbableValues(table,
-                    FilterProbableValues_1,
-                    FilterProbableValues_2);
-
                 if (success)
                 {
-                    AddStage(table);
-                    continue;
+                    AddStage(table, successStrategy.StrategyType);
                 }
-
-                break;
+                else
+                {
+                    break;
+                }
             }
         }
-
 
 
         private void SetInitialProbabledValues(Table table)
@@ -119,68 +123,42 @@ namespace SudokuSolver
             }
         }
 
-
-        private bool SetProbableValue(Table table)
+        private bool ApplyStrategy(StrategyInfo strategyInfo, Table table)
         {
-            Cell cell = table.Cells.Find(x => x.ProbableValues.Count == 1);
-
-            if (cell != null)
+            if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Table))
             {
-                cell.Value = cell.GetFirstProbableValue();
-                cell.ProbableValues.Clear();
-
-                Range block = table.Select(x => x.BlockIndex == cell.BlockIndex);
-                ClearProbableValue(block, cell.Value.Value);
-
-                Range row = table.Select(x => x.RowIndex == cell.RowIndex);
-                ClearProbableValue(row, cell.Value.Value);
-
-                Range column = table.Select(x => x.ColumnIndex == cell.ColumnIndex);
-                ClearProbableValue(column, cell.Value.Value);
-
-                return true;
+                return strategyInfo.StrategyMethod.Invoke(table.Cells);
             }
 
-            return false;
-        }
-
-        private void ClearProbableValue(Range range, int value)
-        {
-            foreach (Cell cell in range)
-            {
-                cell.ProbableValues.Remove(value);
-            }
-        }
-
-
-        private delegate bool SudokuFilter(Range range);
-
-        private bool FilterProbableValues(Table table, params SudokuFilter[] sudokuFilters)
-        {
-            foreach (SudokuFilter sudokuFilter in sudokuFilters)
+            if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Block))
             {
                 for (int b = 0; b < table.Length; b++)
                 {
                     Range block = table.SelectBlock(b);
-                    bool success = sudokuFilter(block);
+                    bool success = strategyInfo.StrategyMethod.Invoke(block);
                     if (success)
                     {
                         return true;
                     }
                 }
+            }
+
+            if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Line))
+            {
                 for (int r = 0; r < table.Length; r++)
                 {
                     Range row = table.SelectRow(r);
-                    bool success = sudokuFilter(row);
+                    bool success = strategyInfo.StrategyMethod.Invoke(row);
                     if (success)
                     {
                         return true;
                     }
                 }
+
                 for (int c = 0; c < table.Length; c++)
                 {
                     Range column = table.SelectColumn(c);
-                    bool success = sudokuFilter(column);
+                    bool success = strategyInfo.StrategyMethod.Invoke(column);
                     if (success)
                     {
                         return true;
@@ -190,90 +168,15 @@ namespace SudokuSolver
 
             return false;
         }
-
-        private bool FilterProbableValues_1(Range range)
-        {
-            // если в диапазоне из возможных значений ячейки находится то, которое не повторяется 
-            // в других ячейках, то единственным вариантом для ячейки будет именно это значение
-
-            Range emptyCells = range.SelectEmptyCells();
-
-            for (int v = 1; v <= range.Table.Length; v++)
-            {
-                int repeatCount = 0;
-                Cell candidateCell = null;
-
-                foreach (Cell emptyCell in emptyCells)
-                {
-                    if (emptyCell.ProbableValues.Contains(v))
-                    {
-                        if (candidateCell == null)
-                        {
-                            candidateCell = emptyCell;
-                        }
-                        repeatCount++;
-                    }
-                }
-
-                if (repeatCount == 1)
-                {
-                    candidateCell.ProbableValues.Clear();
-                    candidateCell.ProbableValues.Add(v);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private bool FilterProbableValues_2(Range range)
-        {
-            // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
-            // соответственно эти значения могут быть только у этих ячеек
-
-            Range emptyCells = range.SelectEmptyCells();
-
-            for (int i = 0; i < emptyCells.Count; i++)
-            {
-                Cell cell = emptyCells[i];
-
-                Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
-                if (containingCells.Count > 0)
-                {
-                    containingCells.Add(cell);
-                    if (containingCells.Count == cell.ProbableValues.Count)
-                    {
-                        int clearCount = 0;
-
-                        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-                        foreach (Cell filteredCell in filteredCells)
-                        {
-                            foreach (int pValue in cell.ProbableValues)
-                            {
-                                if (filteredCell.ProbableValues.Remove(pValue))
-                                {
-                                    clearCount++;
-                                }
-                            }
-                        }
-
-                        return clearCount > 0;
-                    }
-                }
-            }
-
-            return false;
-        }
-
 
         private Table CloneLastTable()
         {
             return LastStage.Table.Clone();
         }
 
-        private void AddStage(Table table)
+        private void AddStage(Table table, StrategyType strategyType)
         {
-            Stage stage = new Stage(table);
+            Stage stage = new Stage(table, strategyType);
             Stages.Add(stage);
         }
 

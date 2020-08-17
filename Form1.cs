@@ -32,12 +32,14 @@ namespace SudokuSolver
                 stageNumber.Value = number;
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
-                PrintTable(stage);
+                ShowStage(stage);
             }
         }
 
-        private void PrintTable(Stage stage)
+        private void ShowStage(Stage stage)
         {
+            stageTypeLbl.Text = stage.StrategyType.ToString();
+
             Table table = stage.Table;
 
             int labelCounter = 1;
