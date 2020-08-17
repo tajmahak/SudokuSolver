@@ -15,7 +15,15 @@ namespace SudokuSolver
         {
             InitializeComponent();
 
-            sudoku.Load(File.ReadAllLines("test1.txt"));
+            var fileData = File.ReadAllLines("test1.txt");
+            if (fileData.Length > 2)
+            {
+                sudoku.LoadFromExcel(fileData);
+            }
+            else
+            {
+                sudoku.LoadFromSequence(fileData[0]);
+            }
 
             stageNumber.Minimum = 1;
             stageNumber.Maximum = sudoku.Stages.Count;

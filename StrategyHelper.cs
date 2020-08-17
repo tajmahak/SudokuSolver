@@ -72,7 +72,7 @@ namespace SudokuSolver
             return false;
         }
 
-     
+
         [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
         private static bool HiddenSingles(Range range)
         {
@@ -82,33 +82,17 @@ namespace SudokuSolver
             // в других ячейках, то единственным вариантом для ячейки будет именно это значение
 
             Range emptyCells = range.SelectEmptyCells();
-
-            for (int v = 1; v <= range.Table.Length; v++)
+            foreach (int pVal in emptyCells.GetProbableValuesHashSet())
             {
-                int repeatCount = 0;
-                Cell candidateCell = null;
-
-                foreach (Cell emptyCell in emptyCells)
+                Range cells = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+                if (cells.Count == 1)
                 {
-                    if (emptyCell.ProbableValues.Contains(v))
-                    {
-                        if (candidateCell == null)
-                        {
-                            candidateCell = emptyCell;
-                        }
-                        repeatCount++;
-                    }
-                }
-
-                if (repeatCount == 1)
-                {
-                    candidateCell.ProbableValues.Clear();
-                    candidateCell.ProbableValues.Add(v);
+                    Cell cell = cells[0];
+                    cell.ProbableValues.Clear();
+                    cell.ProbableValues.Add(pVal);
                     return true;
                 }
             }
-
-            return false;
 
             return false;
         }
@@ -156,6 +140,9 @@ namespace SudokuSolver
         [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
         private static bool BoxLineReduction(Range range)
         {
+#warning !!!
+            return false;
+
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
             int blockIndex = range[0].BlockIndex;
@@ -244,11 +231,8 @@ namespace SudokuSolver
             // соответственно эти значения могут быть только у этих ячеек
 
             Range emptyCells = range.SelectEmptyCells();
-
-            for (int i = 0; i < emptyCells.Count; i++)
+            foreach (Cell cell in emptyCells)
             {
-                Cell cell = emptyCells[i];
-
                 Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
                 if (containingCells.Count > 0)
                 {
@@ -282,6 +266,38 @@ namespace SudokuSolver
 
         private static bool HiddenSet(Range range, int maxDepth)
         {
+            Range emptyCells = range.SelectEmptyCells();
+
+            foreach (Cell cell in emptyCells)
+            {
+                //Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
+                //if (containingCells.Count > 0)
+                //{
+                //    containingCells.Add(cell);
+                //    if (containingCells.Count == cell.ProbableValues.Count)
+                //    {
+                //        if (containingCells.Count <= maxDepth)
+                //        {
+                //            int clearCount = 0;
+
+                //            Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
+                //            foreach (Cell filteredCell in filteredCells)
+                //            {
+                //                foreach (int pValue in cell.ProbableValues)
+                //                {
+                //                    if (filteredCell.ProbableValues.Remove(pValue))
+                //                    {
+                //                        clearCount++;
+                //                    }
+                //                }
+                //            }
+
+                //            return clearCount > 0;
+                //        }
+                //    }
+                //}
+            }
+
             return false;
         }
     }
