@@ -233,30 +233,32 @@ namespace SudokuSolver
 
             Range emptyCells = range.SelectEmptyCells();
 
-            for (int i = 0; i < emptyCells.Count - 1; i++)
+            for (int i = 0; i < emptyCells.Count; i++)
             {
                 Cell cell = emptyCells[i];
 
-                Range similarCells = emptyCells.Select(x => x != cell && x.ProbableIsEquals(cell));
-                similarCells.Add(cell);
-
-                if (cell.ProbableValues.Count == similarCells.Count)
+                Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
+                if (containingCells.Count > 0)
                 {
-                    int clearCount = 0;
-
-                    Range filteredCells = emptyCells.Select(x => !similarCells.Contains(x));
-                    foreach (Cell filteredCell in filteredCells)
+                    containingCells.Add(cell);
+                    if (containingCells.Count == cell.ProbableValues.Count)
                     {
-                        foreach (int pValue in cell.ProbableValues)
+                        int clearCount = 0;
+
+                        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
+                        foreach (Cell filteredCell in filteredCells)
                         {
-                            if (filteredCell.ProbableValues.Remove(pValue))
+                            foreach (int pValue in cell.ProbableValues)
                             {
-                                clearCount++;
+                                if (filteredCell.ProbableValues.Remove(pValue))
+                                {
+                                    clearCount++;
+                                }
                             }
                         }
-                    }
 
-                    return clearCount > 0;
+                        return clearCount > 0;
+                    }
                 }
             }
 

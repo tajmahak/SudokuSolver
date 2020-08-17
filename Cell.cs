@@ -23,20 +23,21 @@ namespace SudokuSolver
 
         public int GetFirstProbableValue()
         {
-            foreach (var pVal in ProbableValues)
+            foreach (int pVal in ProbableValues)
             {
                 return pVal;
             }
             throw new Exception("Список возможных значений пуст.");
         }
 
-        public bool ProbableIsEquals(Cell otherCell)
+        // Указывает, встречаются ли возможные значения указанной ячейки внутри возможных значений этой ячейки.
+        public bool ProbableIsContaining(Cell otherCell)
         {
-            if (ProbableValues.Count == otherCell.ProbableValues.Count)
+            if (ProbableValues.Count >= otherCell.ProbableValues.Count)
             {
-                foreach (int pValue in ProbableValues)
+                foreach (int pVal in otherCell.ProbableValues)
                 {
-                    if (!otherCell.ProbableValues.Contains(pValue))
+                    if (!ProbableValues.Contains(pVal))
                     {
                         return false;
                     }
