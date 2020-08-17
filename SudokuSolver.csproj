@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="StrategyArea.cs" />
-    <Compile Include="StrategyFeatureAttribute.cs" />
+    <Compile Include="StrategyAttribute.cs" />
     <Compile Include="StrategyInfo.cs" />
     <Compile Include="StrategyType.cs" />
     <Compile Include="StrategyHelper.cs" />

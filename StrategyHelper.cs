@@ -21,10 +21,10 @@ namespace SudokuSolver
             MethodInfo[] methods = typeof(StrategyHelper).GetMethods(BindingFlags.NonPublic | BindingFlags.Static);
             foreach (MethodInfo method in methods)
             {
-                object[] attrs = method.GetCustomAttributes(typeof(StrategyFeatureAttribute), false);
+                object[] attrs = method.GetCustomAttributes(typeof(StrategyAttribute), false);
                 if (attrs.Length > 0)
                 {
-                    StrategyFeatureAttribute attr = (StrategyFeatureAttribute)attrs[0];
+                    StrategyAttribute attr = (StrategyAttribute)attrs[0];
                     if (attr.StrategyType == strategyType)
                     {
                         StrategyMethod strategyMethod = (StrategyMethod)Delegate.CreateDelegate(typeof(StrategyMethod), method);
@@ -37,7 +37,7 @@ namespace SudokuSolver
         }
 
 
-        [StrategyFeature(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
+        [Strategy(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
         private static bool SetValueToSolvedCell(Range range)
         {
             Cell cell = range.Find(x => x.ProbableValues.Count == 1);
@@ -73,7 +73,7 @@ namespace SudokuSolver
         }
 
      
-        [StrategyFeature(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
+        [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
         private static bool HiddenSingles(Range range)
         {
             // https://www.sudokuwiki.org/Getting_Started
@@ -113,7 +113,7 @@ namespace SudokuSolver
             return false;
         }
 
-        [StrategyFeature(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        [Strategy(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
         private static bool NakedPairsTriples(Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NP
@@ -121,7 +121,7 @@ namespace SudokuSolver
             return NakedSet(range, 3);
         }
 
-        [StrategyFeature(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        [Strategy(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
         private static bool HiddenPairsTriples(Range range)
         {
             // https://www.sudokuwiki.org/Hidden_Candidates#HP
@@ -129,7 +129,7 @@ namespace SudokuSolver
             return HiddenSet(range, 3);
         }
 
-        [StrategyFeature(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
+        [Strategy(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
         private static bool NakedQuards(Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
@@ -137,7 +137,7 @@ namespace SudokuSolver
             return NakedSet(range, 4);
         }
 
-        [StrategyFeature(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
+        [Strategy(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
         private static bool HiddenQuards(Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
@@ -145,7 +145,7 @@ namespace SudokuSolver
             return HiddenSet(range, 4);
         }
 
-        [StrategyFeature(StrategyType.PointingPairs, StrategyArea.Line)]
+        [Strategy(StrategyType.PointingPairs, StrategyArea.Line)]
         private static bool PointingPairs(Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#IR
@@ -153,7 +153,7 @@ namespace SudokuSolver
             return false;
         }
 
-        [StrategyFeature(StrategyType.BoxLineReduction, StrategyArea.Block)]
+        [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
         private static bool BoxLineReduction(Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
