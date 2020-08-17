@@ -50,7 +50,7 @@
     <Compile Include="StrategyInfo.cs" />
     <Compile Include="StrategyType.cs" />
     <Compile Include="StrategyHelper.cs" />
-    <Compile Include="StrategyDelegate.cs" />
+    <Compile Include="StrategyMethod.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

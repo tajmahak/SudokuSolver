@@ -72,8 +72,9 @@ namespace SudokuSolver
             return false;
         }
 
+     
         [StrategyFeature(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
-        private static bool HiddenSinglesFilter(Range range)
+        private static bool HiddenSingles(Range range)
         {
             // https://www.sudokuwiki.org/Getting_Started
 
@@ -108,65 +109,54 @@ namespace SudokuSolver
             }
 
             return false;
-        }
-
-        [StrategyFeature(StrategyType.PointingPairs, StrategyArea.Line)]
-        private static bool PointingPairsFilter(Range range)
-        {
-            // https://www.sudokuwiki.org/Intersection_Removal#IR
-
-
-
 
             return false;
         }
 
-        [StrategyFeature(StrategyType.NakedHiddenValueSet, StrategyArea.Block | StrategyArea.Line)]
-        private static bool NakedHiddenValueSetFilter(Range range)
+        [StrategyFeature(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        private static bool NakedPairsTriples(Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NP
 
-            // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
-            // соответственно эти значения могут быть только у этих ячеек
+            return NakedSet(range, 3);
+        }
 
-            Range emptyCells = range.SelectEmptyCells();
+        [StrategyFeature(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        private static bool HiddenPairsTriples(Range range)
+        {
+            // https://www.sudokuwiki.org/Hidden_Candidates#HP
 
-            for (int i = 0; i < emptyCells.Count; i++)
-            {
-                Cell cell = emptyCells[i];
+            return HiddenSet(range, 3);
+        }
 
-                Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
-                if (containingCells.Count > 0)
-                {
-                    containingCells.Add(cell);
-                    if (containingCells.Count == cell.ProbableValues.Count)
-                    {
-                        int clearCount = 0;
+        [StrategyFeature(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
+        private static bool NakedQuards(Range range)
+        {
+            // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
-                        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-                        foreach (Cell filteredCell in filteredCells)
-                        {
-                            foreach (int pValue in cell.ProbableValues)
-                            {
-                                if (filteredCell.ProbableValues.Remove(pValue))
-                                {
-                                    clearCount++;
-                                }
-                            }
-                        }
+            return NakedSet(range, 4);
+        }
 
-                        return clearCount > 0;
-                    }
-                }
-            }
+        [StrategyFeature(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
+        private static bool HiddenQuards(Range range)
+        {
+            // https://www.sudokuwiki.org/Naked_Candidates#NQ
+
+            return HiddenSet(range, 4);
+        }
+
+        [StrategyFeature(StrategyType.PointingPairs, StrategyArea.Line)]
+        private static bool PointingPairs(Range range)
+        {
+            // https://www.sudokuwiki.org/Intersection_Removal#IR
 
             return false;
         }
 
         [StrategyFeature(StrategyType.BoxLineReduction, StrategyArea.Block)]
-        private static bool BoxLineReductionFilter(Range range)
+        private static bool BoxLineReduction(Range range)
         {
-            //https://www.sudokuwiki.org/Intersection_Removal#LBR
+            // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
             int blockIndex = range[0].BlockIndex;
             Range allCells = range.Table.Cells;
@@ -244,6 +234,54 @@ namespace SudokuSolver
                 }
             }
 
+            return false;
+        }
+
+
+        private static bool NakedSet(Range range, int maxDepth)
+        {
+            // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
+            // соответственно эти значения могут быть только у этих ячеек
+
+            Range emptyCells = range.SelectEmptyCells();
+
+            for (int i = 0; i < emptyCells.Count; i++)
+            {
+                Cell cell = emptyCells[i];
+
+                Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
+                if (containingCells.Count > 0)
+                {
+                    containingCells.Add(cell);
+                    if (containingCells.Count == cell.ProbableValues.Count)
+                    {
+                        if (containingCells.Count <= maxDepth)
+                        {
+                            int clearCount = 0;
+
+                            Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
+                            foreach (Cell filteredCell in filteredCells)
+                            {
+                                foreach (int pValue in cell.ProbableValues)
+                                {
+                                    if (filteredCell.ProbableValues.Remove(pValue))
+                                    {
+                                        clearCount++;
+                                    }
+                                }
+                            }
+
+                            return clearCount > 0;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static bool HiddenSet(Range range, int maxDepth)
+        {
             return false;
         }
     }

@@ -71,27 +71,31 @@ namespace SudokuSolver
                 else
                 {
                     StringBuilder str = new StringBuilder();
-                    //str.Append("[");
                     int index = 0;
                     foreach (int pVal in cell.ProbableValues)
                     {
                         if (index > 0)
                         {
-                            //str.Append(',');
                             str.Append(' ');
                         }
                         str.Append(pVal);
                         index++;
                     }
-                    //str.Append("]");
 
                     label.Text = str.ToString();
                 }
             }
             else
             {
+                if (cell.IsDefault)
+                {
+                    label.ForeColor = Color.Black;
+                }
+                else
+                {
+                    label.ForeColor = Color.DarkSlateBlue;
+                }
                 label.Font = new Font(label.Font.FontFamily, 20);
-                label.ForeColor = Color.Black;
                 label.Text = cell.Value.Value.ToString();
             }
         }

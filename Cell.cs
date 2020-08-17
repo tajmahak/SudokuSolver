@@ -11,6 +11,7 @@ namespace SudokuSolver
 
         public int? Value { get; set; }
         public HashSet<int> ProbableValues { get; private set; }
+        public bool IsDefault { get; set; }
 
         public Cell(int blockIndex, int rowIndex, int columnIndex)
         {
@@ -51,6 +52,7 @@ namespace SudokuSolver
         {
             Cell copyCell = new Cell(BlockIndex, RowIndex, ColumnIndex);
             copyCell.Value = Value;
+            copyCell.IsDefault = IsDefault;
             foreach (int pVal in ProbableValues)
             {
                 copyCell.ProbableValues.Add(pVal);

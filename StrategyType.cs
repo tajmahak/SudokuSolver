@@ -6,9 +6,13 @@
         InitializeProbableValues,
 
         SetValueToSolvedCell,
+
         HiddenSingles,
+        NakedPairsTriples,
+        HiddenPairsTriples,
+        NakedQuards,
+        HiddenQuards,
         PointingPairs,
-        NakedHiddenValueSet,
         BoxLineReduction,
     }
 }

@@ -29,6 +29,7 @@ namespace SudokuSolver
                     if (!string.IsNullOrWhiteSpace(value))
                     {
                         Cell cell = table[r, c];
+                        cell.IsDefault = true;
                         cell.Value = int.Parse(value);
                     }
                 }
@@ -127,7 +128,11 @@ namespace SudokuSolver
         {
             if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Table))
             {
-                return strategyInfo.StrategyMethod.Invoke(table.Cells);
+                bool success = strategyInfo.StrategyMethod.Invoke(table.Cells);
+                if (success)
+                {
+                    return true;
+                }
             }
 
             if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Block))
