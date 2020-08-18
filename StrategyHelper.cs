@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace SudokuSolver
@@ -103,7 +104,7 @@ namespace SudokuSolver
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NP
 
-            return NakedSet(range, 3);
+            return NakedStrategy(range, 3);
         }
 
         [Strategy(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
@@ -111,7 +112,7 @@ namespace SudokuSolver
         {
             // https://www.sudokuwiki.org/Hidden_Candidates#HP
 
-            return HiddenSet(range, 3);
+            return HiddenStrategy(range, 3);
         }
 
         [Strategy(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
@@ -119,7 +120,7 @@ namespace SudokuSolver
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
-            return NakedSet(range, 4);
+            return NakedStrategy(range, 4);
         }
 
         [Strategy(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
@@ -127,7 +128,7 @@ namespace SudokuSolver
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
-            return HiddenSet(range, 4);
+            return HiddenStrategy(range, 4);
         }
 
         [Strategy(StrategyType.PointingPairs, StrategyArea.Block)]
@@ -179,7 +180,7 @@ namespace SudokuSolver
             return false;
         }
 
-        [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
+        //[Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
         private static bool BoxLineReduction(Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
@@ -264,7 +265,7 @@ namespace SudokuSolver
         }
 
 
-        private static bool NakedSet(Range range, int maxDepth)
+        private static bool NakedStrategy(Range range, int maxDepth)
         {
             // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
             // соответственно эти значения могут быть только у этих ячеек
@@ -303,69 +304,107 @@ namespace SudokuSolver
             return false;
         }
 
-        private static bool HiddenSet(Range range, int maxDepth)
+        private static bool HiddenStrategy(Range range, int maxDepth)
         {
-            range = range.Table.SelectRow(3);
+            range = range.Table.SelectBlock(4);
+            //range = range.Table.SelectRow(3);
 
             // ИМЕННО ТАКАЯ КОМБИНАЦИЯ БОЛЬШЕ НИГДЕ НЕ ВСТРЕЧАЕТСЯ
             // КОЛИЧЕСТВО ЦИФР В КОМБИНАЦИИ ДОЛЖНО СОВПАДАТЬ С КОЛ-ВОМ ЯЧЕЕК, В КОТОРЫХ ЭТА КОМБИНАЦИЯ ВСТРЕЧАЕТСЯ
             // Одна из ячеек должна быть однозначно полностью заполненной нужной комбинацией
 
             Range emptyCells = range.SelectEmptyCells();
-            foreach (Cell cell in emptyCells)
+
+            Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
+            foreach (var pVal in emptyCells.GetProbableValuesHashSet())
             {
-                //!!!
-                if (cell.ColumnIndex == 3 && cell.RowIndex == 3)
+                var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+                valueDict.Add(pVal, valueRange);
+            }
+
+            var valueDictList = valueDict.ToList();
+            for (int i = 0; i < valueDictList.Count; i++)
+            {
+                var item = valueDictList[i];
+                int valueCount = item.Value.Count;
+
+                var aaa = valueDictList.FindAll(x => x.Value.Count > valueCount);
+
+                if (valueCount > aaa.Count)
                 {
-                }
-
-
-
-
-                Range containingCells = emptyCells.Select(x => x != cell && cell.AnyProbableIsContaining(x));
-                if (containingCells.Count > 0)
-                {
-                    Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
-                    foreach (int pVal in cell.ProbableValues)
-                    {
-                        Range valueRange = containingCells.Select(x => x.ProbableValues.Contains(pVal));
-                        if (valueRange.Count < containingCells.Count)
-                        {
-                            valueDict.Add(pVal, valueRange);
-                        }
-                    }
-
-                    { }
-
-                    //containingCells.Add(cell);
-
-
-
-
-
-                    //if (containingCells.Count == cell.ProbableValues.Count)
-                    //{
-                    //    if (containingCells.Count <= maxDepth)
-                    //    {
-                    //        int clearCount = 0;
-
-                    //        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-                    //        foreach (Cell filteredCell in filteredCells)
-                    //        {
-                    //            foreach (int pValue in cell.ProbableValues)
-                    //            {
-                    //                if (filteredCell.ProbableValues.Remove(pValue))
-                    //                {
-                    //                    clearCount++;
-                    //                }
-                    //            }
-                    //        }
-
-                    //        return clearCount > 0;
-                    //    }
-                    //}
+                    valueDictList.RemoveAt(i);
+                    i--;
                 }
             }
+
+
+
+
+            { }
+
+
+
+
+
+
+
+            //foreach (Cell cell in emptyCells)
+            //{
+            //    Range containingCells = emptyCells.Select(x => cell.AnyProbableIsContaining(x));
+            //    if (containingCells.Count > 0)
+            //    {
+            //        int maxCount = 0;
+            //        int totalCount = 0;
+            //        Dictionary<int, Range> valueDict111 = new Dictionary<int, Range>();
+            //        foreach (int pVal in cell.ProbableValues)
+            //        {
+            //            Range valueRange = containingCells.Select(x => x.ProbableValues.Contains(pVal));
+            //            if (valueRange.Count < containingCells.Count)
+            //            {
+            //                valueDict111.Add(pVal, valueRange);
+            //                maxCount = Math.Max(maxCount, valueRange.Count);
+            //                totalCount += valueRange.Count;
+            //            }
+            //        }
+
+            //        if (maxCount <= valueDict111.Count)
+            //        { 
+
+            //        }
+
+
+
+            //        { }
+
+            //        //containingCells.Add(cell);
+
+
+
+
+
+            //        //if (containingCells.Count == cell.ProbableValues.Count)
+            //        //{
+            //        //    if (containingCells.Count <= maxDepth)
+            //        //    {
+            //        //        int clearCount = 0;
+
+            //        //        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
+            //        //        foreach (Cell filteredCell in filteredCells)
+            //        //        {
+            //        //            foreach (int pValue in cell.ProbableValues)
+            //        //            {
+            //        //                if (filteredCell.ProbableValues.Remove(pValue))
+            //        //                {
+            //        //                    clearCount++;
+            //        //                }
+            //        //            }
+            //        //        }
+
+            //        //        return clearCount > 0;
+            //        //    }
+            //        //}
+            //    }
+            //}
 
             return false;
 
@@ -382,12 +421,7 @@ namespace SudokuSolver
 
             //Range emptyCells = range.SelectEmptyCells();
 
-            //Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
-            //foreach (var pVal in emptyCells.GetProbableValuesHashSet())
-            //{
-            //    var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
-            //    valueDict.Add(pVal, valueRange);
-            //}
+
 
 
 
@@ -430,5 +464,9 @@ namespace SudokuSolver
 
 
         }
+
+
+
+
     }
 }

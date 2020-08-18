@@ -31,7 +31,7 @@ namespace SudokuSolver
             throw new Exception("Список возможных значений пуст.");
         }
 
-        // Указывает, встречаются ли все возможные значения указанной ячейки внутри возможных значений этой ячейки.
+        // Указывает, встречаются ли возможные значения указанной ячейки внутри возможных значений этой ячейки.
         public bool ProbableIsContaining(Cell otherCell)
         {
             if (ProbableValues.Count >= otherCell.ProbableValues.Count)
@@ -48,6 +48,7 @@ namespace SudokuSolver
             return false;
         }
 
+        // Указывает, встречаются ли все возможные значения указанной ячейки внутри возможных значений этой ячейки.
         public bool AnyProbableIsContaining(Cell otherCell)
         {
             foreach (int pVal in otherCell.ProbableValues)
