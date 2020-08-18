@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -15,7 +16,50 @@ namespace SudokuSolver
         {
             InitializeComponent();
 
-            var fileData = File.ReadAllLines("test1.txt");
+            LoadStrategyList();
+
+            LoadFileList();
+        }
+
+
+        private void LoadFileList()
+        {
+            fileList.Items.Clear();
+
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.txt");
+            foreach (string file in files)
+            {
+                Item<string, string> fileItem = new Item<string, string>();
+                fileItem.Key = Path.GetFileNameWithoutExtension(file);
+                fileItem.Value = file;
+                fileList.Items.Add(fileItem);
+            }
+
+            if (fileList.Items.Count > 0)
+            {
+                fileList.SelectedIndex = 0;
+            }
+        }
+
+        public void LoadStrategyList()
+        {
+            StrategyType[] strategies = StrategyHelper.GetStrategies();
+
+            strategyList.Items.Clear();
+
+            foreach (StrategyType strategy in strategies)
+            {
+                Item<string, StrategyType> item = new Item<string, StrategyType>();
+                item.Key = strategy.ToString();
+                item.Value = strategy;
+
+                strategyList.Items.Add(item);
+            }
+        }
+
+        private void OpenFile(string path)
+        {
+            string[] fileData = File.ReadAllLines(path);
             if (fileData.Length > 2)
             {
                 sudoku.LoadFromExcel(fileData);
@@ -31,7 +75,6 @@ namespace SudokuSolver
             OpenStage((int)stageNumber.Maximum);
         }
 
-
         private void OpenStage(int number)
         {
             if (stageNumber.Minimum <= number && number <= stageNumber.Maximum)
@@ -40,14 +83,13 @@ namespace SudokuSolver
                 stageNumber.Value = number;
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
-                ShowStage(stage);
+                ShowTable(stage);
+                ShowStrategy(stage.StrategyType);
             }
         }
 
-        private void ShowStage(Stage stage)
+        private void ShowTable(Stage stage)
         {
-            stageTypeLbl.Text = stage.StrategyType.ToString();
-
             Table table = stage.Table;
 
             int labelCounter = 1;
@@ -65,12 +107,26 @@ namespace SudokuSolver
             }
         }
 
+        private void ShowStrategy(StrategyType strategyType)
+        {
+            for (int i = 0; i < strategyList.Items.Count; i++)
+            {
+                Item<string, StrategyType> item = (Item<string, StrategyType>)strategyList.Items[i];
+                if (item.Value == strategyType)
+                {
+                    strategyList.SelectedIndex = i;
+                    return;
+                }
+            }
+            strategyList.SelectedIndex = -1;
+        }
+
         private void SetLabel(Label label, Cell cell)
         {
             if (cell.Value == null)
             {
+                label.Font = new Font("Consolas", 9);
                 label.ForeColor = Color.Gray;
-                label.Font = new Font(label.Font.FontFamily, 9);
 
                 if (cell.ProbableValues.Count == 0)
                 {
@@ -78,23 +134,12 @@ namespace SudokuSolver
                 }
                 else
                 {
-                    StringBuilder str = new StringBuilder();
-                    int index = 0;
-                    foreach (int pVal in cell.ProbableValues)
-                    {
-                        if (index > 0)
-                        {
-                            str.Append(' ');
-                        }
-                        str.Append(pVal);
-                        index++;
-                    }
-
-                    label.Text = str.ToString();
+                    label.Text = GetProbableValues(cell);
                 }
             }
             else
             {
+                label.Font = new Font("Consolas", 20);
                 if (cell.IsDefault)
                 {
                     label.ForeColor = Color.Black;
@@ -103,9 +148,40 @@ namespace SudokuSolver
                 {
                     label.ForeColor = Color.DarkSlateBlue;
                 }
-                label.Font = new Font(label.Font.FontFamily, 20);
+
                 label.Text = cell.Value.Value.ToString();
             }
+        }
+
+        private string GetProbableValues(Cell cell)
+        {
+            StringBuilder str = new StringBuilder();
+
+            for (int i = 1; i < 10; i++)
+            {
+                if (cell.ProbableValues.Contains(i))
+                {
+                    str.Append(i);
+                }
+                else
+                {
+                    str.Append(" ");
+                }
+
+                if (i != 9)
+                {
+                    if (i == 3 || i == 6)
+                    {
+                        str.Append("\r\n");
+                    }
+                    else
+                    {
+                        str.Append(" ");
+                    }
+                }
+            }
+
+            return str.ToString();
         }
 
         private static string GetExcelString(Table table)
@@ -134,6 +210,30 @@ namespace SudokuSolver
                     str.Append('\t');
                 }
                 str.AppendLine();
+            }
+
+            return str.ToString();
+        }
+
+        private static string GetSeqString(Table table)
+        {
+            StringBuilder str = new StringBuilder();
+
+            for (int row = 0; row < table.Length; row++)
+            {
+                for (int column = 0; column < table.Length; column++)
+                {
+                    Cell cell = table[row, column];
+
+                    if (cell.Value == null)
+                    {
+                        str.Append("0");
+                    }
+                    else
+                    {
+                        str.Append(cell.Value.Value);
+                    }
+                }
             }
 
             return str.ToString();
@@ -194,6 +294,34 @@ namespace SudokuSolver
                 e.SuppressKeyPress = e.Handled = true;
                 nextBtn_Click(sender, e);
             }
+        }
+
+        private void copySeqBtn_Click(object sender, System.EventArgs e)
+        {
+            Stage stage = sudoku.Stages[currentNumber - 1];
+            string seqString = GetSeqString(stage.Table);
+
+            Clipboard.SetText(seqString);
+        }
+
+        private void fileList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Item<string, string> fileItem = (Item<string, string>)fileList?.SelectedItem;
+            if (fileItem != null)
+            {
+                OpenFile(fileItem.Value);
+            }
+        }
+    }
+
+    internal class Item<TKey, TValue>
+    {
+        public TKey Key { get; set; }
+        public TValue Value { get; set; }
+
+        public override string ToString()
+        {
+            return Key.ToString();
         }
     }
 }

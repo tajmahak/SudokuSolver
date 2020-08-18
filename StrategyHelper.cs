@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace SudokuSolver
@@ -129,10 +130,51 @@ namespace SudokuSolver
             return HiddenSet(range, 4);
         }
 
-        [Strategy(StrategyType.PointingPairs, StrategyArea.Line)]
+        [Strategy(StrategyType.PointingPairs, StrategyArea.Block)]
         private static bool PointingPairs(Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#IR
+
+            int blockIndex = range[0].BlockIndex;
+            Range allCells = range.Table.Cells;
+
+            Range emptyCells = range.SelectEmptyCells();
+
+            foreach (int pVal in emptyCells.GetProbableValuesHashSet())
+            {
+                Range valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+                Range candidateCells = null;
+
+                HashSet<int> rows = valueRange.GetRowsHashSet();
+                if (rows.Count == 1)
+                {
+                    int r = valueRange[0].RowIndex;
+                    candidateCells = allCells.Select(x => x.BlockIndex != blockIndex && x.RowIndex == r);
+                }
+                else
+                {
+                    HashSet<int> columns = valueRange.GetColumnsHashSet();
+                    if (columns.Count == 1)
+                    {
+                        int c = valueRange[0].ColumnIndex;
+                        candidateCells = allCells.Select(x => x.BlockIndex != blockIndex && x.ColumnIndex == c);
+                    }
+                }
+
+                if (candidateCells != null)
+                {
+                    int removeCount = 0;
+                    foreach (Cell cell in candidateCells)
+                    {
+                        if (cell.ProbableValues.Remove(pVal))
+                        {
+                            removeCount++;
+                        }
+                    }
+
+                    return removeCount > 0;
+                }
+            }
 
             return false;
         }
@@ -140,9 +182,6 @@ namespace SudokuSolver
         [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
         private static bool BoxLineReduction(Range range)
         {
-#warning !!!
-            return false;
-
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
             int blockIndex = range[0].BlockIndex;
@@ -207,16 +246,16 @@ namespace SudokuSolver
 
                     if (removeValueRange.Count > 0)
                     {
-                        int clearCount = 0;
+                        int removeCount = 0;
                         foreach (Cell cell in removeValueRange)
                         {
                             if (cell.ProbableValues.Remove(v))
                             {
-                                clearCount++;
+                                removeCount++;
                             }
                         }
 
-                        return clearCount > 0;
+                        return removeCount > 0;
                     }
                 }
             }
@@ -266,39 +305,130 @@ namespace SudokuSolver
 
         private static bool HiddenSet(Range range, int maxDepth)
         {
-            Range emptyCells = range.SelectEmptyCells();
+            range = range.Table.SelectRow(3);
 
+            // ИМЕННО ТАКАЯ КОМБИНАЦИЯ БОЛЬШЕ НИГДЕ НЕ ВСТРЕЧАЕТСЯ
+            // КОЛИЧЕСТВО ЦИФР В КОМБИНАЦИИ ДОЛЖНО СОВПАДАТЬ С КОЛ-ВОМ ЯЧЕЕК, В КОТОРЫХ ЭТА КОМБИНАЦИЯ ВСТРЕЧАЕТСЯ
+            // Одна из ячеек должна быть однозначно полностью заполненной нужной комбинацией
+
+            Range emptyCells = range.SelectEmptyCells();
             foreach (Cell cell in emptyCells)
             {
-                //Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
-                //if (containingCells.Count > 0)
-                //{
-                //    containingCells.Add(cell);
-                //    if (containingCells.Count == cell.ProbableValues.Count)
-                //    {
-                //        if (containingCells.Count <= maxDepth)
-                //        {
-                //            int clearCount = 0;
+                //!!!
+                if (cell.ColumnIndex == 3 && cell.RowIndex == 3)
+                {
+                }
 
-                //            Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-                //            foreach (Cell filteredCell in filteredCells)
-                //            {
-                //                foreach (int pValue in cell.ProbableValues)
-                //                {
-                //                    if (filteredCell.ProbableValues.Remove(pValue))
-                //                    {
-                //                        clearCount++;
-                //                    }
-                //                }
-                //            }
 
-                //            return clearCount > 0;
-                //        }
-                //    }
-                //}
+
+
+                Range containingCells = emptyCells.Select(x => x != cell && cell.AnyProbableIsContaining(x));
+                if (containingCells.Count > 0)
+                {
+                    Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
+                    foreach (int pVal in cell.ProbableValues)
+                    {
+                        Range valueRange = containingCells.Select(x => x.ProbableValues.Contains(pVal));
+                        if (valueRange.Count < containingCells.Count)
+                        {
+                            valueDict.Add(pVal, valueRange);
+                        }
+                    }
+
+                    { }
+
+                    //containingCells.Add(cell);
+
+
+
+
+
+                    //if (containingCells.Count == cell.ProbableValues.Count)
+                    //{
+                    //    if (containingCells.Count <= maxDepth)
+                    //    {
+                    //        int clearCount = 0;
+
+                    //        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
+                    //        foreach (Cell filteredCell in filteredCells)
+                    //        {
+                    //            foreach (int pValue in cell.ProbableValues)
+                    //            {
+                    //                if (filteredCell.ProbableValues.Remove(pValue))
+                    //                {
+                    //                    clearCount++;
+                    //                }
+                    //            }
+                    //        }
+
+                    //        return clearCount > 0;
+                    //    }
+                    //}
+                }
             }
 
             return false;
+
+
+
+
+
+
+
+
+
+
+
+
+            //Range emptyCells = range.SelectEmptyCells();
+
+            //Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
+            //foreach (var pVal in emptyCells.GetProbableValuesHashSet())
+            //{
+            //    var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+            //    valueDict.Add(pVal, valueRange);
+            //}
+
+
+
+
+
+            //Dictionary<int, Range> countDict = new Dictionary<int, Range>();
+            //foreach (var dVal in valueDict)
+            //{
+            //    var rnggg = dVal.Value;
+
+            //    if (countDict.ContainsKey(rnggg.Count))
+            //    {
+            //        var existsRange = countDict[rnggg.Count];
+            //        existsRange = existsRange.GetUnionRange(rnggg);
+            //        countDict[rnggg.Count] = existsRange;
+
+            //    }
+            //    else
+            //    {
+            //        countDict.Add(rnggg.Count, rnggg);
+            //    }
+            //}
+
+
+            //var pValues = emptyCells.GetProbableValuesHashSet();
+            //foreach (var pVal in pValues)
+            //{
+            //    var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+            //    if (valueRange.Count > 2)
+            //    {
+            //        var joint = valueRange.GetJointProbableValuesHashSet();
+            //        if (valueRange.Count == joint.Count)
+            //        {
+
+            //        }
+            //    }
+            //}
+
+
+
+
         }
     }
 }

@@ -116,7 +116,9 @@
             this.openBtn = new System.Windows.Forms.Button();
             this.infoLabel = new System.Windows.Forms.Label();
             this.copyBtn = new System.Windows.Forms.Button();
-            this.stageTypeLbl = new System.Windows.Forms.Label();
+            this.copySeqBtn = new System.Windows.Forms.Button();
+            this.fileList = new System.Windows.Forms.ListBox();
+            this.strategyList = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stageNumber)).BeginInit();
             this.SuspendLayout();
@@ -1125,7 +1127,7 @@
             // 
             // prevBtn
             // 
-            this.prevBtn.Location = new System.Drawing.Point(561, 152);
+            this.prevBtn.Location = new System.Drawing.Point(590, 177);
             this.prevBtn.Name = "prevBtn";
             this.prevBtn.Size = new System.Drawing.Size(56, 23);
             this.prevBtn.TabIndex = 1;
@@ -1136,7 +1138,7 @@
             // 
             // nextBtn
             // 
-            this.nextBtn.Location = new System.Drawing.Point(682, 152);
+            this.nextBtn.Location = new System.Drawing.Point(711, 177);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(56, 23);
             this.nextBtn.TabIndex = 2;
@@ -1147,14 +1149,14 @@
             // 
             // stageNumber
             // 
-            this.stageNumber.Location = new System.Drawing.Point(623, 152);
+            this.stageNumber.Location = new System.Drawing.Point(652, 177);
             this.stageNumber.Name = "stageNumber";
             this.stageNumber.Size = new System.Drawing.Size(53, 22);
             this.stageNumber.TabIndex = 0;
             // 
             // openBtn
             // 
-            this.openBtn.Location = new System.Drawing.Point(604, 180);
+            this.openBtn.Location = new System.Drawing.Point(633, 205);
             this.openBtn.Name = "openBtn";
             this.openBtn.Size = new System.Drawing.Size(86, 23);
             this.openBtn.TabIndex = 4;
@@ -1165,7 +1167,7 @@
             // 
             // infoLabel
             // 
-            this.infoLabel.Location = new System.Drawing.Point(561, 130);
+            this.infoLabel.Location = new System.Drawing.Point(590, 155);
             this.infoLabel.Name = "infoLabel";
             this.infoLabel.Size = new System.Drawing.Size(177, 19);
             this.infoLabel.TabIndex = 5;
@@ -1174,23 +1176,45 @@
             // 
             // copyBtn
             // 
-            this.copyBtn.Location = new System.Drawing.Point(604, 208);
+            this.copyBtn.Location = new System.Drawing.Point(682, 259);
             this.copyBtn.Name = "copyBtn";
             this.copyBtn.Size = new System.Drawing.Size(86, 23);
             this.copyBtn.TabIndex = 6;
             this.copyBtn.TabStop = false;
-            this.copyBtn.Text = "copy";
+            this.copyBtn.Text = "copy excel";
             this.copyBtn.UseVisualStyleBackColor = true;
             this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
             // 
-            // stageTypeLbl
+            // copySeqBtn
             // 
-            this.stageTypeLbl.Location = new System.Drawing.Point(558, 89);
-            this.stageTypeLbl.Name = "stageTypeLbl";
-            this.stageTypeLbl.Size = new System.Drawing.Size(177, 19);
-            this.stageTypeLbl.TabIndex = 7;
-            this.stageTypeLbl.Text = "label82";
-            this.stageTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.copySeqBtn.Location = new System.Drawing.Point(590, 259);
+            this.copySeqBtn.Name = "copySeqBtn";
+            this.copySeqBtn.Size = new System.Drawing.Size(86, 23);
+            this.copySeqBtn.TabIndex = 8;
+            this.copySeqBtn.TabStop = false;
+            this.copySeqBtn.Text = "copy seq";
+            this.copySeqBtn.UseVisualStyleBackColor = true;
+            this.copySeqBtn.Click += new System.EventHandler(this.copySeqBtn_Click);
+            // 
+            // fileList
+            // 
+            this.fileList.FormattingEnabled = true;
+            this.fileList.ItemHeight = 16;
+            this.fileList.Location = new System.Drawing.Point(560, 12);
+            this.fileList.Name = "fileList";
+            this.fileList.ScrollAlwaysVisible = true;
+            this.fileList.Size = new System.Drawing.Size(236, 116);
+            this.fileList.TabIndex = 9;
+            this.fileList.SelectedIndexChanged += new System.EventHandler(this.fileList_SelectedIndexChanged);
+            // 
+            // strategyList
+            // 
+            this.strategyList.ItemHeight = 16;
+            this.strategyList.Location = new System.Drawing.Point(560, 288);
+            this.strategyList.Name = "strategyList";
+            this.strategyList.ScrollAlwaysVisible = true;
+            this.strategyList.Size = new System.Drawing.Size(236, 212);
+            this.strategyList.TabIndex = 10;
             // 
             // Form1
             // 
@@ -1198,7 +1222,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(808, 525);
-            this.Controls.Add(this.stageTypeLbl);
+            this.Controls.Add(this.strategyList);
+            this.Controls.Add(this.fileList);
+            this.Controls.Add(this.copySeqBtn);
             this.Controls.Add(this.copyBtn);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.openBtn);
@@ -1308,7 +1334,9 @@
         private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Button copyBtn;
-        private System.Windows.Forms.Label stageTypeLbl;
+        private System.Windows.Forms.Button copySeqBtn;
+        private System.Windows.Forms.ListBox fileList;
+        private System.Windows.Forms.ListBox strategyList;
     }
 }
 
