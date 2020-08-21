@@ -21,13 +21,11 @@ namespace SudokuSolver
             ProbableValues = new HashSet<int>();
         }
 
-        public bool ContainsAnyValue(params int[] values)
+        public bool ContainsAnyValue(HashSet<int> values)
         {
-            HashSet<int> hashSet = new HashSet<int>(values);
-
             if (Value != null)
             {
-                if (hashSet.Contains(Value.Value))
+                if (values.Contains(Value.Value))
                 {
                     return true;
                 }
@@ -35,7 +33,7 @@ namespace SudokuSolver
 
             foreach (int pValue in ProbableValues)
             {
-                if (hashSet.Contains(pValue))
+                if (values.Contains(pValue))
                 {
                     return true;
                 }
@@ -44,13 +42,17 @@ namespace SudokuSolver
             return false;
         }
 
-        public bool ContainsAllValues(params int[] values)
+        public bool ContainsAnyValue(params int[] values)
         {
             HashSet<int> hashSet = new HashSet<int>(values);
+            return ContainsAnyValue(hashSet);
+        }
 
+        public bool ContainsAllValues(HashSet<int> values)
+        {
             foreach (int pValue in ProbableValues)
             {
-                if (!hashSet.Contains(pValue))
+                if (!values.Contains(pValue))
                 {
                     return false;
                 }
@@ -59,21 +61,10 @@ namespace SudokuSolver
             return true;
         }
 
-        // Указывает, встречаются ли возможные значения указанной ячейки внутри возможных значений этой ячейки.
-        public bool ProbableIsContaining(Cell otherCell)
+        public bool ContainsAllValues(params int[] values)
         {
-            if (ProbableValues.Count >= otherCell.ProbableValues.Count)
-            {
-                foreach (int pVal in otherCell.ProbableValues)
-                {
-                    if (!ProbableValues.Contains(pVal))
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            return false;
+            HashSet<int> hashSet = new HashSet<int>(values);
+            return ContainsAllValues(hashSet);
         }
 
         public Cell Clone()

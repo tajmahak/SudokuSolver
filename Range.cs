@@ -33,20 +33,6 @@ namespace SudokuSolver
             return Select(x => x.Value != null);
         }
 
-        public HashSet<int> GetAnyValueHashSet()
-        {
-            HashSet<int> hashSet = new HashSet<int>();
-            foreach (int value in GetValuesHashSet())
-            {
-                hashSet.Add(value);
-            }
-            foreach (int value in GetProbableValuesHashSet())
-            {
-                hashSet.Add(value);
-            }
-            return hashSet;
-        }
-
         public HashSet<int> GetValuesHashSet()
         {
             HashSet<int> hashSet = new HashSet<int>();
@@ -94,64 +80,6 @@ namespace SudokuSolver
                 hashSet.Add(column);
             }
             return hashSet;
-        }
-
-        //!!! Название
-        // Получить диапазон ячеек, содержащих указанные возможные значения
-        public Range GetJointRange111(int[] values)
-        {
-            Range range = new Range(Table);
-
-            foreach (Cell cell in this)
-            {
-                foreach (int value in values)
-                {
-                    if (cell.ProbableValues.Contains(value))
-                    {
-                        range.Add(cell);
-                        break;
-                    }
-                }
-            }
-
-            return range;
-        }
-
-        public bool ContainsAnyValue(int value)
-        {
-            foreach (Cell cell in this)
-            {
-                if (cell.Value == value)
-                {
-                    return true;
-                }
-            }
-            return ContainsProbableValue(value);
-        }
-
-        public bool ContainsProbableValue(int value)
-        {
-            foreach (Cell cell in this)
-            {
-                if (cell.ProbableValues.Contains(value))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public int GetEmptyCellsCount()
-        {
-            int count = 0;
-            for (int i = 0; i < Count; i++)
-            {
-                if (this[i].Value == null)
-                {
-                    count++;
-                }
-            }
-            return count;
         }
 
         public bool GetIsCorrect()

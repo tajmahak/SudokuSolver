@@ -300,8 +300,6 @@ namespace SudokuSolver
         }
 
 
-
-
         private static bool NakedStrategy(Range range, int maxDepth)
         {
             // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
@@ -310,7 +308,7 @@ namespace SudokuSolver
             Range emptyCells = range.SelectEmptyCells();
             foreach (Cell cell in emptyCells)
             {
-                Range containingCells = emptyCells.Select(x => x != cell && cell.ProbableIsContaining(x));
+                Range containingCells = emptyCells.Select(x => x != cell && x.ContainsAllValues(cell.ProbableValues));
                 if (containingCells.Count > 0)
                 {
                     containingCells.Add(cell);
@@ -318,8 +316,8 @@ namespace SudokuSolver
                     {
                         if (containingCells.Count <= maxDepth)
                         {
-                            Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-                            return RemoveProbableValues(filteredCells, cell.ProbableValues.ToArray()) > 0;
+                            Range candidateCells = emptyCells.Select(x => !containingCells.Contains(x));
+                            return RemoveProbableValues(candidateCells, cell.ProbableValues.ToArray()) > 0;
                         }
                     }
                 }
@@ -331,7 +329,6 @@ namespace SudokuSolver
         private static bool HiddenStrategy(Range range, int maxDepth)
         {
             Range emptyCells = range.SelectEmptyCells();
-
             int[] probableValues = emptyCells.GetProbableValuesHashSet().ToArray();
 
             Range findRange = null;
@@ -342,7 +339,7 @@ namespace SudokuSolver
                 {
                     if (findRange == null)
                     {
-                        Range candidateRange = emptyCells.GetJointRange111(combination);
+                        Range candidateRange = emptyCells.Select(x => x.ContainsAnyValue(combination));
                         if (combinationLength == candidateRange.Count)
                         {
                             findRange = candidateRange;
