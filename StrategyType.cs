@@ -13,6 +13,6 @@
         NakedQuards,
         HiddenQuards,
         PointingPairs,
-        //BoxLineReduction,
+        BoxLineReduction,
     }
 }

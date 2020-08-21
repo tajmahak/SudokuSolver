@@ -7,6 +7,11 @@ namespace SudokuSolver
     {
         public Table Table { get; private set; }
 
+        public Range(Table table) : base()
+        {
+            Table = table;
+        }
+
         public Range(Table table, IEnumerable<Cell> collection) : base(collection)
         {
             Table = table;
@@ -116,6 +121,27 @@ namespace SudokuSolver
             }
 
             return hashSet;
+        }
+
+        //!!! Название
+        // Получить диапазон ячеек, содержащих указанные возможные значения
+        public Range GetJointRange111(int[] values)
+        {
+            Range range = new Range(Table);
+
+            foreach (Cell cell in this)
+            {
+                foreach (int value in values)
+                {
+                    if (cell.ProbableValues.Contains(value))
+                    {
+                        range.Add(cell);
+                        break;
+                    }
+                }
+            }
+
+            return range;
         }
 
         public Range GetUnionRange(Range otherRange)

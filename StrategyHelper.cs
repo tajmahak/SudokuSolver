@@ -180,7 +180,7 @@ namespace SudokuSolver
             return false;
         }
 
-        //[Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
+        [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
         private static bool BoxLineReduction(Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
@@ -306,167 +306,85 @@ namespace SudokuSolver
 
         private static bool HiddenStrategy(Range range, int maxDepth)
         {
-            range = range.Table.SelectBlock(4);
-            //range = range.Table.SelectRow(3);
-
-            // ИМЕННО ТАКАЯ КОМБИНАЦИЯ БОЛЬШЕ НИГДЕ НЕ ВСТРЕЧАЕТСЯ
-            // КОЛИЧЕСТВО ЦИФР В КОМБИНАЦИИ ДОЛЖНО СОВПАДАТЬ С КОЛ-ВОМ ЯЧЕЕК, В КОТОРЫХ ЭТА КОМБИНАЦИЯ ВСТРЕЧАЕТСЯ
-            // Одна из ячеек должна быть однозначно полностью заполненной нужной комбинацией
-
             Range emptyCells = range.SelectEmptyCells();
 
-            Dictionary<int, Range> valueDict = new Dictionary<int, Range>();
-            foreach (var pVal in emptyCells.GetProbableValuesHashSet())
+            int[] probableValues = emptyCells.GetProbableValuesHashSet().ToArray();
+
+            Range findRange = null;
+            int[] findCombination = null;
+            for (int combinationLength = 2; combinationLength <= maxDepth; combinationLength++)
             {
-                var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
-                valueDict.Add(pVal, valueRange);
-            }
-
-            var valueDictList = valueDict.ToList();
-            for (int i = 0; i < valueDictList.Count; i++)
-            {
-                var item = valueDictList[i];
-                int valueCount = item.Value.Count;
-
-                var aaa = valueDictList.FindAll(x => x.Value.Count > valueCount);
-
-                if (valueCount > aaa.Count)
+                IterateCombinations(probableValues, combinationLength, (combination) =>
                 {
-                    valueDictList.RemoveAt(i);
-                    i--;
-                }
+                    if (findRange == null)
+                    {
+                        Range candidateRange = emptyCells.GetJointRange111(combination);
+                        if (combinationLength == candidateRange.Count)
+                        {
+                            findRange = candidateRange;
+                            findCombination = combination;
+                        }
+                    }
+                });
             }
 
+            if (findRange != null)
+            {
+                int removedCount = 0;
+                HashSet<int> combinationHashSet = new HashSet<int>(findCombination);
 
+                foreach (Cell findCell in findRange)
+                {
+                    foreach (int pValue in findCell.ProbableValues.ToArray())
+                    {
+                        if (!combinationHashSet.Contains(pValue))
+                        {
+                            if (findCell.ProbableValues.Remove(pValue))
+                            {
+                                removedCount++;
 
+                            }
+                        }
+                    }
+                }
 
-            { }
-
-
-
-
-
-
-
-            //foreach (Cell cell in emptyCells)
-            //{
-            //    Range containingCells = emptyCells.Select(x => cell.AnyProbableIsContaining(x));
-            //    if (containingCells.Count > 0)
-            //    {
-            //        int maxCount = 0;
-            //        int totalCount = 0;
-            //        Dictionary<int, Range> valueDict111 = new Dictionary<int, Range>();
-            //        foreach (int pVal in cell.ProbableValues)
-            //        {
-            //            Range valueRange = containingCells.Select(x => x.ProbableValues.Contains(pVal));
-            //            if (valueRange.Count < containingCells.Count)
-            //            {
-            //                valueDict111.Add(pVal, valueRange);
-            //                maxCount = Math.Max(maxCount, valueRange.Count);
-            //                totalCount += valueRange.Count;
-            //            }
-            //        }
-
-            //        if (maxCount <= valueDict111.Count)
-            //        { 
-
-            //        }
-
-
-
-            //        { }
-
-            //        //containingCells.Add(cell);
-
-
-
-
-
-            //        //if (containingCells.Count == cell.ProbableValues.Count)
-            //        //{
-            //        //    if (containingCells.Count <= maxDepth)
-            //        //    {
-            //        //        int clearCount = 0;
-
-            //        //        Range filteredCells = emptyCells.Select(x => !containingCells.Contains(x));
-            //        //        foreach (Cell filteredCell in filteredCells)
-            //        //        {
-            //        //            foreach (int pValue in cell.ProbableValues)
-            //        //            {
-            //        //                if (filteredCell.ProbableValues.Remove(pValue))
-            //        //                {
-            //        //                    clearCount++;
-            //        //                }
-            //        //            }
-            //        //        }
-
-            //        //        return clearCount > 0;
-            //        //    }
-            //        //}
-            //    }
-            //}
+                return removedCount > 0;
+            }
 
             return false;
-
-
-
-
-
-
-
-
-
-
-
-
-            //Range emptyCells = range.SelectEmptyCells();
-
-
-
-
-
-
-
-            //Dictionary<int, Range> countDict = new Dictionary<int, Range>();
-            //foreach (var dVal in valueDict)
-            //{
-            //    var rnggg = dVal.Value;
-
-            //    if (countDict.ContainsKey(rnggg.Count))
-            //    {
-            //        var existsRange = countDict[rnggg.Count];
-            //        existsRange = existsRange.GetUnionRange(rnggg);
-            //        countDict[rnggg.Count] = existsRange;
-
-            //    }
-            //    else
-            //    {
-            //        countDict.Add(rnggg.Count, rnggg);
-            //    }
-            //}
-
-
-            //var pValues = emptyCells.GetProbableValuesHashSet();
-            //foreach (var pVal in pValues)
-            //{
-            //    var valueRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
-            //    if (valueRange.Count > 2)
-            //    {
-            //        var joint = valueRange.GetJointProbableValuesHashSet();
-            //        if (valueRange.Count == joint.Count)
-            //        {
-
-            //        }
-            //    }
-            //}
-
-
-
-
         }
 
 
+        // Перебор возможных комбинаций неповторяющихся значений из массива 
+        private static void IterateCombinations(int[] values, int combinationLength, CombinationDelegate action)
+        {
+            int[] combination = new int[combinationLength];
+            IterateCombinationsInternal(values, combination, 0, -1, action);
+        }
 
+        private static void IterateCombinationsInternal(int[] values, int[] combination, int level, int prevPosition, CombinationDelegate action)
+        {
+            int startPosition = prevPosition + 1;
+            int endPosition = values.Length - (combination.Length - level - 1);
 
+            for (int i = startPosition; i < endPosition; i++)
+            {
+                int value = values[i];
+                combination[level] = value;
+
+                if (level < combination.Length - 1)
+                {
+                    IterateCombinationsInternal(values, combination, level + 1, i, action);
+                }
+                else
+                {
+                    int[] combinationCopy = new int[combination.Length];
+                    Array.Copy(combination, combinationCopy, combination.Length);
+                    action(combinationCopy);
+                }
+            }
+        }
+
+        private delegate void CombinationDelegate(int[] combination);
     }
 }

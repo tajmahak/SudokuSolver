@@ -18,9 +18,10 @@ namespace SudokuSolver
 
             LoadStrategyList();
 
-            //LoadFileList();
+            LoadFileList();
 
-            OpenFile("hidden4.txt");
+            //!!!
+            OpenFile("x-wing.txt");
         }
 
 
