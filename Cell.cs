@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SudokuSolver
 {
@@ -22,6 +21,44 @@ namespace SudokuSolver
             ProbableValues = new HashSet<int>();
         }
 
+        public bool ContainsAnyValue(params int[] values)
+        {
+            HashSet<int> hashSet = new HashSet<int>(values);
+
+            if (Value != null)
+            {
+                if (hashSet.Contains(Value.Value))
+                {
+                    return true;
+                }
+            }
+
+            foreach (int pValue in ProbableValues)
+            {
+                if (hashSet.Contains(pValue))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool ContainsAllValues(params int[] values)
+        {
+            HashSet<int> hashSet = new HashSet<int>(values);
+
+            foreach (int pValue in ProbableValues)
+            {
+                if (!hashSet.Contains(pValue))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         // Указывает, встречаются ли возможные значения указанной ячейки внутри возможных значений этой ячейки.
         public bool ProbableIsContaining(Cell otherCell)
         {
@@ -35,19 +72,6 @@ namespace SudokuSolver
                     }
                 }
                 return true;
-            }
-            return false;
-        }
-
-        // Указывает, встречаются ли все возможные значения указанной ячейки внутри возможных значений этой ячейки.
-        public bool AnyProbableIsContaining(Cell otherCell)
-        {
-            foreach (int pVal in otherCell.ProbableValues)
-            {
-                if (ProbableValues.Contains(pVal))
-                {
-                    return true;
-                }
             }
             return false;
         }

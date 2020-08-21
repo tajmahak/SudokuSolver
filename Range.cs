@@ -96,33 +96,6 @@ namespace SudokuSolver
             return hashSet;
         }
 
-        // Получить возможные значения, встречающиеся в каждой ячейке диапазона
-        public HashSet<int> GetJointProbableValuesHashSet()
-        {
-            HashSet<int> hashSet = new HashSet<int>();
-
-            foreach (int pVal in GetProbableValuesHashSet())
-            {
-                bool joint = true;
-
-                foreach (Cell cell in this)
-                {
-                    if (!cell.ProbableValues.Contains(pVal))
-                    {
-                        joint = false;
-                        break;
-                    }
-                }
-
-                if (joint)
-                {
-                    hashSet.Add(pVal);
-                }
-            }
-
-            return hashSet;
-        }
-
         //!!! Название
         // Получить диапазон ячеек, содержащих указанные возможные значения
         public Range GetJointRange111(int[] values)
@@ -141,19 +114,6 @@ namespace SudokuSolver
                 }
             }
 
-            return range;
-        }
-
-        public Range GetUnionRange(Range otherRange)
-        {
-            Range range = new Range(Table, this);
-            foreach (Cell cell in otherRange)
-            {
-                if (!range.Contains(cell))
-                {
-                    range.Add(cell);
-                }
-            }
             return range;
         }
 

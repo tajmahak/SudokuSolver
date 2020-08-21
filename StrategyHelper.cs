@@ -166,7 +166,7 @@ namespace SudokuSolver
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
             int blockIndex = range[0].BlockIndex;
-            Range allCells = range.Table.Cells;
+            Table table = range.Table;
 
             Range emptyBlockCells = range.SelectEmptyCells();
             foreach (int pValue in emptyBlockCells.GetProbableValuesHashSet())
@@ -183,7 +183,7 @@ namespace SudokuSolver
                     if (probableBlockCells.Count > 0)
                     {
                         // ячейки из других блоков, которые могут содержать вероятное значение
-                        Range otherCells = allCells.Select(x => x.BlockIndex != blockIndex && x.RowIndex == r && (x.Value == pValue || x.ProbableValues.Contains(pValue)));
+                        Range otherCells = table.SelectRow(r).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
                         if (otherCells.Count == 0)
                         {
                             hits++;
@@ -201,7 +201,7 @@ namespace SudokuSolver
                     if (probableBlockCells.Count > 0)
                     {
                         // ячейки из других блоков, которые могут содержать вероятное значение
-                        Range otherCells = allCells.Select(x => x.BlockIndex != blockIndex && x.ColumnIndex == c && (x.Value == pValue || x.ProbableValues.Contains(pValue)));
+                        Range otherCells = table.SelectColumn(c).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
                         if (otherCells.Count == 0)
                         {
                             hits++;
@@ -227,16 +227,7 @@ namespace SudokuSolver
 
                     if (removeValueRange.Count > 0)
                     {
-                        int removeCount = 0;
-                        foreach (Cell cell in removeValueRange)
-                        {
-                            if (cell.ProbableValues.Remove(pValue))
-                            {
-                                removeCount++;
-                            }
-                        }
-
-                        return removeCount > 0;
+                        return RemoveProbableValues(removeValueRange, pValue) > 0;
                     }
                 }
             }
@@ -247,17 +238,12 @@ namespace SudokuSolver
         [Strategy(StrategyType.XWing, StrategyArea.Line)]
         private static bool XWing(Range range)
         {
-            return false;
-
-
-
-
             Table table = range.Table;
             Range emptyCells = range.SelectEmptyCells();
 
             if (emptyCells.Count == 2)
             {
-                HashSet<int> probableValues = emptyCells.GetJointProbableValuesHashSet();
+                HashSet<int> probableValues = emptyCells.GetProbableValuesHashSet();
                 if (probableValues.Count == 2)
                 {
                     bool isRowOrColumn = emptyCells.GetRowsHashSet().Count == 1;
@@ -374,7 +360,6 @@ namespace SudokuSolver
             return false;
         }
 
-
         private static int RemoveProbableValues(Range range, params int[] removedValues)
         {
             int removedCount = 0;
@@ -415,7 +400,6 @@ namespace SudokuSolver
 
             return removedCount;
         }
-
 
         // Перебор возможных комбинаций неповторяющихся значений из массива 
         private static void IterateCombinations(int[] values, int combinationLength, CombinationDelegate action)
