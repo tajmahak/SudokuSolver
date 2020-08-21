@@ -22,15 +22,6 @@ namespace SudokuSolver
             ProbableValues = new HashSet<int>();
         }
 
-        public int GetFirstProbableValue()
-        {
-            foreach (int pVal in ProbableValues)
-            {
-                return pVal;
-            }
-            throw new Exception("Список возможных значений пуст.");
-        }
-
         // Указывает, встречаются ли возможные значения указанной ячейки внутри возможных значений этой ячейки.
         public bool ProbableIsContaining(Cell otherCell)
         {

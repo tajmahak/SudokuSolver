@@ -14,5 +14,7 @@
         HiddenQuards,
         PointingPairs,
         BoxLineReduction,
+
+        XWing,
     }
 }

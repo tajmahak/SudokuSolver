@@ -20,8 +20,10 @@ namespace SudokuSolver
 
             LoadFileList();
 
-            //!!!
-            OpenFile("x-wing.txt");
+            if (fileList.Items.Count > 0)
+            {
+                fileList.SelectedIndex = 0;
+            }
         }
 
 
@@ -36,11 +38,6 @@ namespace SudokuSolver
                 fileItem.Key = Path.GetFileNameWithoutExtension(file);
                 fileItem.Value = file;
                 fileList.Items.Add(fileItem);
-            }
-
-            if (fileList.Items.Count > 0)
-            {
-                fileList.SelectedIndex = 0;
             }
         }
 
