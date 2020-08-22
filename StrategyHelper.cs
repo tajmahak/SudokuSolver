@@ -250,10 +250,10 @@ namespace SudokuSolver
                     Cell cell1 = emptyCells[0];
                     Cell cell2 = emptyCells[1];
 
-                    Range candidateRange = null;
-
                     foreach (int pValue in probableValues)
                     {
+                        Range candidateRange = null;
+
                         if (isRowOrColumn)
                         {
                             for (int r = 0; r < table.Length; r++)
@@ -273,26 +273,38 @@ namespace SudokuSolver
                                                 x.ProbableValues.Contains(pValue));
                                         }
                                     }
-
-
-
                                 }
                             }
-
-
                         }
                         else
                         {
+                            for (int c = 0; c < table.Length; c++)
+                            {
+                                if (c != cell1.ColumnIndex)
+                                {
+                                    Range column = table.SelectColumn(c).Select(x => x.ProbableValues.Contains(pValue));
+                                    if (column.Count == 2)
+                                    {
+                                        Cell otherCell1 = column[0];
+                                        Cell otherCell2 = column[1];
 
+                                        if (cell1.RowIndex == otherCell1.RowIndex && cell2.RowIndex == otherCell2.RowIndex)
+                                        {
+                                            candidateRange = table.Select(x =>
+                                                x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
+                                                (x.RowIndex == cell1.RowIndex || x.RowIndex == cell2.RowIndex) &&
+                                                x.ProbableValues.Contains(pValue));
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
+                        if (candidateRange != null)
+                        {
+                            return RemoveProbableValues(candidateRange, pValue) > 0;
                         }
                     }
-
-
-
-
-
-
                 }
             }
 
