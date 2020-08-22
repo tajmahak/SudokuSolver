@@ -2,20 +2,19 @@
 {
     internal enum StrategyType
     {
-        None,
         CreateTable,
         InitializeProbableValues,
 
         SetValueToSolvedCell,
 
         HiddenSingles,
-        //NakedPairsTriples,
-        //HiddenPairsTriples,
-        //NakedQuards,
-        //HiddenQuards,
-        //PointingPairs,
-        //BoxLineReduction,
+        NakedPairsTriples,
+        HiddenPairsTriples,
+        NakedQuards,
+        HiddenQuards,
+        PointingPairs,
+        BoxLineReduction,
 
-        //XWing,
+        XWing,
     }
 }

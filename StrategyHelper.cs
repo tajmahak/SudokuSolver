@@ -13,7 +13,7 @@ namespace SudokuSolver
             StrategyType[] array = (StrategyType[])Enum.GetValues(typeof(StrategyType));
 
             // Отсеивание инициализирующих стратегий
-            array = Array.FindAll(array, x => !(x == StrategyType.None || x == StrategyType.CreateTable || x == StrategyType.InitializeProbableValues));
+            array = Array.FindAll(array, x => !(x == StrategyType.CreateTable || x == StrategyType.InitializeProbableValues));
 
             return array;
         }
@@ -40,10 +40,8 @@ namespace SudokuSolver
 
 
         [Strategy(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
-        private static StrategyResult SetValueToSolvedCell(Range range)
+        private static void SetValueToSolvedCell(StrategyResult result, Range range)
         {
-            StrategyResult result = new StrategyResult();
-
             Cell cell = range.Find(x => x.ProbableValues.Count == 1);
 
             if (cell != null)
@@ -63,19 +61,15 @@ namespace SudokuSolver
 
                 result.Success = true;
             }
-
-            return result;
         }
 
         [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
-        private static StrategyResult HiddenSingles(Range range)
+        private static void HiddenSingles(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Getting_Started
 
             // если в диапазоне из возможных значений ячейки находится то, которое не повторяется 
             // в других ячейках, то единственным вариантом для ячейки будет именно это значение
-
-            StrategyResult result = new StrategyResult(StrategyType.HiddenSingles);
 
             Range emptyCells = range.SelectEmptyCells();
             foreach (int pVal in emptyCells.GetProbableValuesHashSet())
@@ -90,234 +84,229 @@ namespace SudokuSolver
                     break;
                 }
             }
-
-            return result;
         }
 
-        //[Strategy(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
-        //private static StrategyResult NakedPairsTriples(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Naked_Candidates#NP
+        [Strategy(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        private static void NakedPairsTriples(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Naked_Candidates#NP
 
-        //    return NakedStrategy(range, 3);
-        //}
+            NakedStrategy(result, range, 3);
+        }
 
-        //[Strategy(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
-        //private static StrategyResult HiddenPairsTriples(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Hidden_Candidates#HP
+        [Strategy(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
+        private static void HiddenPairsTriples(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Hidden_Candidates#HP
 
-        //    return HiddenStrategy(range, 3);
-        //}
+            HiddenStrategy(result, range, 3);
+        }
 
-        //[Strategy(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
-        //private static StrategyResult NakedQuards(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Naked_Candidates#NQ
+        [Strategy(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
+        private static void NakedQuards(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
-        //    return NakedStrategy(range, 4);
-        //}
+            NakedStrategy(result, range, 4);
+        }
 
-        //[Strategy(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
-        //private static StrategyResult HiddenQuards(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Naked_Candidates#NQ
+        [Strategy(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
+        private static void HiddenQuards(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
-        //    return HiddenStrategy(range, 4);
-        //}
+            HiddenStrategy(result, range, 4);
+        }
 
-        //[Strategy(StrategyType.PointingPairs, StrategyArea.Block)]
-        //private static StrategyResult PointingPairs(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Intersection_Removal#IR
+        [Strategy(StrategyType.PointingPairs, StrategyArea.Block)]
+        private static void PointingPairs(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Intersection_Removal#IR
 
-        //    int blockIndex = range[0].BlockIndex;
-        //    Table table = range.Table;
-        //    Range emptyCells = range.SelectEmptyCells();
+            int blockIndex = range[0].BlockIndex;
+            Table table = range.Table;
+            Range emptyCells = range.SelectEmptyCells();
 
-        //    foreach (int pValue in emptyCells.GetProbableValuesHashSet())
-        //    {
-        //        Range checkRange = emptyCells.Select(x => x.ProbableValues.Contains(pValue));
-        //        Range candidateCells = null;
+            foreach (int pValue in emptyCells.GetProbableValuesHashSet())
+            {
+                Range checkRange = emptyCells.Select(x => x.ProbableValues.Contains(pValue));
+                Range candidateCells = null;
 
-        //        HashSet<int> rows = checkRange.GetRowsHashSet();
-        //        if (rows.Count == 1)
-        //        {
-        //            int r = checkRange[0].RowIndex;
-        //            candidateCells = table.SelectRow(r).Select(x => x.BlockIndex != blockIndex);
-        //        }
-        //        else
-        //        {
-        //            HashSet<int> columns = checkRange.GetColumnsHashSet();
-        //            if (columns.Count == 1)
-        //            {
-        //                int c = checkRange[0].ColumnIndex;
-        //                candidateCells = table.SelectColumn(c).Select(x => x.BlockIndex != blockIndex);
-        //            }
-        //        }
+                HashSet<int> rows = checkRange.GetRowsHashSet();
+                if (rows.Count == 1)
+                {
+                    int r = checkRange[0].RowIndex;
+                    candidateCells = table.SelectRow(r).Select(x => x.BlockIndex != blockIndex);
+                }
+                else
+                {
+                    HashSet<int> columns = checkRange.GetColumnsHashSet();
+                    if (columns.Count == 1)
+                    {
+                        int c = checkRange[0].ColumnIndex;
+                        candidateCells = table.SelectColumn(c).Select(x => x.BlockIndex != blockIndex);
+                    }
+                }
 
-        //        if (candidateCells != null)
-        //        {
-        //            return RemoveProbableValues(candidateCells, pValue) > 0;
-        //        }
-        //    }
+                if (candidateCells != null)
+                {
+                    result.Success = RemoveProbableValues(candidateCells, pValue) > 0;
+                    return;
+                }
+            }
+        }
 
-        //    return false;
-        //}
+        [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
+        private static void BoxLineReduction(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
-        //[Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
-        //private static StrategyResult BoxLineReduction(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Intersection_Removal#LBR
+            int blockIndex = range[0].BlockIndex;
+            Table table = range.Table;
 
-        //    int blockIndex = range[0].BlockIndex;
-        //    Table table = range.Table;
+            Range emptyBlockCells = range.SelectEmptyCells();
+            foreach (int pValue in emptyBlockCells.GetProbableValuesHashSet())
+            {
+                int hits = 0;
+                bool rowOrColumn = false;
+                Range candidateCells = null;
 
-        //    Range emptyBlockCells = range.SelectEmptyCells();
-        //    foreach (int pValue in emptyBlockCells.GetProbableValuesHashSet())
-        //    {
-        //        int hits = 0;
-        //        bool rowOrColumn = false;
-        //        Range candidateCells = null;
+                // Проверка строк
+                foreach (int r in emptyBlockCells.GetRowsHashSet())
+                {
+                    // диапазон возможного значения, которое находится в строке рассматриваемого блока
+                    Range probableBlockCells = emptyBlockCells.Select(x => x.RowIndex == r && x.ProbableValues.Contains(pValue));
+                    if (probableBlockCells.Count > 0)
+                    {
+                        // ячейки из других блоков, которые могут содержать вероятное значение
+                        Range otherCells = table.SelectRow(r).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
+                        if (otherCells.Count == 0)
+                        {
+                            hits++;
+                            rowOrColumn = true;
+                            candidateCells = probableBlockCells;
+                        }
+                    }
+                }
 
-        //        // Проверка строк
-        //        foreach (int r in emptyBlockCells.GetRowsHashSet())
-        //        {
-        //            // диапазон возможного значения, которое находится в строке рассматриваемого блока
-        //            Range probableBlockCells = emptyBlockCells.Select(x => x.RowIndex == r && x.ProbableValues.Contains(pValue));
-        //            if (probableBlockCells.Count > 0)
-        //            {
-        //                // ячейки из других блоков, которые могут содержать вероятное значение
-        //                Range otherCells = table.SelectRow(r).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
-        //                if (otherCells.Count == 0)
-        //                {
-        //                    hits++;
-        //                    rowOrColumn = true;
-        //                    candidateCells = probableBlockCells;
-        //                }
-        //            }
-        //        }
+                // Проверка столбцов
+                foreach (int c in emptyBlockCells.GetColumnsHashSet())
+                {
+                    // диапазон возможного значения, которое находится в строке рассматриваемого блока
+                    Range probableBlockCells = emptyBlockCells.Select(x => x.ColumnIndex == c && x.ProbableValues.Contains(pValue));
+                    if (probableBlockCells.Count > 0)
+                    {
+                        // ячейки из других блоков, которые могут содержать вероятное значение
+                        Range otherCells = table.SelectColumn(c).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
+                        if (otherCells.Count == 0)
+                        {
+                            hits++;
+                            rowOrColumn = false;
+                            candidateCells = probableBlockCells;
+                        }
+                    }
+                }
 
-        //        // Проверка столбцов
-        //        foreach (int c in emptyBlockCells.GetColumnsHashSet())
-        //        {
-        //            // диапазон возможного значения, которое находится в строке рассматриваемого блока
-        //            Range probableBlockCells = emptyBlockCells.Select(x => x.ColumnIndex == c && x.ProbableValues.Contains(pValue));
-        //            if (probableBlockCells.Count > 0)
-        //            {
-        //                // ячейки из других блоков, которые могут содержать вероятное значение
-        //                Range otherCells = table.SelectColumn(c).Select(x => x.BlockIndex != blockIndex && x.ContainsAnyValue(pValue));
-        //                if (otherCells.Count == 0)
-        //                {
-        //                    hits++;
-        //                    rowOrColumn = false;
-        //                    candidateCells = probableBlockCells;
-        //                }
-        //            }
-        //        }
+                if (hits == 1)
+                {
+                    Range removeValueRange;
+                    if (rowOrColumn)
+                    {
+                        int rowIndex = candidateCells[0].RowIndex;
+                        removeValueRange = emptyBlockCells.Select(x => x.RowIndex != rowIndex && x.ProbableValues.Contains(pValue));
+                    }
+                    else
+                    {
+                        int columnIndex = candidateCells[0].ColumnIndex;
+                        removeValueRange = emptyBlockCells.Select(x => x.ColumnIndex != columnIndex && x.ProbableValues.Contains(pValue));
+                    }
 
-        //        if (hits == 1)
-        //        {
-        //            Range removeValueRange;
-        //            if (rowOrColumn)
-        //            {
-        //                int rowIndex = candidateCells[0].RowIndex;
-        //                removeValueRange = emptyBlockCells.Select(x => x.RowIndex != rowIndex && x.ProbableValues.Contains(pValue));
-        //            }
-        //            else
-        //            {
-        //                int columnIndex = candidateCells[0].ColumnIndex;
-        //                removeValueRange = emptyBlockCells.Select(x => x.ColumnIndex != columnIndex && x.ProbableValues.Contains(pValue));
-        //            }
+                    if (removeValueRange.Count > 0)
+                    {
+                        result.Success = RemoveProbableValues(removeValueRange, pValue) > 0;
+                        return;
+                    }
+                }
+            }
+        }
 
-        //            if (removeValueRange.Count > 0)
-        //            {
-        //                return RemoveProbableValues(removeValueRange, pValue) > 0;
-        //            }
-        //        }
-        //    }
+        [Strategy(StrategyType.XWing, StrategyArea.Line)]
+        private static void XWing(StrategyResult result, Range range)
+        {
+            Table table = range.Table;
+            Range emptyCells = range.SelectEmptyCells();
 
-        //    return false;
-        //}
+            if (emptyCells.Count == 2)
+            {
+                HashSet<int> probableValues = emptyCells.GetProbableValuesHashSet();
+                if (probableValues.Count == 2)
+                {
+                    bool isRowOrColumn = emptyCells.GetRowsHashSet().Count == 1;
+                    Cell cell1 = emptyCells[0];
+                    Cell cell2 = emptyCells[1];
 
-        //[Strategy(StrategyType.XWing, StrategyArea.Line)]
-        //private static StrategyResult XWing(Range range)
-        //{
-        //    Table table = range.Table;
-        //    Range emptyCells = range.SelectEmptyCells();
+                    foreach (int pValue in probableValues)
+                    {
+                        Range candidateRange = null;
 
-        //    if (emptyCells.Count == 2)
-        //    {
-        //        HashSet<int> probableValues = emptyCells.GetProbableValuesHashSet();
-        //        if (probableValues.Count == 2)
-        //        {
-        //            bool isRowOrColumn = emptyCells.GetRowsHashSet().Count == 1;
-        //            Cell cell1 = emptyCells[0];
-        //            Cell cell2 = emptyCells[1];
+                        if (isRowOrColumn)
+                        {
+                            for (int r = 0; r < table.Length; r++)
+                            {
+                                if (r != cell1.RowIndex)
+                                {
+                                    Range row = table.SelectRow(r).Select(x => x.ProbableValues.Contains(pValue));
+                                    if (row.Count == 2)
+                                    {
+                                        Cell otherCell1 = row[0];
+                                        Cell otherCell2 = row[1];
+                                        if (cell1.ColumnIndex == otherCell1.ColumnIndex && cell2.ColumnIndex == otherCell2.ColumnIndex)
+                                        {
+                                            candidateRange = table.Select(x =>
+                                                x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
+                                                (x.ColumnIndex == cell1.ColumnIndex || x.ColumnIndex == cell2.ColumnIndex) &&
+                                                x.ProbableValues.Contains(pValue));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int c = 0; c < table.Length; c++)
+                            {
+                                if (c != cell1.ColumnIndex)
+                                {
+                                    Range column = table.SelectColumn(c).Select(x => x.ProbableValues.Contains(pValue));
+                                    if (column.Count == 2)
+                                    {
+                                        Cell otherCell1 = column[0];
+                                        Cell otherCell2 = column[1];
 
-        //            foreach (int pValue in probableValues)
-        //            {
-        //                Range candidateRange = null;
+                                        if (cell1.RowIndex == otherCell1.RowIndex && cell2.RowIndex == otherCell2.RowIndex)
+                                        {
+                                            candidateRange = table.Select(x =>
+                                                x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
+                                                (x.RowIndex == cell1.RowIndex || x.RowIndex == cell2.RowIndex) &&
+                                                x.ProbableValues.Contains(pValue));
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
-        //                if (isRowOrColumn)
-        //                {
-        //                    for (int r = 0; r < table.Length; r++)
-        //                    {
-        //                        if (r != cell1.RowIndex)
-        //                        {
-        //                            Range row = table.SelectRow(r).Select(x => x.ProbableValues.Contains(pValue));
-        //                            if (row.Count == 2)
-        //                            {
-        //                                Cell otherCell1 = row[0];
-        //                                Cell otherCell2 = row[1];
-        //                                if (cell1.ColumnIndex == otherCell1.ColumnIndex && cell2.ColumnIndex == otherCell2.ColumnIndex)
-        //                                {
-        //                                    candidateRange = table.Select(x =>
-        //                                        x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
-        //                                        (x.ColumnIndex == cell1.ColumnIndex || x.ColumnIndex == cell2.ColumnIndex) &&
-        //                                        x.ProbableValues.Contains(pValue));
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    for (int c = 0; c < table.Length; c++)
-        //                    {
-        //                        if (c != cell1.ColumnIndex)
-        //                        {
-        //                            Range column = table.SelectColumn(c).Select(x => x.ProbableValues.Contains(pValue));
-        //                            if (column.Count == 2)
-        //                            {
-        //                                Cell otherCell1 = column[0];
-        //                                Cell otherCell2 = column[1];
-
-        //                                if (cell1.RowIndex == otherCell1.RowIndex && cell2.RowIndex == otherCell2.RowIndex)
-        //                                {
-        //                                    candidateRange = table.Select(x =>
-        //                                        x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
-        //                                        (x.RowIndex == cell1.RowIndex || x.RowIndex == cell2.RowIndex) &&
-        //                                        x.ProbableValues.Contains(pValue));
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-
-        //                if (candidateRange != null)
-        //                {
-        //                    return RemoveProbableValues(candidateRange, pValue) > 0;
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return false;
-        //}
+                        if (candidateRange != null)
+                        {
+                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
 
 
-        private static bool NakedStrategy(Range range, int maxDepth)
+        private static void NakedStrategy(StrategyResult result, Range range, int maxDepth)
         {
             // если в диапазоне встречаются ячейки с одинаковыми возможными значениями, 
             // соответственно эти значения могут быть только у этих ячеек
@@ -334,16 +323,15 @@ namespace SudokuSolver
                         if (containingCells.Count <= maxDepth)
                         {
                             Range candidateCells = emptyCells.Select(x => !containingCells.Contains(x));
-                            return RemoveProbableValues(candidateCells, cell.ProbableValues.ToArray()) > 0;
+                            result.Success = RemoveProbableValues(candidateCells, cell.ProbableValues.ToArray()) > 0;
+                            return;
                         }
                     }
                 }
             }
-
-            return false;
         }
 
-        private static bool HiddenStrategy(Range range, int maxDepth)
+        private static void HiddenStrategy(StrategyResult result, Range range, int maxDepth)
         {
             Range emptyCells = range.SelectEmptyCells();
             int[] probableValues = emptyCells.GetProbableValuesHashSet().ToArray();
@@ -368,11 +356,10 @@ namespace SudokuSolver
 
             if (findRange != null)
             {
-                return KeepProbableValues(findRange, findCombination) > 0;
+                result.Success = KeepProbableValues(findRange, findCombination) > 0;
             }
-
-            return false;
         }
+
 
         private static int RemoveProbableValues(Range range, params int[] removedValues)
         {

@@ -35,9 +35,8 @@ namespace SudokuSolver
                 }
             }
 
-            StrategyResult result = new StrategyResult();
+            StrategyResult result = new StrategyResult(StrategyType.CreateTable);
             result.Success = true;
-            result.StrategyType = StrategyType.CreateTable;
             AddStage(table, result);
 
             Solve();
@@ -64,9 +63,8 @@ namespace SudokuSolver
                 }
             }
 
-            StrategyResult result = new StrategyResult();
+            StrategyResult result = new StrategyResult(StrategyType.CreateTable);
             result.Success = true;
-            result.StrategyType = StrategyType.CreateTable;
             AddStage(table, result);
 
             Solve();
@@ -77,9 +75,8 @@ namespace SudokuSolver
             Table table = CloneLastTable();
             SetInitialProbabledValues(table);
 
-            StrategyResult initResult = new StrategyResult();
+            StrategyResult initResult = new StrategyResult(StrategyType.InitializeProbableValues);
             initResult.Success = true;
-            initResult.StrategyType = StrategyType.InitializeProbableValues;
             AddStage(table, initResult);
 
             StrategyType[] strategyTypes = StrategyHelper.GetStrategies();
@@ -88,21 +85,21 @@ namespace SudokuSolver
                 table = CloneLastTable();
 
                 StrategyResult result = null;
+                bool success = false;
                 foreach (StrategyType strategyType in strategyTypes)
                 {
                     StrategyInfo strategyInfo = StrategyHelper.GetStrategy(strategyType);
                     result = ApplyStrategy(strategyInfo, table);
-                    if (result.Success)
+
+                    if (result != null && result.Success)
                     {
+                        success = true;
+                        AddStage(table, result);
                         break;
                     }
                 }
 
-                if (result.Success)
-                {
-                    AddStage(table, result);
-                }
-                else
+                if (!success)
                 {
                     break;
                 }
@@ -161,7 +158,8 @@ namespace SudokuSolver
         {
             if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Table))
             {
-                StrategyResult result = strategyInfo.StrategyMethod.Invoke(table.Cells);
+                StrategyResult result = new StrategyResult(strategyInfo.StrategyType);
+                strategyInfo.StrategyMethod.Invoke(result, table.Cells);
                 if (result.Success)
                 {
                     return result;
@@ -173,7 +171,8 @@ namespace SudokuSolver
                 for (int b = 0; b < table.Length; b++)
                 {
                     Range block = table.SelectBlock(b);
-                    StrategyResult result = strategyInfo.StrategyMethod.Invoke(block);
+                    StrategyResult result = new StrategyResult(strategyInfo.StrategyType);
+                    strategyInfo.StrategyMethod.Invoke(result, block);
                     if (result.Success)
                     {
                         return result;
@@ -186,7 +185,8 @@ namespace SudokuSolver
                 for (int r = 0; r < table.Length; r++)
                 {
                     Range row = table.SelectRow(r);
-                    StrategyResult result = strategyInfo.StrategyMethod.Invoke(row);
+                    StrategyResult result = new StrategyResult(strategyInfo.StrategyType);
+                    strategyInfo.StrategyMethod.Invoke(result, row);
                     if (result.Success)
                     {
                         return result;
@@ -196,7 +196,8 @@ namespace SudokuSolver
                 for (int c = 0; c < table.Length; c++)
                 {
                     Range column = table.SelectColumn(c);
-                    StrategyResult result = strategyInfo.StrategyMethod.Invoke(column);
+                    StrategyResult result = new StrategyResult(strategyInfo.StrategyType);
+                    strategyInfo.StrategyMethod.Invoke(result, column);
                     if (result.Success)
                     {
                         return result;
@@ -204,7 +205,7 @@ namespace SudokuSolver
                 }
             }
 
-            return StrategyResult.EmptyResult;
+            return null;
         }
 
         private Table CloneLastTable()

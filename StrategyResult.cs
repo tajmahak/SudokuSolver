@@ -10,7 +10,5 @@
         {
             StrategyType = strategyType;
         }
-
-        public static StrategyResult EmptyResult => new StrategyResult(StrategyType.None);
     }
 }
