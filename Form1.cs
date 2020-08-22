@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLibrary.Win32;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -15,6 +16,13 @@ namespace SudokuSolver
         public Form1()
         {
             InitializeComponent();
+
+            ControlExtension.SetDoubleBuffer(this, true);
+            for (int i = 1; i <= 81; i++)
+            {
+                Control richTextBox = tableLayoutPanel1.Controls["richTextBox" + i];
+                ControlExtension.SetDoubleBuffer(richTextBox, true);
+            }
 
             LoadStrategyList();
 
@@ -108,10 +116,10 @@ namespace SudokuSolver
                 {
                     Cell cell = table[r, c];
 
-                    Label label = (Label)tableLayoutPanel1.Controls["label" + labelCounter];
+                    RichTextBox control = (RichTextBox)tableLayoutPanel1.Controls["richTextBox" + labelCounter];
                     labelCounter++;
 
-                    SetLabel(label, cell, showResult);
+                    SetCell(control, cell, showResult);
                 }
             }
         }
@@ -133,8 +141,9 @@ namespace SudokuSolver
             }
         }
 
-        private void SetLabel(Label label, Cell cell, bool showResult)
+        private void SetCell(RichTextBox label, Cell cell, bool showResult)
         {
+            label.Clear();
             label.BackColor = Color.White;
 
             if (cell.Value == null)
@@ -164,6 +173,8 @@ namespace SudokuSolver
                 }
 
                 label.Text = cell.Value.Value.ToString();
+                label.Select(0, 1);
+                label.SelectionAlignment = HorizontalAlignment.Center;
             }
 
             if (showResult && currentNumber < sudoku.Stages.Count)
@@ -185,12 +196,38 @@ namespace SudokuSolver
                 }
                 else if (relationValueCell != null)
                 {
-                    label.BackColor = Color.Aqua;
+                    foreach (var value in relationValueCell.ProbableValues)
+                    {
+                        SelectProbableValue(label, value);
+                        label.SelectionColor = Color.Black;
+                        label.SelectionBackColor = Color.LightGreen ;
+                    }
                 }
                 else if (removedValueCell != null)
                 {
-                    label.BackColor = Color.Pink;
+                    foreach (var value in removedValueCell.ProbableValues)
+                    {
+                        SelectProbableValue(label, value);
+                        label.SelectionColor = Color.Black;
+                        label.SelectionBackColor = Color.Pink;
+                    }
                 }
+            }
+        }
+
+        private void SelectProbableValue(RichTextBox richTextBox, int value)
+        {
+            switch (value)
+            {
+                case 1: richTextBox.Select(0, 1); break;
+                case 2: richTextBox.Select(2, 1); break;
+                case 3: richTextBox.Select(4, 1); break;
+                case 4: richTextBox.Select(6, 1); break;
+                case 5: richTextBox.Select(8, 1); break;
+                case 6: richTextBox.Select(10, 1); break;
+                case 7: richTextBox.Select(12, 1); break;
+                case 8: richTextBox.Select(14, 1); break;
+                case 9: richTextBox.Select(16, 1); break;
             }
         }
 

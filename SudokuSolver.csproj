@@ -87,5 +87,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLibrary\MyLibrary.Win32\MyLibrary.Win32.csproj">
+      <Project>{c1170a4f-5f61-4da4-9e17-22ce137ff7a5}</Project>
+      <Name>MyLibrary.Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,87 +29,87 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.richTextBox81 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox80 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox79 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox78 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox77 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox76 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox75 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox74 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox73 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox72 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox71 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox70 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox69 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox68 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox67 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox66 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox65 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox64 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox63 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox62 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox61 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox60 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox59 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox58 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox57 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox56 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox55 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox54 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox53 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox52 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox51 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox50 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox49 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox48 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox47 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox46 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox45 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox44 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox43 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox42 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox41 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox40 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox39 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox38 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox37 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox36 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox35 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox34 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox33 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox32 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox31 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox30 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox29 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox28 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox27 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox26 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox25 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox24 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox23 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox22 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox21 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox20 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox19 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox18 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox17 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox16 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox15 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox14 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox13 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox11 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox10 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox9 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.prevBtn = new System.Windows.Forms.Button();
             this.nextBtn = new System.Windows.Forms.Button();
             this.stageNumber = new System.Windows.Forms.NumericUpDown();
@@ -136,87 +136,87 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.Controls.Add(this.label81, 8, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label80, 7, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label79, 6, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label78, 5, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label77, 4, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label76, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label75, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label74, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label73, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label72, 8, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label71, 7, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label70, 6, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label69, 5, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label68, 4, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label67, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label66, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label65, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label64, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label63, 8, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label62, 7, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label61, 6, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label60, 5, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label59, 4, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label58, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label57, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label56, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label55, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label54, 8, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label53, 7, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label52, 6, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label51, 5, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label50, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label49, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label48, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label47, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label46, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label45, 8, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label44, 7, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label43, 6, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label42, 5, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label41, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label40, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label39, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label38, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label37, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label36, 8, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label35, 7, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label34, 6, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label33, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label32, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label31, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label30, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label29, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label28, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label27, 8, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label26, 7, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label25, 6, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label24, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label23, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label22, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label21, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label19, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label18, 8, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label17, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 8, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox81, 8, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox80, 7, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox79, 6, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox78, 5, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox77, 4, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox76, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox75, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox74, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox73, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox72, 8, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox71, 7, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox70, 6, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox69, 5, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox68, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox67, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox66, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox65, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox64, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox63, 8, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox62, 7, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox61, 6, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox60, 5, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox59, 4, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox58, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox57, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox56, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox55, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox54, 8, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox53, 7, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox52, 6, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox51, 5, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox50, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox49, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox48, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox47, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox46, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox45, 8, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox44, 7, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox43, 6, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox42, 5, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox41, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox40, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox39, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox38, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox37, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox36, 8, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox35, 7, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox34, 6, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox33, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox32, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox31, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox30, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox29, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox28, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox27, 8, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox26, 7, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox25, 6, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox24, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox23, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox22, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox21, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox20, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox19, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox18, 8, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox17, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox16, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox15, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox14, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox13, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox12, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox11, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox10, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox9, 8, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox8, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox7, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox6, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox5, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox4, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -234,896 +234,815 @@
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // label81
-            // 
-            this.label81.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label81.Location = new System.Drawing.Point(445, 445);
-            this.label81.Margin = new System.Windows.Forms.Padding(4);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(50, 50);
-            this.label81.TabIndex = 81;
-            this.label81.Text = "label81";
-            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label80
-            // 
-            this.label80.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label80.Location = new System.Drawing.Point(390, 445);
-            this.label80.Margin = new System.Windows.Forms.Padding(4);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(46, 50);
-            this.label80.TabIndex = 80;
-            this.label80.Text = "label80";
-            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label79
-            // 
-            this.label79.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label79.Location = new System.Drawing.Point(335, 445);
-            this.label79.Margin = new System.Windows.Forms.Padding(4);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(46, 50);
-            this.label79.TabIndex = 79;
-            this.label79.Text = "label79";
-            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label78
-            // 
-            this.label78.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label78.Location = new System.Drawing.Point(280, 445);
-            this.label78.Margin = new System.Windows.Forms.Padding(4);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(46, 50);
-            this.label78.TabIndex = 78;
-            this.label78.Text = "label78";
-            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label77
-            // 
-            this.label77.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label77.Location = new System.Drawing.Point(225, 445);
-            this.label77.Margin = new System.Windows.Forms.Padding(4);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(46, 50);
-            this.label77.TabIndex = 77;
-            this.label77.Text = "label77";
-            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label76
-            // 
-            this.label76.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label76.Location = new System.Drawing.Point(170, 445);
-            this.label76.Margin = new System.Windows.Forms.Padding(4);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(46, 50);
-            this.label76.TabIndex = 76;
-            this.label76.Text = "label76";
-            this.label76.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label75
-            // 
-            this.label75.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label75.Location = new System.Drawing.Point(115, 445);
-            this.label75.Margin = new System.Windows.Forms.Padding(4);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(46, 50);
-            this.label75.TabIndex = 75;
-            this.label75.Text = "label75";
-            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label74
-            // 
-            this.label74.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label74.Location = new System.Drawing.Point(60, 445);
-            this.label74.Margin = new System.Windows.Forms.Padding(4);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(46, 50);
-            this.label74.TabIndex = 74;
-            this.label74.Text = "label74";
-            this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label73
-            // 
-            this.label73.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label73.Location = new System.Drawing.Point(5, 445);
-            this.label73.Margin = new System.Windows.Forms.Padding(4);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(46, 50);
-            this.label73.TabIndex = 73;
-            this.label73.Text = "label73";
-            this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label72
-            // 
-            this.label72.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label72.Location = new System.Drawing.Point(445, 390);
-            this.label72.Margin = new System.Windows.Forms.Padding(4);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(50, 46);
-            this.label72.TabIndex = 72;
-            this.label72.Text = "label72";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label71
-            // 
-            this.label71.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label71.Location = new System.Drawing.Point(390, 390);
-            this.label71.Margin = new System.Windows.Forms.Padding(4);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(46, 46);
-            this.label71.TabIndex = 71;
-            this.label71.Text = "label71";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label70
-            // 
-            this.label70.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label70.Location = new System.Drawing.Point(335, 390);
-            this.label70.Margin = new System.Windows.Forms.Padding(4);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(46, 46);
-            this.label70.TabIndex = 70;
-            this.label70.Text = "label70";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label69
-            // 
-            this.label69.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label69.Location = new System.Drawing.Point(280, 390);
-            this.label69.Margin = new System.Windows.Forms.Padding(4);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(46, 46);
-            this.label69.TabIndex = 69;
-            this.label69.Text = "label69";
-            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label68
-            // 
-            this.label68.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label68.Location = new System.Drawing.Point(225, 390);
-            this.label68.Margin = new System.Windows.Forms.Padding(4);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(46, 46);
-            this.label68.TabIndex = 68;
-            this.label68.Text = "label68";
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label67
-            // 
-            this.label67.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label67.Location = new System.Drawing.Point(170, 390);
-            this.label67.Margin = new System.Windows.Forms.Padding(4);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(46, 46);
-            this.label67.TabIndex = 67;
-            this.label67.Text = "label67";
-            this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label66
-            // 
-            this.label66.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label66.Location = new System.Drawing.Point(115, 390);
-            this.label66.Margin = new System.Windows.Forms.Padding(4);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(46, 46);
-            this.label66.TabIndex = 66;
-            this.label66.Text = "label66";
-            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label65
-            // 
-            this.label65.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label65.Location = new System.Drawing.Point(60, 390);
-            this.label65.Margin = new System.Windows.Forms.Padding(4);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(46, 46);
-            this.label65.TabIndex = 65;
-            this.label65.Text = "label65";
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label64
-            // 
-            this.label64.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label64.Location = new System.Drawing.Point(5, 390);
-            this.label64.Margin = new System.Windows.Forms.Padding(4);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(46, 46);
-            this.label64.TabIndex = 64;
-            this.label64.Text = "label64";
-            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label63
-            // 
-            this.label63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label63.Location = new System.Drawing.Point(445, 335);
-            this.label63.Margin = new System.Windows.Forms.Padding(4);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(50, 46);
-            this.label63.TabIndex = 63;
-            this.label63.Text = "label63";
-            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label62
-            // 
-            this.label62.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label62.Location = new System.Drawing.Point(390, 335);
-            this.label62.Margin = new System.Windows.Forms.Padding(4);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(46, 46);
-            this.label62.TabIndex = 62;
-            this.label62.Text = "label62";
-            this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label61
-            // 
-            this.label61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label61.Location = new System.Drawing.Point(335, 335);
-            this.label61.Margin = new System.Windows.Forms.Padding(4);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(46, 46);
-            this.label61.TabIndex = 61;
-            this.label61.Text = "label61";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label60
-            // 
-            this.label60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label60.Location = new System.Drawing.Point(280, 335);
-            this.label60.Margin = new System.Windows.Forms.Padding(4);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(46, 46);
-            this.label60.TabIndex = 60;
-            this.label60.Text = "label60";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label59
-            // 
-            this.label59.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label59.Location = new System.Drawing.Point(225, 335);
-            this.label59.Margin = new System.Windows.Forms.Padding(4);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(46, 46);
-            this.label59.TabIndex = 59;
-            this.label59.Text = "label59";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label58
-            // 
-            this.label58.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label58.Location = new System.Drawing.Point(170, 335);
-            this.label58.Margin = new System.Windows.Forms.Padding(4);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(46, 46);
-            this.label58.TabIndex = 58;
-            this.label58.Text = "label58";
-            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label57
-            // 
-            this.label57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label57.Location = new System.Drawing.Point(115, 335);
-            this.label57.Margin = new System.Windows.Forms.Padding(4);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(46, 46);
-            this.label57.TabIndex = 57;
-            this.label57.Text = "label57";
-            this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label56
-            // 
-            this.label56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label56.Location = new System.Drawing.Point(60, 335);
-            this.label56.Margin = new System.Windows.Forms.Padding(4);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(46, 46);
-            this.label56.TabIndex = 56;
-            this.label56.Text = "label56";
-            this.label56.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label55
-            // 
-            this.label55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label55.Location = new System.Drawing.Point(5, 335);
-            this.label55.Margin = new System.Windows.Forms.Padding(4);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(46, 46);
-            this.label55.TabIndex = 55;
-            this.label55.Text = "label55";
-            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label54
-            // 
-            this.label54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label54.Location = new System.Drawing.Point(445, 280);
-            this.label54.Margin = new System.Windows.Forms.Padding(4);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(50, 46);
-            this.label54.TabIndex = 54;
-            this.label54.Text = "label54";
-            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label53
-            // 
-            this.label53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label53.Location = new System.Drawing.Point(390, 280);
-            this.label53.Margin = new System.Windows.Forms.Padding(4);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(46, 46);
-            this.label53.TabIndex = 53;
-            this.label53.Text = "label53";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label52
-            // 
-            this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label52.Location = new System.Drawing.Point(335, 280);
-            this.label52.Margin = new System.Windows.Forms.Padding(4);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(46, 46);
-            this.label52.TabIndex = 52;
-            this.label52.Text = "label52";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label51
-            // 
-            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label51.Location = new System.Drawing.Point(280, 280);
-            this.label51.Margin = new System.Windows.Forms.Padding(4);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(46, 46);
-            this.label51.TabIndex = 51;
-            this.label51.Text = "label51";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label50
-            // 
-            this.label50.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label50.Location = new System.Drawing.Point(225, 280);
-            this.label50.Margin = new System.Windows.Forms.Padding(4);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(46, 46);
-            this.label50.TabIndex = 50;
-            this.label50.Text = "label50";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label49
-            // 
-            this.label49.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label49.Location = new System.Drawing.Point(170, 280);
-            this.label49.Margin = new System.Windows.Forms.Padding(4);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(46, 46);
-            this.label49.TabIndex = 49;
-            this.label49.Text = "label49";
-            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label48
-            // 
-            this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label48.Location = new System.Drawing.Point(115, 280);
-            this.label48.Margin = new System.Windows.Forms.Padding(4);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(46, 46);
-            this.label48.TabIndex = 48;
-            this.label48.Text = "label48";
-            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label47
-            // 
-            this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label47.Location = new System.Drawing.Point(60, 280);
-            this.label47.Margin = new System.Windows.Forms.Padding(4);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(46, 46);
-            this.label47.TabIndex = 47;
-            this.label47.Text = "label47";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label46
-            // 
-            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label46.Location = new System.Drawing.Point(5, 280);
-            this.label46.Margin = new System.Windows.Forms.Padding(4);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(46, 46);
-            this.label46.TabIndex = 46;
-            this.label46.Text = "label46";
-            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label45
-            // 
-            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label45.Location = new System.Drawing.Point(445, 225);
-            this.label45.Margin = new System.Windows.Forms.Padding(4);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(50, 46);
-            this.label45.TabIndex = 45;
-            this.label45.Text = "label45";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label44
-            // 
-            this.label44.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label44.Location = new System.Drawing.Point(390, 225);
-            this.label44.Margin = new System.Windows.Forms.Padding(4);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(46, 46);
-            this.label44.TabIndex = 44;
-            this.label44.Text = "label44";
-            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label43
-            // 
-            this.label43.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label43.Location = new System.Drawing.Point(335, 225);
-            this.label43.Margin = new System.Windows.Forms.Padding(4);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(46, 46);
-            this.label43.TabIndex = 43;
-            this.label43.Text = "label43";
-            this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label42
-            // 
-            this.label42.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label42.Location = new System.Drawing.Point(280, 225);
-            this.label42.Margin = new System.Windows.Forms.Padding(4);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(46, 46);
-            this.label42.TabIndex = 42;
-            this.label42.Text = "label42";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label41
-            // 
-            this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label41.Location = new System.Drawing.Point(225, 225);
-            this.label41.Margin = new System.Windows.Forms.Padding(4);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(46, 46);
-            this.label41.TabIndex = 41;
-            this.label41.Text = "label41";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label40
-            // 
-            this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label40.Location = new System.Drawing.Point(170, 225);
-            this.label40.Margin = new System.Windows.Forms.Padding(4);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(46, 46);
-            this.label40.TabIndex = 40;
-            this.label40.Text = "label40";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label39
-            // 
-            this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label39.Location = new System.Drawing.Point(115, 225);
-            this.label39.Margin = new System.Windows.Forms.Padding(4);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(46, 46);
-            this.label39.TabIndex = 39;
-            this.label39.Text = "label39";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label38
-            // 
-            this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label38.Location = new System.Drawing.Point(60, 225);
-            this.label38.Margin = new System.Windows.Forms.Padding(4);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(46, 46);
-            this.label38.TabIndex = 38;
-            this.label38.Text = "label38";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label37
-            // 
-            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label37.Location = new System.Drawing.Point(5, 225);
-            this.label37.Margin = new System.Windows.Forms.Padding(4);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(46, 46);
-            this.label37.TabIndex = 37;
-            this.label37.Text = "label37";
-            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label36
-            // 
-            this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label36.Location = new System.Drawing.Point(445, 170);
-            this.label36.Margin = new System.Windows.Forms.Padding(4);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(50, 46);
-            this.label36.TabIndex = 36;
-            this.label36.Text = "label36";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label35
-            // 
-            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label35.Location = new System.Drawing.Point(390, 170);
-            this.label35.Margin = new System.Windows.Forms.Padding(4);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(46, 46);
-            this.label35.TabIndex = 35;
-            this.label35.Text = "label35";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label34
-            // 
-            this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label34.Location = new System.Drawing.Point(335, 170);
-            this.label34.Margin = new System.Windows.Forms.Padding(4);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(46, 46);
-            this.label34.TabIndex = 34;
-            this.label34.Text = "label34";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label33
-            // 
-            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label33.Location = new System.Drawing.Point(280, 170);
-            this.label33.Margin = new System.Windows.Forms.Padding(4);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(46, 46);
-            this.label33.TabIndex = 33;
-            this.label33.Text = "label33";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label32
-            // 
-            this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label32.Location = new System.Drawing.Point(225, 170);
-            this.label32.Margin = new System.Windows.Forms.Padding(4);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(46, 46);
-            this.label32.TabIndex = 32;
-            this.label32.Text = "label32";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label31
-            // 
-            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label31.Location = new System.Drawing.Point(170, 170);
-            this.label31.Margin = new System.Windows.Forms.Padding(4);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(46, 46);
-            this.label31.TabIndex = 31;
-            this.label31.Text = "label31";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label30
-            // 
-            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label30.Location = new System.Drawing.Point(115, 170);
-            this.label30.Margin = new System.Windows.Forms.Padding(4);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(46, 46);
-            this.label30.TabIndex = 30;
-            this.label30.Text = "label30";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label29
-            // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Location = new System.Drawing.Point(60, 170);
-            this.label29.Margin = new System.Windows.Forms.Padding(4);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(46, 46);
-            this.label29.TabIndex = 29;
-            this.label29.Text = "label29";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label28
-            // 
-            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label28.Location = new System.Drawing.Point(5, 170);
-            this.label28.Margin = new System.Windows.Forms.Padding(4);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(46, 46);
-            this.label28.TabIndex = 28;
-            this.label28.Text = "label28";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label27
-            // 
-            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label27.Location = new System.Drawing.Point(445, 115);
-            this.label27.Margin = new System.Windows.Forms.Padding(4);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(50, 46);
-            this.label27.TabIndex = 27;
-            this.label27.Text = "label27";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label26
-            // 
-            this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label26.Location = new System.Drawing.Point(390, 115);
-            this.label26.Margin = new System.Windows.Forms.Padding(4);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(46, 46);
-            this.label26.TabIndex = 26;
-            this.label26.Text = "label26";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label25
-            // 
-            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.Location = new System.Drawing.Point(335, 115);
-            this.label25.Margin = new System.Windows.Forms.Padding(4);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(46, 46);
-            this.label25.TabIndex = 25;
-            this.label25.Text = "label25";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label24
-            // 
-            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label24.Location = new System.Drawing.Point(280, 115);
-            this.label24.Margin = new System.Windows.Forms.Padding(4);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(46, 46);
-            this.label24.TabIndex = 24;
-            this.label24.Text = "label24";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label23
-            // 
-            this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label23.Location = new System.Drawing.Point(225, 115);
-            this.label23.Margin = new System.Windows.Forms.Padding(4);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(46, 46);
-            this.label23.TabIndex = 23;
-            this.label23.Text = "label23";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label22
-            // 
-            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label22.Location = new System.Drawing.Point(170, 115);
-            this.label22.Margin = new System.Windows.Forms.Padding(4);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(46, 46);
-            this.label22.TabIndex = 22;
-            this.label22.Text = "label22";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label21
-            // 
-            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label21.Location = new System.Drawing.Point(115, 115);
-            this.label21.Margin = new System.Windows.Forms.Padding(4);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(46, 46);
-            this.label21.TabIndex = 21;
-            this.label21.Text = "label21";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Location = new System.Drawing.Point(60, 115);
-            this.label20.Margin = new System.Windows.Forms.Padding(4);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 46);
-            this.label20.TabIndex = 20;
-            this.label20.Text = "label20";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Location = new System.Drawing.Point(5, 115);
-            this.label19.Margin = new System.Windows.Forms.Padding(4);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(46, 46);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "label19";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Location = new System.Drawing.Point(445, 60);
-            this.label18.Margin = new System.Windows.Forms.Padding(4);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(50, 46);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "label18";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Location = new System.Drawing.Point(390, 60);
-            this.label17.Margin = new System.Windows.Forms.Padding(4);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 46);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "label17";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label16
-            // 
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Location = new System.Drawing.Point(335, 60);
-            this.label16.Margin = new System.Windows.Forms.Padding(4);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 46);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "label16";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(280, 60);
-            this.label15.Margin = new System.Windows.Forms.Padding(4);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 46);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "label15";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Location = new System.Drawing.Point(225, 60);
-            this.label14.Margin = new System.Windows.Forms.Padding(4);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 46);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "label14";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(170, 60);
-            this.label13.Margin = new System.Windows.Forms.Padding(4);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 46);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "label13";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(115, 60);
-            this.label12.Margin = new System.Windows.Forms.Padding(4);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 46);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "label12";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(60, 60);
-            this.label11.Margin = new System.Windows.Forms.Padding(4);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 46);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "label11";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(5, 60);
-            this.label10.Margin = new System.Windows.Forms.Padding(4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 46);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "label10";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(445, 5);
-            this.label9.Margin = new System.Windows.Forms.Padding(4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 46);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "label9";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(390, 5);
-            this.label8.Margin = new System.Windows.Forms.Padding(4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 46);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "label8";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(335, 5);
-            this.label7.Margin = new System.Windows.Forms.Padding(4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 46);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "label7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(280, 5);
-            this.label6.Margin = new System.Windows.Forms.Padding(4);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 46);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "label6";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(225, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 46);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "label5";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(170, 5);
-            this.label4.Margin = new System.Windows.Forms.Padding(4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 46);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(115, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 46);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "label3";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(60, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 46);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 46);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // richTextBox81
+            // 
+            this.richTextBox81.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox81.Location = new System.Drawing.Point(444, 444);
+            this.richTextBox81.Name = "richTextBox81";
+            this.richTextBox81.ReadOnly = true;
+            this.richTextBox81.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox81.TabIndex = 162;
+            this.richTextBox81.Text = "";
+            // 
+            // richTextBox80
+            // 
+            this.richTextBox80.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox80.Location = new System.Drawing.Point(389, 444);
+            this.richTextBox80.Name = "richTextBox80";
+            this.richTextBox80.ReadOnly = true;
+            this.richTextBox80.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox80.TabIndex = 161;
+            this.richTextBox80.Text = "";
+            // 
+            // richTextBox79
+            // 
+            this.richTextBox79.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox79.Location = new System.Drawing.Point(334, 444);
+            this.richTextBox79.Name = "richTextBox79";
+            this.richTextBox79.ReadOnly = true;
+            this.richTextBox79.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox79.TabIndex = 160;
+            this.richTextBox79.Text = "";
+            // 
+            // richTextBox78
+            // 
+            this.richTextBox78.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox78.Location = new System.Drawing.Point(279, 444);
+            this.richTextBox78.Name = "richTextBox78";
+            this.richTextBox78.ReadOnly = true;
+            this.richTextBox78.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox78.TabIndex = 159;
+            this.richTextBox78.Text = "";
+            // 
+            // richTextBox77
+            // 
+            this.richTextBox77.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox77.Location = new System.Drawing.Point(224, 444);
+            this.richTextBox77.Name = "richTextBox77";
+            this.richTextBox77.ReadOnly = true;
+            this.richTextBox77.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox77.TabIndex = 158;
+            this.richTextBox77.Text = "";
+            // 
+            // richTextBox76
+            // 
+            this.richTextBox76.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox76.Location = new System.Drawing.Point(169, 444);
+            this.richTextBox76.Name = "richTextBox76";
+            this.richTextBox76.ReadOnly = true;
+            this.richTextBox76.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox76.TabIndex = 157;
+            this.richTextBox76.Text = "";
+            // 
+            // richTextBox75
+            // 
+            this.richTextBox75.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox75.Location = new System.Drawing.Point(114, 444);
+            this.richTextBox75.Name = "richTextBox75";
+            this.richTextBox75.ReadOnly = true;
+            this.richTextBox75.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox75.TabIndex = 156;
+            this.richTextBox75.Text = "";
+            // 
+            // richTextBox74
+            // 
+            this.richTextBox74.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox74.Location = new System.Drawing.Point(59, 444);
+            this.richTextBox74.Name = "richTextBox74";
+            this.richTextBox74.ReadOnly = true;
+            this.richTextBox74.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox74.TabIndex = 155;
+            this.richTextBox74.Text = "";
+            // 
+            // richTextBox73
+            // 
+            this.richTextBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox73.Location = new System.Drawing.Point(4, 444);
+            this.richTextBox73.Name = "richTextBox73";
+            this.richTextBox73.ReadOnly = true;
+            this.richTextBox73.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox73.TabIndex = 154;
+            this.richTextBox73.Text = "";
+            // 
+            // richTextBox72
+            // 
+            this.richTextBox72.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox72.Location = new System.Drawing.Point(444, 389);
+            this.richTextBox72.Name = "richTextBox72";
+            this.richTextBox72.ReadOnly = true;
+            this.richTextBox72.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox72.TabIndex = 153;
+            this.richTextBox72.Text = "";
+            // 
+            // richTextBox71
+            // 
+            this.richTextBox71.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox71.Location = new System.Drawing.Point(389, 389);
+            this.richTextBox71.Name = "richTextBox71";
+            this.richTextBox71.ReadOnly = true;
+            this.richTextBox71.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox71.TabIndex = 152;
+            this.richTextBox71.Text = "";
+            // 
+            // richTextBox70
+            // 
+            this.richTextBox70.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox70.Location = new System.Drawing.Point(334, 389);
+            this.richTextBox70.Name = "richTextBox70";
+            this.richTextBox70.ReadOnly = true;
+            this.richTextBox70.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox70.TabIndex = 151;
+            this.richTextBox70.Text = "";
+            // 
+            // richTextBox69
+            // 
+            this.richTextBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox69.Location = new System.Drawing.Point(279, 389);
+            this.richTextBox69.Name = "richTextBox69";
+            this.richTextBox69.ReadOnly = true;
+            this.richTextBox69.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox69.TabIndex = 150;
+            this.richTextBox69.Text = "";
+            // 
+            // richTextBox68
+            // 
+            this.richTextBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox68.Location = new System.Drawing.Point(224, 389);
+            this.richTextBox68.Name = "richTextBox68";
+            this.richTextBox68.ReadOnly = true;
+            this.richTextBox68.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox68.TabIndex = 149;
+            this.richTextBox68.Text = "";
+            // 
+            // richTextBox67
+            // 
+            this.richTextBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox67.Location = new System.Drawing.Point(169, 389);
+            this.richTextBox67.Name = "richTextBox67";
+            this.richTextBox67.ReadOnly = true;
+            this.richTextBox67.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox67.TabIndex = 148;
+            this.richTextBox67.Text = "";
+            // 
+            // richTextBox66
+            // 
+            this.richTextBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox66.Location = new System.Drawing.Point(114, 389);
+            this.richTextBox66.Name = "richTextBox66";
+            this.richTextBox66.ReadOnly = true;
+            this.richTextBox66.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox66.TabIndex = 147;
+            this.richTextBox66.Text = "";
+            // 
+            // richTextBox65
+            // 
+            this.richTextBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox65.Location = new System.Drawing.Point(59, 389);
+            this.richTextBox65.Name = "richTextBox65";
+            this.richTextBox65.ReadOnly = true;
+            this.richTextBox65.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox65.TabIndex = 146;
+            this.richTextBox65.Text = "";
+            // 
+            // richTextBox64
+            // 
+            this.richTextBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox64.Location = new System.Drawing.Point(4, 389);
+            this.richTextBox64.Name = "richTextBox64";
+            this.richTextBox64.ReadOnly = true;
+            this.richTextBox64.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox64.TabIndex = 145;
+            this.richTextBox64.Text = "";
+            // 
+            // richTextBox63
+            // 
+            this.richTextBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox63.Location = new System.Drawing.Point(444, 334);
+            this.richTextBox63.Name = "richTextBox63";
+            this.richTextBox63.ReadOnly = true;
+            this.richTextBox63.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox63.TabIndex = 144;
+            this.richTextBox63.Text = "";
+            // 
+            // richTextBox62
+            // 
+            this.richTextBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox62.Location = new System.Drawing.Point(389, 334);
+            this.richTextBox62.Name = "richTextBox62";
+            this.richTextBox62.ReadOnly = true;
+            this.richTextBox62.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox62.TabIndex = 143;
+            this.richTextBox62.Text = "";
+            // 
+            // richTextBox61
+            // 
+            this.richTextBox61.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox61.Location = new System.Drawing.Point(334, 334);
+            this.richTextBox61.Name = "richTextBox61";
+            this.richTextBox61.ReadOnly = true;
+            this.richTextBox61.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox61.TabIndex = 142;
+            this.richTextBox61.Text = "";
+            // 
+            // richTextBox60
+            // 
+            this.richTextBox60.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox60.Location = new System.Drawing.Point(279, 334);
+            this.richTextBox60.Name = "richTextBox60";
+            this.richTextBox60.ReadOnly = true;
+            this.richTextBox60.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox60.TabIndex = 141;
+            this.richTextBox60.Text = "";
+            // 
+            // richTextBox59
+            // 
+            this.richTextBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox59.Location = new System.Drawing.Point(224, 334);
+            this.richTextBox59.Name = "richTextBox59";
+            this.richTextBox59.ReadOnly = true;
+            this.richTextBox59.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox59.TabIndex = 140;
+            this.richTextBox59.Text = "";
+            // 
+            // richTextBox58
+            // 
+            this.richTextBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox58.Location = new System.Drawing.Point(169, 334);
+            this.richTextBox58.Name = "richTextBox58";
+            this.richTextBox58.ReadOnly = true;
+            this.richTextBox58.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox58.TabIndex = 139;
+            this.richTextBox58.Text = "";
+            // 
+            // richTextBox57
+            // 
+            this.richTextBox57.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox57.Location = new System.Drawing.Point(114, 334);
+            this.richTextBox57.Name = "richTextBox57";
+            this.richTextBox57.ReadOnly = true;
+            this.richTextBox57.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox57.TabIndex = 138;
+            this.richTextBox57.Text = "";
+            // 
+            // richTextBox56
+            // 
+            this.richTextBox56.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox56.Location = new System.Drawing.Point(59, 334);
+            this.richTextBox56.Name = "richTextBox56";
+            this.richTextBox56.ReadOnly = true;
+            this.richTextBox56.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox56.TabIndex = 137;
+            this.richTextBox56.Text = "";
+            // 
+            // richTextBox55
+            // 
+            this.richTextBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox55.Location = new System.Drawing.Point(4, 334);
+            this.richTextBox55.Name = "richTextBox55";
+            this.richTextBox55.ReadOnly = true;
+            this.richTextBox55.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox55.TabIndex = 136;
+            this.richTextBox55.Text = "";
+            // 
+            // richTextBox54
+            // 
+            this.richTextBox54.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox54.Location = new System.Drawing.Point(444, 279);
+            this.richTextBox54.Name = "richTextBox54";
+            this.richTextBox54.ReadOnly = true;
+            this.richTextBox54.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox54.TabIndex = 135;
+            this.richTextBox54.Text = "";
+            // 
+            // richTextBox53
+            // 
+            this.richTextBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox53.Location = new System.Drawing.Point(389, 279);
+            this.richTextBox53.Name = "richTextBox53";
+            this.richTextBox53.ReadOnly = true;
+            this.richTextBox53.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox53.TabIndex = 134;
+            this.richTextBox53.Text = "";
+            // 
+            // richTextBox52
+            // 
+            this.richTextBox52.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox52.Location = new System.Drawing.Point(334, 279);
+            this.richTextBox52.Name = "richTextBox52";
+            this.richTextBox52.ReadOnly = true;
+            this.richTextBox52.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox52.TabIndex = 133;
+            this.richTextBox52.Text = "";
+            // 
+            // richTextBox51
+            // 
+            this.richTextBox51.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox51.Location = new System.Drawing.Point(279, 279);
+            this.richTextBox51.Name = "richTextBox51";
+            this.richTextBox51.ReadOnly = true;
+            this.richTextBox51.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox51.TabIndex = 132;
+            this.richTextBox51.Text = "";
+            // 
+            // richTextBox50
+            // 
+            this.richTextBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox50.Location = new System.Drawing.Point(224, 279);
+            this.richTextBox50.Name = "richTextBox50";
+            this.richTextBox50.ReadOnly = true;
+            this.richTextBox50.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox50.TabIndex = 131;
+            this.richTextBox50.Text = "";
+            // 
+            // richTextBox49
+            // 
+            this.richTextBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox49.Location = new System.Drawing.Point(169, 279);
+            this.richTextBox49.Name = "richTextBox49";
+            this.richTextBox49.ReadOnly = true;
+            this.richTextBox49.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox49.TabIndex = 130;
+            this.richTextBox49.Text = "";
+            // 
+            // richTextBox48
+            // 
+            this.richTextBox48.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox48.Location = new System.Drawing.Point(114, 279);
+            this.richTextBox48.Name = "richTextBox48";
+            this.richTextBox48.ReadOnly = true;
+            this.richTextBox48.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox48.TabIndex = 129;
+            this.richTextBox48.Text = "";
+            // 
+            // richTextBox47
+            // 
+            this.richTextBox47.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox47.Location = new System.Drawing.Point(59, 279);
+            this.richTextBox47.Name = "richTextBox47";
+            this.richTextBox47.ReadOnly = true;
+            this.richTextBox47.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox47.TabIndex = 128;
+            this.richTextBox47.Text = "";
+            // 
+            // richTextBox46
+            // 
+            this.richTextBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox46.Location = new System.Drawing.Point(4, 279);
+            this.richTextBox46.Name = "richTextBox46";
+            this.richTextBox46.ReadOnly = true;
+            this.richTextBox46.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox46.TabIndex = 127;
+            this.richTextBox46.Text = "";
+            // 
+            // richTextBox45
+            // 
+            this.richTextBox45.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox45.Location = new System.Drawing.Point(444, 224);
+            this.richTextBox45.Name = "richTextBox45";
+            this.richTextBox45.ReadOnly = true;
+            this.richTextBox45.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox45.TabIndex = 126;
+            this.richTextBox45.Text = "";
+            // 
+            // richTextBox44
+            // 
+            this.richTextBox44.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox44.Location = new System.Drawing.Point(389, 224);
+            this.richTextBox44.Name = "richTextBox44";
+            this.richTextBox44.ReadOnly = true;
+            this.richTextBox44.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox44.TabIndex = 125;
+            this.richTextBox44.Text = "";
+            // 
+            // richTextBox43
+            // 
+            this.richTextBox43.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox43.Location = new System.Drawing.Point(334, 224);
+            this.richTextBox43.Name = "richTextBox43";
+            this.richTextBox43.ReadOnly = true;
+            this.richTextBox43.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox43.TabIndex = 124;
+            this.richTextBox43.Text = "";
+            // 
+            // richTextBox42
+            // 
+            this.richTextBox42.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox42.Location = new System.Drawing.Point(279, 224);
+            this.richTextBox42.Name = "richTextBox42";
+            this.richTextBox42.ReadOnly = true;
+            this.richTextBox42.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox42.TabIndex = 123;
+            this.richTextBox42.Text = "";
+            // 
+            // richTextBox41
+            // 
+            this.richTextBox41.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox41.Location = new System.Drawing.Point(224, 224);
+            this.richTextBox41.Name = "richTextBox41";
+            this.richTextBox41.ReadOnly = true;
+            this.richTextBox41.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox41.TabIndex = 122;
+            this.richTextBox41.Text = "";
+            // 
+            // richTextBox40
+            // 
+            this.richTextBox40.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox40.Location = new System.Drawing.Point(169, 224);
+            this.richTextBox40.Name = "richTextBox40";
+            this.richTextBox40.ReadOnly = true;
+            this.richTextBox40.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox40.TabIndex = 121;
+            this.richTextBox40.Text = "";
+            // 
+            // richTextBox39
+            // 
+            this.richTextBox39.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox39.Location = new System.Drawing.Point(114, 224);
+            this.richTextBox39.Name = "richTextBox39";
+            this.richTextBox39.ReadOnly = true;
+            this.richTextBox39.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox39.TabIndex = 120;
+            this.richTextBox39.Text = "";
+            // 
+            // richTextBox38
+            // 
+            this.richTextBox38.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox38.Location = new System.Drawing.Point(59, 224);
+            this.richTextBox38.Name = "richTextBox38";
+            this.richTextBox38.ReadOnly = true;
+            this.richTextBox38.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox38.TabIndex = 119;
+            this.richTextBox38.Text = "";
+            // 
+            // richTextBox37
+            // 
+            this.richTextBox37.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox37.Location = new System.Drawing.Point(4, 224);
+            this.richTextBox37.Name = "richTextBox37";
+            this.richTextBox37.ReadOnly = true;
+            this.richTextBox37.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox37.TabIndex = 118;
+            this.richTextBox37.Text = "";
+            // 
+            // richTextBox36
+            // 
+            this.richTextBox36.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox36.Location = new System.Drawing.Point(444, 169);
+            this.richTextBox36.Name = "richTextBox36";
+            this.richTextBox36.ReadOnly = true;
+            this.richTextBox36.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox36.TabIndex = 117;
+            this.richTextBox36.Text = "";
+            // 
+            // richTextBox35
+            // 
+            this.richTextBox35.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox35.Location = new System.Drawing.Point(389, 169);
+            this.richTextBox35.Name = "richTextBox35";
+            this.richTextBox35.ReadOnly = true;
+            this.richTextBox35.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox35.TabIndex = 116;
+            this.richTextBox35.Text = "";
+            // 
+            // richTextBox34
+            // 
+            this.richTextBox34.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox34.Location = new System.Drawing.Point(334, 169);
+            this.richTextBox34.Name = "richTextBox34";
+            this.richTextBox34.ReadOnly = true;
+            this.richTextBox34.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox34.TabIndex = 115;
+            this.richTextBox34.Text = "";
+            // 
+            // richTextBox33
+            // 
+            this.richTextBox33.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox33.Location = new System.Drawing.Point(279, 169);
+            this.richTextBox33.Name = "richTextBox33";
+            this.richTextBox33.ReadOnly = true;
+            this.richTextBox33.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox33.TabIndex = 114;
+            this.richTextBox33.Text = "";
+            // 
+            // richTextBox32
+            // 
+            this.richTextBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox32.Location = new System.Drawing.Point(224, 169);
+            this.richTextBox32.Name = "richTextBox32";
+            this.richTextBox32.ReadOnly = true;
+            this.richTextBox32.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox32.TabIndex = 113;
+            this.richTextBox32.Text = "";
+            // 
+            // richTextBox31
+            // 
+            this.richTextBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox31.Location = new System.Drawing.Point(169, 169);
+            this.richTextBox31.Name = "richTextBox31";
+            this.richTextBox31.ReadOnly = true;
+            this.richTextBox31.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox31.TabIndex = 112;
+            this.richTextBox31.Text = "";
+            // 
+            // richTextBox30
+            // 
+            this.richTextBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox30.Location = new System.Drawing.Point(114, 169);
+            this.richTextBox30.Name = "richTextBox30";
+            this.richTextBox30.ReadOnly = true;
+            this.richTextBox30.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox30.TabIndex = 111;
+            this.richTextBox30.Text = "";
+            // 
+            // richTextBox29
+            // 
+            this.richTextBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox29.Location = new System.Drawing.Point(59, 169);
+            this.richTextBox29.Name = "richTextBox29";
+            this.richTextBox29.ReadOnly = true;
+            this.richTextBox29.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox29.TabIndex = 110;
+            this.richTextBox29.Text = "";
+            // 
+            // richTextBox28
+            // 
+            this.richTextBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox28.Location = new System.Drawing.Point(4, 169);
+            this.richTextBox28.Name = "richTextBox28";
+            this.richTextBox28.ReadOnly = true;
+            this.richTextBox28.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox28.TabIndex = 109;
+            this.richTextBox28.Text = "";
+            // 
+            // richTextBox27
+            // 
+            this.richTextBox27.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox27.Location = new System.Drawing.Point(444, 114);
+            this.richTextBox27.Name = "richTextBox27";
+            this.richTextBox27.ReadOnly = true;
+            this.richTextBox27.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox27.TabIndex = 108;
+            this.richTextBox27.Text = "";
+            // 
+            // richTextBox26
+            // 
+            this.richTextBox26.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox26.Location = new System.Drawing.Point(389, 114);
+            this.richTextBox26.Name = "richTextBox26";
+            this.richTextBox26.ReadOnly = true;
+            this.richTextBox26.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox26.TabIndex = 107;
+            this.richTextBox26.Text = "";
+            // 
+            // richTextBox25
+            // 
+            this.richTextBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox25.Location = new System.Drawing.Point(334, 114);
+            this.richTextBox25.Name = "richTextBox25";
+            this.richTextBox25.ReadOnly = true;
+            this.richTextBox25.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox25.TabIndex = 106;
+            this.richTextBox25.Text = "";
+            // 
+            // richTextBox24
+            // 
+            this.richTextBox24.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox24.Location = new System.Drawing.Point(279, 114);
+            this.richTextBox24.Name = "richTextBox24";
+            this.richTextBox24.ReadOnly = true;
+            this.richTextBox24.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox24.TabIndex = 105;
+            this.richTextBox24.Text = "";
+            // 
+            // richTextBox23
+            // 
+            this.richTextBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox23.Location = new System.Drawing.Point(224, 114);
+            this.richTextBox23.Name = "richTextBox23";
+            this.richTextBox23.ReadOnly = true;
+            this.richTextBox23.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox23.TabIndex = 104;
+            this.richTextBox23.Text = "";
+            // 
+            // richTextBox22
+            // 
+            this.richTextBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox22.Location = new System.Drawing.Point(169, 114);
+            this.richTextBox22.Name = "richTextBox22";
+            this.richTextBox22.ReadOnly = true;
+            this.richTextBox22.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox22.TabIndex = 103;
+            this.richTextBox22.Text = "";
+            // 
+            // richTextBox21
+            // 
+            this.richTextBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox21.Location = new System.Drawing.Point(114, 114);
+            this.richTextBox21.Name = "richTextBox21";
+            this.richTextBox21.ReadOnly = true;
+            this.richTextBox21.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox21.TabIndex = 102;
+            this.richTextBox21.Text = "";
+            // 
+            // richTextBox20
+            // 
+            this.richTextBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox20.Location = new System.Drawing.Point(59, 114);
+            this.richTextBox20.Name = "richTextBox20";
+            this.richTextBox20.ReadOnly = true;
+            this.richTextBox20.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox20.TabIndex = 101;
+            this.richTextBox20.Text = "";
+            // 
+            // richTextBox19
+            // 
+            this.richTextBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox19.Location = new System.Drawing.Point(4, 114);
+            this.richTextBox19.Name = "richTextBox19";
+            this.richTextBox19.ReadOnly = true;
+            this.richTextBox19.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox19.TabIndex = 100;
+            this.richTextBox19.Text = "";
+            // 
+            // richTextBox18
+            // 
+            this.richTextBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox18.Location = new System.Drawing.Point(444, 59);
+            this.richTextBox18.Name = "richTextBox18";
+            this.richTextBox18.ReadOnly = true;
+            this.richTextBox18.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox18.TabIndex = 99;
+            this.richTextBox18.Text = "";
+            // 
+            // richTextBox17
+            // 
+            this.richTextBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox17.Location = new System.Drawing.Point(389, 59);
+            this.richTextBox17.Name = "richTextBox17";
+            this.richTextBox17.ReadOnly = true;
+            this.richTextBox17.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox17.TabIndex = 98;
+            this.richTextBox17.Text = "";
+            // 
+            // richTextBox16
+            // 
+            this.richTextBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox16.Location = new System.Drawing.Point(334, 59);
+            this.richTextBox16.Name = "richTextBox16";
+            this.richTextBox16.ReadOnly = true;
+            this.richTextBox16.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox16.TabIndex = 97;
+            this.richTextBox16.Text = "";
+            // 
+            // richTextBox15
+            // 
+            this.richTextBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox15.Location = new System.Drawing.Point(279, 59);
+            this.richTextBox15.Name = "richTextBox15";
+            this.richTextBox15.ReadOnly = true;
+            this.richTextBox15.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox15.TabIndex = 96;
+            this.richTextBox15.Text = "";
+            // 
+            // richTextBox14
+            // 
+            this.richTextBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox14.Location = new System.Drawing.Point(224, 59);
+            this.richTextBox14.Name = "richTextBox14";
+            this.richTextBox14.ReadOnly = true;
+            this.richTextBox14.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox14.TabIndex = 95;
+            this.richTextBox14.Text = "";
+            // 
+            // richTextBox13
+            // 
+            this.richTextBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox13.Location = new System.Drawing.Point(169, 59);
+            this.richTextBox13.Name = "richTextBox13";
+            this.richTextBox13.ReadOnly = true;
+            this.richTextBox13.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox13.TabIndex = 94;
+            this.richTextBox13.Text = "";
+            // 
+            // richTextBox12
+            // 
+            this.richTextBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox12.Location = new System.Drawing.Point(114, 59);
+            this.richTextBox12.Name = "richTextBox12";
+            this.richTextBox12.ReadOnly = true;
+            this.richTextBox12.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox12.TabIndex = 93;
+            this.richTextBox12.Text = "";
+            // 
+            // richTextBox11
+            // 
+            this.richTextBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox11.Location = new System.Drawing.Point(59, 59);
+            this.richTextBox11.Name = "richTextBox11";
+            this.richTextBox11.ReadOnly = true;
+            this.richTextBox11.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox11.TabIndex = 92;
+            this.richTextBox11.Text = "";
+            // 
+            // richTextBox10
+            // 
+            this.richTextBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox10.Location = new System.Drawing.Point(4, 59);
+            this.richTextBox10.Name = "richTextBox10";
+            this.richTextBox10.ReadOnly = true;
+            this.richTextBox10.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox10.TabIndex = 91;
+            this.richTextBox10.Text = "";
+            // 
+            // richTextBox9
+            // 
+            this.richTextBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox9.Location = new System.Drawing.Point(444, 4);
+            this.richTextBox9.Name = "richTextBox9";
+            this.richTextBox9.ReadOnly = true;
+            this.richTextBox9.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox9.TabIndex = 90;
+            this.richTextBox9.Text = "";
+            // 
+            // richTextBox8
+            // 
+            this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox8.Location = new System.Drawing.Point(389, 4);
+            this.richTextBox8.Name = "richTextBox8";
+            this.richTextBox8.ReadOnly = true;
+            this.richTextBox8.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox8.TabIndex = 89;
+            this.richTextBox8.Text = "";
+            // 
+            // richTextBox7
+            // 
+            this.richTextBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox7.Location = new System.Drawing.Point(334, 4);
+            this.richTextBox7.Name = "richTextBox7";
+            this.richTextBox7.ReadOnly = true;
+            this.richTextBox7.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox7.TabIndex = 88;
+            this.richTextBox7.Text = "";
+            // 
+            // richTextBox6
+            // 
+            this.richTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox6.Location = new System.Drawing.Point(279, 4);
+            this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.ReadOnly = true;
+            this.richTextBox6.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox6.TabIndex = 87;
+            this.richTextBox6.Text = "";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox5.Location = new System.Drawing.Point(224, 4);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.ReadOnly = true;
+            this.richTextBox5.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox5.TabIndex = 86;
+            this.richTextBox5.Text = "";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox4.Location = new System.Drawing.Point(169, 4);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ReadOnly = true;
+            this.richTextBox4.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox4.TabIndex = 85;
+            this.richTextBox4.Text = "";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox3.Location = new System.Drawing.Point(114, 4);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ReadOnly = true;
+            this.richTextBox3.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox3.TabIndex = 84;
+            this.richTextBox3.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.Location = new System.Drawing.Point(59, 4);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox2.TabIndex = 83;
+            this.richTextBox2.Text = "";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(4, 4);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(48, 48);
+            this.richTextBox1.TabIndex = 82;
+            this.richTextBox1.Text = "";
             // 
             // prevBtn
             // 
@@ -1247,87 +1166,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Label label79;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Button prevBtn;
         private System.Windows.Forms.Button nextBtn;
         private System.Windows.Forms.NumericUpDown stageNumber;
@@ -1337,6 +1175,87 @@
         private System.Windows.Forms.Button copySeqBtn;
         private System.Windows.Forms.ListBox fileList;
         private System.Windows.Forms.ListBox strategyList;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox81;
+        private System.Windows.Forms.RichTextBox richTextBox80;
+        private System.Windows.Forms.RichTextBox richTextBox79;
+        private System.Windows.Forms.RichTextBox richTextBox78;
+        private System.Windows.Forms.RichTextBox richTextBox77;
+        private System.Windows.Forms.RichTextBox richTextBox76;
+        private System.Windows.Forms.RichTextBox richTextBox75;
+        private System.Windows.Forms.RichTextBox richTextBox74;
+        private System.Windows.Forms.RichTextBox richTextBox73;
+        private System.Windows.Forms.RichTextBox richTextBox72;
+        private System.Windows.Forms.RichTextBox richTextBox71;
+        private System.Windows.Forms.RichTextBox richTextBox70;
+        private System.Windows.Forms.RichTextBox richTextBox69;
+        private System.Windows.Forms.RichTextBox richTextBox68;
+        private System.Windows.Forms.RichTextBox richTextBox67;
+        private System.Windows.Forms.RichTextBox richTextBox66;
+        private System.Windows.Forms.RichTextBox richTextBox65;
+        private System.Windows.Forms.RichTextBox richTextBox64;
+        private System.Windows.Forms.RichTextBox richTextBox63;
+        private System.Windows.Forms.RichTextBox richTextBox62;
+        private System.Windows.Forms.RichTextBox richTextBox61;
+        private System.Windows.Forms.RichTextBox richTextBox60;
+        private System.Windows.Forms.RichTextBox richTextBox59;
+        private System.Windows.Forms.RichTextBox richTextBox58;
+        private System.Windows.Forms.RichTextBox richTextBox57;
+        private System.Windows.Forms.RichTextBox richTextBox56;
+        private System.Windows.Forms.RichTextBox richTextBox55;
+        private System.Windows.Forms.RichTextBox richTextBox54;
+        private System.Windows.Forms.RichTextBox richTextBox53;
+        private System.Windows.Forms.RichTextBox richTextBox52;
+        private System.Windows.Forms.RichTextBox richTextBox51;
+        private System.Windows.Forms.RichTextBox richTextBox50;
+        private System.Windows.Forms.RichTextBox richTextBox49;
+        private System.Windows.Forms.RichTextBox richTextBox48;
+        private System.Windows.Forms.RichTextBox richTextBox47;
+        private System.Windows.Forms.RichTextBox richTextBox46;
+        private System.Windows.Forms.RichTextBox richTextBox45;
+        private System.Windows.Forms.RichTextBox richTextBox44;
+        private System.Windows.Forms.RichTextBox richTextBox43;
+        private System.Windows.Forms.RichTextBox richTextBox42;
+        private System.Windows.Forms.RichTextBox richTextBox41;
+        private System.Windows.Forms.RichTextBox richTextBox40;
+        private System.Windows.Forms.RichTextBox richTextBox39;
+        private System.Windows.Forms.RichTextBox richTextBox38;
+        private System.Windows.Forms.RichTextBox richTextBox37;
+        private System.Windows.Forms.RichTextBox richTextBox36;
+        private System.Windows.Forms.RichTextBox richTextBox35;
+        private System.Windows.Forms.RichTextBox richTextBox34;
+        private System.Windows.Forms.RichTextBox richTextBox33;
+        private System.Windows.Forms.RichTextBox richTextBox32;
+        private System.Windows.Forms.RichTextBox richTextBox31;
+        private System.Windows.Forms.RichTextBox richTextBox30;
+        private System.Windows.Forms.RichTextBox richTextBox29;
+        private System.Windows.Forms.RichTextBox richTextBox28;
+        private System.Windows.Forms.RichTextBox richTextBox27;
+        private System.Windows.Forms.RichTextBox richTextBox26;
+        private System.Windows.Forms.RichTextBox richTextBox25;
+        private System.Windows.Forms.RichTextBox richTextBox24;
+        private System.Windows.Forms.RichTextBox richTextBox23;
+        private System.Windows.Forms.RichTextBox richTextBox22;
+        private System.Windows.Forms.RichTextBox richTextBox21;
+        private System.Windows.Forms.RichTextBox richTextBox20;
+        private System.Windows.Forms.RichTextBox richTextBox19;
+        private System.Windows.Forms.RichTextBox richTextBox18;
+        private System.Windows.Forms.RichTextBox richTextBox17;
+        private System.Windows.Forms.RichTextBox richTextBox16;
+        private System.Windows.Forms.RichTextBox richTextBox15;
+        private System.Windows.Forms.RichTextBox richTextBox14;
+        private System.Windows.Forms.RichTextBox richTextBox13;
+        private System.Windows.Forms.RichTextBox richTextBox12;
+        private System.Windows.Forms.RichTextBox richTextBox11;
+        private System.Windows.Forms.RichTextBox richTextBox10;
+        private System.Windows.Forms.RichTextBox richTextBox9;
+        private System.Windows.Forms.RichTextBox richTextBox8;
+        private System.Windows.Forms.RichTextBox richTextBox7;
+        private System.Windows.Forms.RichTextBox richTextBox6;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 
