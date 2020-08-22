@@ -378,7 +378,7 @@ namespace SudokuSolver
                             result.Success = RemoveProbableValues(result, candidateRange, pValue);
                             if (result.Success)
                             {
-                                var affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
+                                Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
                                 result.AddAffectedCell(affectedRange);
                                 result.AddRelationValues(affectedRange, pValue);
                             }
@@ -416,7 +416,7 @@ namespace SudokuSolver
                             result.Success = RemoveProbableValues(result, candidateRange, pValue);
                             if (result.Success)
                             {
-                                var affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
+                                Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
                                 result.AddAffectedCell(affectedRange);
                                 result.AddRelationValues(affectedRange, pValue);
                             }

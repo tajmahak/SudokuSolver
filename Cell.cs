@@ -54,7 +54,7 @@ namespace SudokuSolver
             {
                 return false;
             }
-            else 
+            else
             {
                 foreach (int pValue in values)
                 {

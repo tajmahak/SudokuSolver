@@ -196,16 +196,16 @@ namespace SudokuSolver
                 }
                 else if (relationValueCell != null)
                 {
-                    foreach (var value in relationValueCell.ProbableValues)
+                    foreach (int value in relationValueCell.ProbableValues)
                     {
                         SelectProbableValue(label, value);
                         label.SelectionColor = Color.Black;
-                        label.SelectionBackColor = Color.LightGreen ;
+                        label.SelectionBackColor = Color.LightGreen;
                     }
                 }
                 else if (removedValueCell != null)
                 {
-                    foreach (var value in removedValueCell.ProbableValues)
+                    foreach (int value in removedValueCell.ProbableValues)
                     {
                         SelectProbableValue(label, value);
                         label.SelectionColor = Color.Black;

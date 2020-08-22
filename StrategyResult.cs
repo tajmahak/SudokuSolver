@@ -31,7 +31,7 @@ namespace SudokuSolver
             }
         }
 
-      
+
         public void AddAffectedCell(int row, int column)
         {
             if (!AffectedCells.Exists(x => x.RowIndex == row && x.ColumnIndex == column))
@@ -54,7 +54,7 @@ namespace SudokuSolver
             }
         }
 
-      
+
         public void AddRelationValues(int row, int column, params int[] values)
         {
             Cell cell = RelationValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);
