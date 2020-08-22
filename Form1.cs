@@ -83,12 +83,12 @@ namespace SudokuSolver
                 stageNumber.Value = number;
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
-                ShowTable(stage);
+                ShowTable(stage, true);
                 ShowStrategy(stage.Result);
             }
         }
 
-        private void ShowTable(Stage stage)
+        private void ShowTable(Stage stage, bool showResult)
         {
             Table table = stage.Table;
 
@@ -102,7 +102,7 @@ namespace SudokuSolver
                     Label label = (Label)tableLayoutPanel1.Controls["label" + labelCounter];
                     labelCounter++;
 
-                    SetLabel(label, cell);
+                    SetLabel(label, cell, showResult);
                 }
             }
         }
@@ -121,8 +121,10 @@ namespace SudokuSolver
             strategyList.SelectedIndex = -1;
         }
 
-        private void SetLabel(Label label, Cell cell)
+        private void SetLabel(Label label, Cell cell, bool showResult)
         {
+            label.BackColor = Color.White;
+
             if (cell.Value == null)
             {
                 label.Font = new Font("Consolas", 9);
@@ -150,6 +152,34 @@ namespace SudokuSolver
                 }
 
                 label.Text = cell.Value.Value.ToString();
+            }
+
+            if (showResult && currentNumber < sudoku.Stages.Count)
+            {
+                StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
+
+                Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
+                Cell affectedCell = nextResult.GetAffectedCell(cell.RowIndex, cell.ColumnIndex);
+                Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
+                Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
+
+                if (relationCell != null)
+                {
+                    label.BackColor = Color.Green;
+
+                }
+                if (affectedCell != null)
+                {
+                    label.BackColor = Color.Yellow;
+                }
+                if (relationValueCell != null)
+                {
+                    label.BackColor = Color.Aqua;
+                }
+                if (removedValueCell != null)
+                {
+                    label.BackColor = Color.Pink;
+                }
             }
         }
 

@@ -55,17 +55,17 @@ namespace SudokuSolver
             for (int b = 0; b < table.Length; b++)
             {
                 Range block = table.SelectBlock(b);
-                FilterInitialProbableValues(block);
+                FilterInitialProbableValues(result, block);
             }
             for (int r = 0; r < table.Length; r++)
             {
                 Range row = table.SelectRow(r);
-                FilterInitialProbableValues(row);
+                FilterInitialProbableValues(result, row);
             }
             for (int c = 0; c < table.Length; c++)
             {
                 Range column = table.SelectColumn(c);
-                FilterInitialProbableValues(column);
+                FilterInitialProbableValues(result, column);
             }
 
             result.Success = true;
@@ -84,13 +84,13 @@ namespace SudokuSolver
                 cell.ProbableValues.Clear();
 
                 Range block = range.Select(x => x != cell && x.BlockIndex == cell.BlockIndex);
-                RemoveProbableValues(block, value);
+                RemoveProbableValues(result, block, value);
 
                 Range row = range.Select(x => x != cell && x.RowIndex == cell.RowIndex);
-                RemoveProbableValues(row, value);
+                RemoveProbableValues(result, row, value);
 
                 Range column = range.Select(x => x != cell && x.ColumnIndex == cell.ColumnIndex);
-                RemoveProbableValues(column, value);
+                RemoveProbableValues(result, column, value);
 
                 result.Success = true;
             }
@@ -183,7 +183,11 @@ namespace SudokuSolver
 
                 if (candidateCells != null)
                 {
-                    result.Success = RemoveProbableValues(candidateCells, pValue) > 0;
+                    result.Success = RemoveProbableValues(result, candidateCells, pValue);
+                    if (result.Success)
+                    {
+                        result.AddRelationValues(checkRange, pValue);
+                    }
                     return;
                 }
             }
@@ -256,7 +260,7 @@ namespace SudokuSolver
 
                     if (removeValueRange.Count > 0)
                     {
-                        result.Success = RemoveProbableValues(removeValueRange, pValue) > 0;
+                        result.Success = RemoveProbableValues(result, removeValueRange, pValue);
                         return;
                     }
                 }
@@ -299,7 +303,7 @@ namespace SudokuSolver
                         if (containingCells.Count <= maxDepth)
                         {
                             Range candidateCells = emptyCells.Select(x => !containingCells.Contains(x));
-                            result.Success = RemoveProbableValues(candidateCells, cell.ProbableValues.ToArray()) > 0;
+                            result.Success = RemoveProbableValues(result, candidateCells, cell.ProbableValues.ToArray());
                             return;
                         }
                     }
@@ -370,7 +374,7 @@ namespace SudokuSolver
                         if (checkRows.Count == lineLimit)
                         {
                             Range candidateRange = table.Select(x => !checkRows.Contains(x.RowIndex) && checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
-                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
+                            result.Success = RemoveProbableValues(result, candidateRange, pValue);
                             return;
                         }
                     }
@@ -402,7 +406,7 @@ namespace SudokuSolver
                         if (checkColumns.Count == lineLimit)
                         {
                             Range candidateRange = table.Select(x => checkRows.Contains(x.RowIndex) && !checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
-                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
+                            result.Success = RemoveProbableValues(result, candidateRange, pValue);
                             return;
                         }
                     }
@@ -411,9 +415,9 @@ namespace SudokuSolver
         }
 
 
-        private static int RemoveProbableValues(Range range, params int[] removedValues)
+        private static bool RemoveProbableValues(StrategyResult result, Range range, params int[] removedValues)
         {
-            int removedCount = 0;
+            bool removed = false;
 
             foreach (Cell cell in range)
             {
@@ -421,12 +425,13 @@ namespace SudokuSolver
                 {
                     if (cell.ProbableValues.Remove(pValue))
                     {
-                        removedCount++;
+                        result.AddRemovedValues(cell.RowIndex, cell.ColumnIndex, pValue);
+                        removed = true;
                     }
                 }
             }
 
-            return removedCount;
+            return removed;
         }
 
         private static int KeepProbableValues(Range range, params int[] keepValues)
@@ -452,11 +457,11 @@ namespace SudokuSolver
             return removedCount;
         }
 
-        private static void FilterInitialProbableValues(Range range)
+        private static void FilterInitialProbableValues(StrategyResult result, Range range)
         {
             HashSet<int> existsValues = range.GetValuesHashSet();
             Range emptyCells = range.SelectEmptyCells();
-            RemoveProbableValues(emptyCells, existsValues.ToArray());
+            RemoveProbableValues(result, emptyCells, existsValues.ToArray());
         }
 
         // Перебор возможных комбинаций неповторяющихся значений из массива 

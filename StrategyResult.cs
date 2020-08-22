@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace SudokuSolver
 {
@@ -54,6 +55,14 @@ namespace SudokuSolver
             }
         }
 
+        public void AddRelationValues(ICollection<Cell> cells, params int[] values)
+        {
+            foreach (var cell in cells)
+            {
+                AddRelationValues(cell.RowIndex, cell.ColumnIndex, values);
+            }
+        }
+
         public void AddRemovedValues(int row, int column, params int[] values)
         {
             Cell cell = RemovedValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);
@@ -66,6 +75,27 @@ namespace SudokuSolver
             {
                 cell.ProbableValues.Add(value);
             }
+        }
+
+
+        public Cell GetRelationCell(int row, int column)
+        {
+            return RelationCells.Find(x => x.RowIndex == row && x.ColumnIndex == column);
+        }
+
+        public Cell GetAffectedCell(int row, int column)
+        {
+            return AffectedCells.Find(x => x.RowIndex == row && x.ColumnIndex == column);
+        }
+
+        public Cell GetRelationValueCell(int row, int column)
+        {
+            return RelationValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);
+        }
+
+        public Cell GetRemovedValueCell(int row, int column)
+        {
+            return RemovedValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);
         }
     }
 }
