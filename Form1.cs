@@ -84,7 +84,7 @@ namespace SudokuSolver
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
                 ShowTable(stage);
-                ShowStrategy(stage.StrategyType);
+                ShowStrategy(stage.Result);
             }
         }
 
@@ -107,12 +107,12 @@ namespace SudokuSolver
             }
         }
 
-        private void ShowStrategy(StrategyType strategyType)
+        private void ShowStrategy(StrategyResult result)
         {
             for (int i = 0; i < strategyList.Items.Count; i++)
             {
                 Item<string, StrategyType> item = (Item<string, StrategyType>)strategyList.Items[i];
-                if (item.Value == strategyType)
+                if (item.Value == result.StrategyType)
                 {
                     strategyList.SelectedIndex = i;
                     return;

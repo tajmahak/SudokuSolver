@@ -1,17 +1,15 @@
-﻿using System.Collections.Generic;
-
-namespace SudokuSolver
+﻿namespace SudokuSolver
 {
     internal class Stage
     {
         public Table Table { get; private set; }
 
-        public StrategyType StrategyType { get; private set; }
+        public StrategyResult Result { get; private set; }
 
-        public Stage(Table table, StrategyType strategyType)
+        public Stage(Table table, StrategyResult result)
         {
             Table = table;
-            StrategyType = strategyType;
+            Result = result;
         }
     }
 }

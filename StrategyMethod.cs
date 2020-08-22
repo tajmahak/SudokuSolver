@@ -1,4 +1,4 @@
 ﻿namespace SudokuSolver
 {
-    internal delegate bool StrategyMethod(Range range);
+    internal delegate StrategyResult StrategyMethod(Range range);
 }

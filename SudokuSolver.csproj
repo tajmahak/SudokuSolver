@@ -48,6 +48,7 @@
     <Compile Include="StrategyArea.cs" />
     <Compile Include="StrategyAttribute.cs" />
     <Compile Include="StrategyInfo.cs" />
+    <Compile Include="StrategyResult.cs" />
     <Compile Include="StrategyType.cs" />
     <Compile Include="StrategyHelper.cs" />
     <Compile Include="StrategyMethod.cs" />

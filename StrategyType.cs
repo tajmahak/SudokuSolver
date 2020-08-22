@@ -7,14 +7,14 @@
 
         SetValueToSolvedCell,
 
-        HiddenSingles,
-        NakedPairsTriples,
-        HiddenPairsTriples,
-        NakedQuards,
-        HiddenQuards,
-        PointingPairs,
-        BoxLineReduction,
+        //HiddenSingles,
+        //NakedPairsTriples,
+        //HiddenPairsTriples,
+        //NakedQuards,
+        //HiddenQuards,
+        //PointingPairs,
+        //BoxLineReduction,
 
-        XWing,
+        //XWing,
     }
 }
