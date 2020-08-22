@@ -28,11 +28,11 @@ namespace SudokuSolver
             return strategies.ToArray();
         }
 
-
         public static StrategyInfo GetInitializeProbableValuesStrategy()
         {
             return new StrategyInfo(StrategyType.InitializeProbableValues, InitializeProbableValues, StrategyArea.Table);
         }
+
 
         public static void InitializeProbableValues(StrategyResult result, Range range)
         {
@@ -70,7 +70,6 @@ namespace SudokuSolver
 
             result.Success = true;
         }
-
 
         [Strategy(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
         public static void SetValueToSolvedCell(StrategyResult result, Range range)

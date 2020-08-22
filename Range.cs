@@ -103,7 +103,5 @@ namespace SudokuSolver
             }
             return true;
         }
-
-
     }
 }
