@@ -51,7 +51,7 @@ namespace SudokuSolver
             }
         }
 
-        public void LoadStrategyList()
+        private void LoadStrategyList()
         {
             StrategyInfo[] strategies = StrategyHelper.GetStrategies();
 
@@ -126,6 +126,76 @@ namespace SudokuSolver
             }
         }
 
+        private void SetCell(RichTextBox control, Cell cell, bool showResult)
+        {
+            control.Clear();
+            control.BackColor = Color.White;
+
+            if (cell.Value == null)
+            {
+                control.Font = new Font("Consolas", 9);
+                control.ForeColor = Color.Gray;
+
+                if (cell.ProbableValues.Count == 0)
+                {
+                    control.Text = "";
+                }
+                else
+                {
+                    control.Text = GetProbableValues(cell);
+                }
+            }
+            else
+            {
+                control.Font = new Font("Consolas", 20);
+                if (cell.IsDefault)
+                {
+                    control.ForeColor = Color.Black;
+                }
+                else
+                {
+                    control.ForeColor = Color.DarkSlateBlue;
+                }
+
+                control.Text = cell.Value.Value.ToString();
+                control.Select(0, 1);
+                control.SelectionAlignment = HorizontalAlignment.Center;
+            }
+
+            if (showResult && currentNumber < sudoku.Stages.Count)
+            {
+                StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
+
+                Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
+                if (relationCell != null)
+                {
+                    control.BackColor = Settings.RelationCellColor;
+                }
+
+                Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
+                if (relationValueCell != null)
+                {
+                    foreach (int value in relationValueCell.ProbableValues)
+                    {
+                        SelectProbableValue(control, value);
+                        control.SelectionColor = Color.DarkGreen;
+                        control.SelectionBackColor = Color.LightGreen;
+                    }
+                }
+
+                Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
+                if (removedValueCell != null)
+                {
+                    foreach (int value in removedValueCell.ProbableValues)
+                    {
+                        SelectProbableValue(control, value);
+                        control.SelectionColor = Color.DarkRed;
+                        control.SelectionBackColor = Color.Pink;
+                    }
+                }
+            }
+        }
+
         private void ShowStrategy(StrategyResult result)
         {
             strategyList.SelectedIndex = -1;
@@ -138,75 +208,6 @@ namespace SudokuSolver
                     {
                         strategyList.SelectedIndex = i;
                         return;
-                    }
-                }
-            }
-        }
-
-        private void SetCell(RichTextBox label, Cell cell, bool showResult)
-        {
-            label.Clear();
-            label.BackColor = Color.White;
-
-            if (cell.Value == null)
-            {
-                label.Font = new Font("Consolas", 9);
-                label.ForeColor = Color.Gray;
-
-                if (cell.ProbableValues.Count == 0)
-                {
-                    label.Text = "";
-                }
-                else
-                {
-                    label.Text = GetProbableValues(cell);
-                }
-            }
-            else
-            {
-                label.Font = new Font("Consolas", 20);
-                if (cell.IsDefault)
-                {
-                    label.ForeColor = Color.Black;
-                }
-                else
-                {
-                    label.ForeColor = Color.DarkSlateBlue;
-                }
-
-                label.Text = cell.Value.Value.ToString();
-                label.Select(0, 1);
-                label.SelectionAlignment = HorizontalAlignment.Center;
-            }
-
-            if (showResult && currentNumber < sudoku.Stages.Count)
-            {
-                StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
-
-                Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
-                Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
-                Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
-
-                if (relationCell != null)
-                {
-                    label.BackColor = Settings.RelationCellColor;
-                }
-                if (relationValueCell != null)
-                {
-                    foreach (int value in relationValueCell.ProbableValues)
-                    {
-                        SelectProbableValue(label, value);
-                        label.SelectionColor = Color.Blue;
-                        label.SelectionBackColor = Color.LightGreen;
-                    }
-                }
-                if (removedValueCell != null)
-                {
-                    foreach (int value in removedValueCell.ProbableValues)
-                    {
-                        SelectProbableValue(label, value);
-                        label.SelectionColor = Color.DarkRed;
-                        label.SelectionBackColor = Color.Pink;
                     }
                 }
             }
