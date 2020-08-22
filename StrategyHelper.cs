@@ -106,15 +106,18 @@ namespace SudokuSolver
             // в других ячейках, то единственным вариантом для ячейки будет именно это значение
 
             Range emptyCells = range.SelectEmptyCells();
-            foreach (int pVal in emptyCells.GetProbableValuesHashSet())
+            foreach (int pValue in emptyCells.GetProbableValuesHashSet())
             {
-                Range candidateRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+                Range candidateRange = emptyCells.Select(x => x.ProbableValues.Contains(pValue));
                 if (candidateRange.Count == 1)
                 {
                     Cell cell = candidateRange[0];
-                    cell.ProbableValues.Clear();
-                    cell.ProbableValues.Add(pVal);
-                    result.Success = true;
+                    result.Success = KeepProbableValues(result, candidateRange, pValue);
+                    result.AddRelationValues(cell, pValue);
+
+                    //cell.ProbableValues.Clear();
+                    //cell.ProbableValues.Add(pVal);
+                    //result.Success = true;
                     break;
                 }
             }
@@ -337,7 +340,7 @@ namespace SudokuSolver
 
             if (findRange != null)
             {
-                result.Success = KeepProbableValues(findRange, findCombination) > 0;
+                result.Success = KeepProbableValues(result, findRange, findCombination);
             }
         }
 
@@ -348,16 +351,19 @@ namespace SudokuSolver
 
             if (emptyCells.Count == lineLimit)
             {
-                if (emptyCells.IsRow)
+                foreach (int pValue in emptyCells.GetProbableValuesHashSet())
                 {
-                    HashSet<int> checkColumns = emptyCells.GetColumnsHashSet();
-                    int rowIndex = emptyCells.GetRowsHashSet().ToArray()[0];
-
-                    foreach (int pValue in emptyCells.GetProbableValuesHashSet())
+                    Range candidateRange = null;
+                    HashSet<int> checkRows;
+                    HashSet<int> checkColumns;
+                    if (emptyCells.IsRow)
                     {
+                        checkColumns = emptyCells.GetColumnsHashSet();
+                        int rowIndex = emptyCells.GetRowsHashSet().ToArray()[0];
+
                         Range checkRange = table.Select(x => x.RowIndex != rowIndex && x.ContainsAllValues(pValue));
 
-                        HashSet<int> checkRows = new HashSet<int>();
+                        checkRows = new HashSet<int>();
                         checkRows.Add(rowIndex);
                         foreach (int r in checkRange.GetRowsHashSet())
                         {
@@ -374,28 +380,17 @@ namespace SudokuSolver
 
                         if (checkRows.Count == lineLimit)
                         {
-                            Range candidateRange = table.Select(x => !checkRows.Contains(x.RowIndex) && checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
-                            result.Success = RemoveProbableValues(result, candidateRange, pValue);
-                            if (result.Success)
-                            {
-                                Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
-                                result.AddAffectedCell(affectedRange);
-                                result.AddRelationValues(affectedRange, pValue);
-                            }
-                            return;
+                            candidateRange = table.Select(x => !checkRows.Contains(x.RowIndex) && checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
                         }
                     }
-                }
-                else
-                {
-                    HashSet<int> checkRows = emptyCells.GetRowsHashSet();
-                    int columnIndex = emptyCells.GetColumnsHashSet().ToArray()[0];
-
-                    foreach (int pValue in emptyCells.GetProbableValuesHashSet())
+                    else
                     {
+                        checkRows = emptyCells.GetRowsHashSet();
+                        int columnIndex = emptyCells.GetColumnsHashSet().ToArray()[0];
+
                         Range checkRange = table.Select(x => x.ColumnIndex != columnIndex && x.ContainsAllValues(pValue));
 
-                        HashSet<int> checkColumns = new HashSet<int>();
+                        checkColumns = new HashSet<int>();
                         checkColumns.Add(columnIndex);
                         foreach (int c in checkRange.GetColumnsHashSet())
                         {
@@ -412,16 +407,21 @@ namespace SudokuSolver
 
                         if (checkColumns.Count == lineLimit)
                         {
-                            Range candidateRange = table.Select(x => checkRows.Contains(x.RowIndex) && !checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
-                            result.Success = RemoveProbableValues(result, candidateRange, pValue);
-                            if (result.Success)
-                            {
-                                Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
-                                result.AddAffectedCell(affectedRange);
-                                result.AddRelationValues(affectedRange, pValue);
-                            }
-                            return;
+                            candidateRange = table.Select(x => checkRows.Contains(x.RowIndex) && !checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
                         }
+                    }
+
+                    if (candidateRange != null)
+                    {
+                        result.Success = RemoveProbableValues(result, candidateRange, pValue);
+                        if (result.Success)
+                        {
+                            Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
+                            //result.AddRelationCell(candidateRange);
+                            result.AddAffectedCell(affectedRange);
+                            result.AddRelationValues(affectedRange, pValue);
+                        }
+                        return;
                     }
                 }
             }
@@ -450,12 +450,11 @@ namespace SudokuSolver
             return removed;
         }
 
-        private static int KeepProbableValues(Range range, params int[] keepValues)
+        private static bool KeepProbableValues(StrategyResult result, Range range, params int[] keepValues)
         {
+            bool removed = false;
+
             HashSet<int> keepHashSet = new HashSet<int>(keepValues);
-
-            int removedCount = 0;
-
             foreach (Cell cell in range)
             {
                 foreach (int pValue in cell.ProbableValues.ToArray())
@@ -464,13 +463,17 @@ namespace SudokuSolver
                     {
                         if (cell.ProbableValues.Remove(pValue))
                         {
-                            removedCount++;
+                            removed = true;
+                            if (result != null)
+                            {
+                                result.AddRemovedValues(cell.RowIndex, cell.ColumnIndex, pValue);
+                            }
                         }
                     }
                 }
             }
 
-            return removedCount;
+            return removed;
         }
 
         private static void FilterInitialProbableValues(Range range)

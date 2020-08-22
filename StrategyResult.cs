@@ -31,6 +31,14 @@ namespace SudokuSolver
             }
         }
 
+        public void AddRelationCell(ICollection<Cell> cells)
+        {
+            foreach (Cell cell in cells)
+            {
+                AddRelationCell(cell.RowIndex, cell.ColumnIndex);
+            }
+        }
+
 
         public void AddAffectedCell(int row, int column)
         {
@@ -69,14 +77,20 @@ namespace SudokuSolver
             }
         }
 
+        public void AddRelationValues(Cell cell, params int[] values)
+        {
+            AddRelationValues(cell.RowIndex, cell.ColumnIndex, values);
+        }
+
         public void AddRelationValues(ICollection<Cell> cells, params int[] values)
         {
             foreach (Cell cell in cells)
             {
-                AddRelationValues(cell.RowIndex, cell.ColumnIndex, values);
+                AddRelationValues(cell, values);
             }
         }
 
+      
         public void AddRemovedValues(int row, int column, params int[] values)
         {
             Cell cell = RemovedValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);

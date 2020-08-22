@@ -22,5 +22,23 @@ namespace SudokuSolver.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 253, 210")]
+        public global::System.Drawing.Color AffectedCellColor {
+            get {
+                return ((global::System.Drawing.Color)(this["AffectedCellColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightGreen")]
+        public global::System.Drawing.Color RelationCellColor {
+            get {
+                return ((global::System.Drawing.Color)(this["RelationCellColor"]));
+            }
+        }
     }
 }

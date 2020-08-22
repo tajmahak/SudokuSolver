@@ -1,4 +1,5 @@
 ﻿using MyLibrary.Win32;
+using SudokuSolver.Properties;
 using System;
 using System.Drawing;
 using System.IO;
@@ -10,6 +11,7 @@ namespace SudokuSolver
     public partial class Form1 : Form
     {
         private readonly Sudoku sudoku = new Sudoku(3);
+        private Settings Settings => Settings.Default;
 
         private int currentNumber;
 
@@ -188,27 +190,27 @@ namespace SudokuSolver
 
                 if (relationCell != null)
                 {
-                    label.BackColor = Color.Green;
+                    label.BackColor = Settings.RelationCellColor;
                 }
-                else if (affectedCell != null)
+                if (affectedCell != null)
                 {
-                    label.BackColor = Color.Yellow;
+                    label.BackColor = Settings.AffectedCellColor;
                 }
-                else if (relationValueCell != null)
+                if (relationValueCell != null)
                 {
                     foreach (int value in relationValueCell.ProbableValues)
                     {
                         SelectProbableValue(label, value);
-                        label.SelectionColor = Color.Black;
+                        label.SelectionColor = Color.Blue;
                         label.SelectionBackColor = Color.LightGreen;
                     }
                 }
-                else if (removedValueCell != null)
+                if (removedValueCell != null)
                 {
                     foreach (int value in removedValueCell.ProbableValues)
                     {
                         SelectProbableValue(label, value);
-                        label.SelectionColor = Color.Black;
+                        label.SelectionColor = Color.DarkRed;
                         label.SelectionBackColor = Color.Pink;
                     }
                 }
