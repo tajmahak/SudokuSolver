@@ -16,5 +16,6 @@
         BoxLineReduction,
 
         XWing,
+        YWing,
     }
 }

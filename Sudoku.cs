@@ -73,84 +73,35 @@ namespace SudokuSolver
         public void Solve()
         {
             Table table = CloneLastTable();
-            SetInitialProbabledValues(table);
 
-            StrategyResult initResult = new StrategyResult(StrategyType.InitializeProbableValues);
-            initResult.Success = true;
-            AddStage(table, initResult);
+            StrategyInfo initStrategy = StrategyHelper.GetInitializeProbableValuesStrategy();
+            ApplyStrategy(initStrategy, table);
 
             StrategyInfo[] strategies = StrategyHelper.GetStrategies();
-            while (true)
+            bool success;
+            do
             {
+                success = false;
                 table = CloneLastTable();
-                bool success = false;
                 foreach (StrategyInfo strategy in strategies)
                 {
-                    StrategyResult result = ApplyStrategy(strategy, table);
-                    if (result != null && result.Success)
+                    bool successStrategy = ApplyStrategy(strategy, table);
+                    if (successStrategy)
                     {
                         success = true;
-                        AddStage(table, result);
                         break;
                     }
                 }
 
-                if (!success)
-                {
-                    break;
-                }
-            }
+            } while (success);
         }
 
-
-        private void SetInitialProbabledValues(Table table)
+        private Table CloneLastTable()
         {
-            // Установка всех возможных значений по умолчанию
-            foreach (Cell cell in table.Cells)
-            {
-                cell.ProbableValues.Clear();
-                if (cell.Value == null)
-                {
-                    for (int v = 1; v <= table.Length; v++)
-                    {
-                        cell.ProbableValues.Add(v);
-                    }
-                }
-            }
-
-            // Фильтрация лишних значений
-            for (int b = 0; b < table.Length; b++)
-            {
-                Range block = table.SelectBlock(b);
-                FilterInitialProbableValues(block);
-            }
-            for (int r = 0; r < table.Length; r++)
-            {
-                Range row = table.SelectRow(r);
-                FilterInitialProbableValues(row);
-            }
-            for (int c = 0; c < table.Length; c++)
-            {
-                Range column = table.SelectColumn(c);
-                FilterInitialProbableValues(column);
-            }
+            return LastStage.Table.Clone();
         }
 
-        private void FilterInitialProbableValues(Range range)
-        {
-            HashSet<int> existsValues = range.GetValuesHashSet();
-            Range emptyCells = range.SelectEmptyCells();
-
-            foreach (Cell emptyCell in emptyCells)
-            {
-                foreach (int existsValue in existsValues)
-                {
-                    emptyCell.ProbableValues.Remove(existsValue);
-                }
-            }
-        }
-
-        private StrategyResult ApplyStrategy(StrategyInfo strategyInfo, Table table)
+        private bool ApplyStrategy(StrategyInfo strategyInfo, Table table)
         {
             if (strategyInfo.StrategyArea.HasFlag(StrategyArea.Table))
             {
@@ -158,7 +109,8 @@ namespace SudokuSolver
                 strategyInfo.StrategyMethod.Invoke(result, table.Cells);
                 if (result.Success)
                 {
-                    return result;
+                    AddStage(table, result);
+                    return true;
                 }
             }
 
@@ -171,7 +123,8 @@ namespace SudokuSolver
                     strategyInfo.StrategyMethod.Invoke(result, block);
                     if (result.Success)
                     {
-                        return result;
+                        AddStage(table, result);
+                        return true;
                     }
                 }
             }
@@ -185,7 +138,8 @@ namespace SudokuSolver
                     strategyInfo.StrategyMethod.Invoke(result, row);
                     if (result.Success)
                     {
-                        return result;
+                        AddStage(table, result);
+                        return true;
                     }
                 }
 
@@ -196,17 +150,13 @@ namespace SudokuSolver
                     strategyInfo.StrategyMethod.Invoke(result, column);
                     if (result.Success)
                     {
-                        return result;
+                        AddStage(table, result);
+                        return true;
                     }
                 }
             }
 
-            return null;
-        }
-
-        private Table CloneLastTable()
-        {
-            return LastStage.Table.Clone();
+            return false;
         }
 
         private void AddStage(Table table, StrategyResult result)

@@ -12,7 +12,7 @@ namespace SudokuSolver
         {
             List<StrategyInfo> strategies = new List<StrategyInfo>();
 
-            MethodInfo[] methods = typeof(StrategyHelper).GetMethods(BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo[] methods = typeof(StrategyHelper).GetMethods(BindingFlags.Public | BindingFlags.Static);
             foreach (MethodInfo method in methods)
             {
                 object[] attrs = method.GetCustomAttributes(typeof(StrategyAttribute), false);
@@ -26,6 +26,49 @@ namespace SudokuSolver
             }
 
             return strategies.ToArray();
+        }
+
+
+        public static StrategyInfo GetInitializeProbableValuesStrategy()
+        {
+            return new StrategyInfo(StrategyType.InitializeProbableValues, InitializeProbableValues, StrategyArea.Table);
+        }
+
+        public static void InitializeProbableValues(StrategyResult result, Range range)
+        {
+            Table table = range.Table;
+
+            // Установка всех возможных значений по умолчанию
+            foreach (Cell cell in table.Cells)
+            {
+                cell.ProbableValues.Clear();
+                if (cell.Value == null)
+                {
+                    for (int v = 1; v <= table.Length; v++)
+                    {
+                        cell.ProbableValues.Add(v);
+                    }
+                }
+            }
+
+            // Фильтрация лишних значений
+            for (int b = 0; b < table.Length; b++)
+            {
+                Range block = table.SelectBlock(b);
+                FilterInitialProbableValues(block);
+            }
+            for (int r = 0; r < table.Length; r++)
+            {
+                Range row = table.SelectRow(r);
+                FilterInitialProbableValues(row);
+            }
+            for (int c = 0; c < table.Length; c++)
+            {
+                Range column = table.SelectColumn(c);
+                FilterInitialProbableValues(column);
+            }
+
+            result.Success = true;
         }
 
 
@@ -295,7 +338,7 @@ namespace SudokuSolver
             }
         }
 
-        [Strategy(StrategyType.XWing, StrategyArea.Line)]
+        [Strategy(StrategyType.YWing, StrategyArea.Line)]
         public static void YWing(StrategyResult result, Range range)
         {
 
@@ -396,6 +439,13 @@ namespace SudokuSolver
             }
 
             return removedCount;
+        }
+
+        private static void FilterInitialProbableValues(Range range)
+        {
+            HashSet<int> existsValues = range.GetValuesHashSet();
+            Range emptyCells = range.SelectEmptyCells();
+            RemoveProbableValues(emptyCells, existsValues.ToArray());
         }
 
         // Перебор возможных комбинаций неповторяющихся значений из массива 
