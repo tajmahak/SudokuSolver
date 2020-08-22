@@ -50,15 +50,21 @@ namespace SudokuSolver
 
         public bool ContainsAllValues(HashSet<int> values)
         {
-            foreach (int pValue in ProbableValues)
+            if (ProbableValues.Count == 0)
             {
-                if (!values.Contains(pValue))
-                {
-                    return false;
-                }
+                return false;
             }
-
-            return true;
+            else 
+            {
+                foreach (int pValue in values)
+                {
+                    if (!ProbableValues.Contains(pValue))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
 
         public bool ContainsAllValues(params int[] values)

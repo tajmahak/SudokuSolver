@@ -7,6 +7,10 @@ namespace SudokuSolver
     {
         public Table Table { get; private set; }
 
+        public bool IsRow => GetRowsHashSet().Count == 1;
+
+        public bool IsColumn => GetColumnsHashSet().Count == 1;
+
         public Range(Table table) : base()
         {
             Table = table;
@@ -99,5 +103,7 @@ namespace SudokuSolver
             }
             return true;
         }
+
+
     }
 }

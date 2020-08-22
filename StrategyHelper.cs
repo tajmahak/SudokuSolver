@@ -266,82 +266,19 @@ namespace SudokuSolver
         [Strategy(StrategyType.XWing, StrategyArea.Line)]
         public static void XWing(StrategyResult result, Range range)
         {
-            Table table = range.Table;
-            Range emptyCells = range.SelectEmptyCells();
-
-            if (emptyCells.Count == 2)
-            {
-                HashSet<int> probableValues = emptyCells.GetProbableValuesHashSet();
-                if (probableValues.Count == 2)
-                {
-                    bool isRowOrColumn = emptyCells.GetRowsHashSet().Count == 1;
-                    Cell cell1 = emptyCells[0];
-                    Cell cell2 = emptyCells[1];
-
-                    foreach (int pValue in probableValues)
-                    {
-                        Range candidateRange = null;
-
-                        if (isRowOrColumn)
-                        {
-                            for (int r = 0; r < table.Length; r++)
-                            {
-                                if (r != cell1.RowIndex)
-                                {
-                                    Range row = table.SelectRow(r).Select(x => x.ProbableValues.Contains(pValue));
-                                    if (row.Count == 2)
-                                    {
-                                        Cell otherCell1 = row[0];
-                                        Cell otherCell2 = row[1];
-                                        if (cell1.ColumnIndex == otherCell1.ColumnIndex && cell2.ColumnIndex == otherCell2.ColumnIndex)
-                                        {
-                                            candidateRange = table.Select(x =>
-                                                x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
-                                                (x.ColumnIndex == cell1.ColumnIndex || x.ColumnIndex == cell2.ColumnIndex) &&
-                                                x.ProbableValues.Contains(pValue));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int c = 0; c < table.Length; c++)
-                            {
-                                if (c != cell1.ColumnIndex)
-                                {
-                                    Range column = table.SelectColumn(c).Select(x => x.ProbableValues.Contains(pValue));
-                                    if (column.Count == 2)
-                                    {
-                                        Cell otherCell1 = column[0];
-                                        Cell otherCell2 = column[1];
-
-                                        if (cell1.RowIndex == otherCell1.RowIndex && cell2.RowIndex == otherCell2.RowIndex)
-                                        {
-                                            candidateRange = table.Select(x =>
-                                                x != cell1 && x != cell2 && x != otherCell1 && x != otherCell2 &&
-                                                (x.RowIndex == cell1.RowIndex || x.RowIndex == cell2.RowIndex) &&
-                                                x.ProbableValues.Contains(pValue));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (candidateRange != null)
-                        {
-                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
-                            return;
-                        }
-                    }
-                }
-            }
+            XWingStrategy(result, range, 2);
         }
 
         [Strategy(StrategyType.YWing, StrategyArea.Line)]
         public static void YWing(StrategyResult result, Range range)
         {
 
+        }
+
+        [Strategy(StrategyType.Swordfish, StrategyArea.Line)]
+        public static void Swordfish(StrategyResult result, Range range)
+        {
+            XWingStrategy(result, range, 3);
         }
 
 
@@ -353,7 +290,7 @@ namespace SudokuSolver
             Range emptyCells = range.SelectEmptyCells();
             foreach (Cell cell in emptyCells)
             {
-                Range containingCells = emptyCells.Select(x => x != cell && x.ContainsAllValues(cell.ProbableValues));
+                Range containingCells = emptyCells.Select(x => x != cell && cell.ContainsAllValues(x.ProbableValues));
                 if (containingCells.Count > 0)
                 {
                     containingCells.Add(cell);
@@ -396,6 +333,80 @@ namespace SudokuSolver
             if (findRange != null)
             {
                 result.Success = KeepProbableValues(findRange, findCombination) > 0;
+            }
+        }
+
+        private static void XWingStrategy(StrategyResult result, Range range, int lineLimit)
+        {
+            Table table = range.Table;
+            Range emptyCells = range.SelectEmptyCells();
+
+            if (emptyCells.Count == lineLimit)
+            {
+                if (emptyCells.IsRow)
+                {
+                    HashSet<int> checkColumns = emptyCells.GetColumnsHashSet();
+                    int rowIndex = emptyCells.GetRowsHashSet().ToArray()[0];
+
+                    foreach (int pValue in emptyCells.GetProbableValuesHashSet())
+                    {
+                        Range checkRange = table.Select(x => x.RowIndex != rowIndex && x.ContainsAllValues(pValue));
+
+                        HashSet<int> checkRows = new HashSet<int>();
+                        checkRows.Add(rowIndex);
+                        foreach (int r in checkRange.GetRowsHashSet())
+                        {
+                            Range checkRowsCells = checkRange.Select(x => x.RowIndex == r && x.ContainsAllValues(pValue));
+                            if (checkRowsCells.Count == lineLimit)
+                            {
+                                checkRowsCells = checkRowsCells.Select(x => checkColumns.Contains(x.ColumnIndex));
+                                if (checkRowsCells.Count == lineLimit)
+                                {
+                                    checkRows.Add(r);
+                                }
+                            }
+                        }
+
+                        if (checkRows.Count == lineLimit)
+                        {
+                            Range candidateRange = table.Select(x => !checkRows.Contains(x.RowIndex) && checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
+                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    HashSet<int> checkRows = emptyCells.GetRowsHashSet();
+                    int columnIndex = emptyCells.GetColumnsHashSet().ToArray()[0];
+
+                    foreach (int pValue in emptyCells.GetProbableValuesHashSet())
+                    {
+                        Range checkRange = table.Select(x => x.ColumnIndex != columnIndex && x.ContainsAllValues(pValue));
+
+                        HashSet<int> checkColumns = new HashSet<int>();
+                        checkColumns.Add(columnIndex);
+                        foreach (int c in checkRange.GetColumnsHashSet())
+                        {
+                            Range checkColumnCells = checkRange.Select(x => x.ColumnIndex == c && x.ContainsAllValues(pValue));
+                            if (checkColumnCells.Count == lineLimit)
+                            {
+                                checkColumnCells = checkColumnCells.Select(x => checkRows.Contains(x.RowIndex));
+                                if (checkColumnCells.Count == lineLimit)
+                                {
+                                    checkColumns.Add(c);
+                                }
+                            }
+                        }
+
+                        if (checkColumns.Count == lineLimit)
+                        {
+                            Range candidateRange = table.Select(x => checkRows.Contains(x.RowIndex) && !checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
+                            result.Success = RemoveProbableValues(candidateRange, pValue) > 0;
+                            return;
+                        }
+                    }
+                }
             }
         }
 

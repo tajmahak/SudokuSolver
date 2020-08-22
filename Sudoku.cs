@@ -5,14 +5,15 @@ namespace SudokuSolver
 {
     internal class Sudoku
     {
-        public int BlockLength { get; private set; }
-        public List<Stage> Stages { get; private set; } = new List<Stage>();
-        public Stage LastStage => Stages.Last();
-
         public Sudoku(int blockLength)
         {
             BlockLength = blockLength;
         }
+
+        public int BlockLength { get; private set; }
+        public List<Stage> Stages { get; private set; } = new List<Stage>();
+        public Stage LastStage => Stages.Last();
+
 
         public void LoadFromExcel(string[] data)
         {
@@ -95,6 +96,7 @@ namespace SudokuSolver
 
             } while (success);
         }
+
 
         private Table CloneLastTable()
         {

@@ -5,14 +5,6 @@ namespace SudokuSolver
 {
     internal class Table
     {
-        public int BlockLength { get; private set; }
-        public int BlockCount => Length;
-        public int Length { get; private set; }
-        public Cell this[int row, int column] => cellsMatrix[row, column];
-        public Range Cells => new Range(this, cellsList);
-        private readonly List<Cell> cellsList;
-        private readonly Cell[,] cellsMatrix;
-
         public Table(int blockLength, bool initialize)
         {
             BlockLength = blockLength;
@@ -25,6 +17,14 @@ namespace SudokuSolver
                 InitializeCells();
             }
         }
+
+        public int BlockLength { get; private set; }
+        public int BlockCount => Length;
+        public int Length { get; private set; }
+        public Cell this[int row, int column] => cellsMatrix[row, column];
+        public Range Cells => new Range(this, cellsList);
+        private readonly List<Cell> cellsList;
+        private readonly Cell[,] cellsMatrix;
 
 
         public Range Select(Predicate<Cell> match)
@@ -91,14 +91,6 @@ namespace SudokuSolver
             return table;
         }
 
-
-        private void Clear()
-        {
-            foreach (Cell cell in cellsList)
-            {
-                cell.Clear();
-            }
-        }
 
         private void InitializeCells()
         {
