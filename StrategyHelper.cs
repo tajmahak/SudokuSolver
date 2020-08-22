@@ -55,17 +55,17 @@ namespace SudokuSolver
             for (int b = 0; b < table.Length; b++)
             {
                 Range block = table.SelectBlock(b);
-                FilterInitialProbableValues(result, block);
+                FilterInitialProbableValues(block);
             }
             for (int r = 0; r < table.Length; r++)
             {
                 Range row = table.SelectRow(r);
-                FilterInitialProbableValues(result, row);
+                FilterInitialProbableValues(row);
             }
             for (int c = 0; c < table.Length; c++)
             {
                 Range column = table.SelectColumn(c);
-                FilterInitialProbableValues(result, column);
+                FilterInitialProbableValues(column);
             }
 
             result.Success = true;
@@ -84,15 +84,16 @@ namespace SudokuSolver
                 cell.ProbableValues.Clear();
 
                 Range block = range.Select(x => x != cell && x.BlockIndex == cell.BlockIndex);
-                RemoveProbableValues(result, block, value);
+                RemoveProbableValues(null, block, value);
 
                 Range row = range.Select(x => x != cell && x.RowIndex == cell.RowIndex);
-                RemoveProbableValues(result, row, value);
+                RemoveProbableValues(null, row, value);
 
                 Range column = range.Select(x => x != cell && x.ColumnIndex == cell.ColumnIndex);
-                RemoveProbableValues(result, column, value);
+                RemoveProbableValues(null, column, value);
 
                 result.Success = true;
+                result.AddAffectedCell(cell);
             }
         }
 
@@ -375,6 +376,12 @@ namespace SudokuSolver
                         {
                             Range candidateRange = table.Select(x => !checkRows.Contains(x.RowIndex) && checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
                             result.Success = RemoveProbableValues(result, candidateRange, pValue);
+                            if (result.Success)
+                            {
+                                var affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
+                                result.AddAffectedCell(affectedRange);
+                                result.AddRelationValues(affectedRange, pValue);
+                            }
                             return;
                         }
                     }
@@ -407,6 +414,12 @@ namespace SudokuSolver
                         {
                             Range candidateRange = table.Select(x => checkRows.Contains(x.RowIndex) && !checkColumns.Contains(x.ColumnIndex) && x.ContainsAllValues(pValue));
                             result.Success = RemoveProbableValues(result, candidateRange, pValue);
+                            if (result.Success)
+                            {
+                                var affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
+                                result.AddAffectedCell(affectedRange);
+                                result.AddRelationValues(affectedRange, pValue);
+                            }
                             return;
                         }
                     }
@@ -425,7 +438,10 @@ namespace SudokuSolver
                 {
                     if (cell.ProbableValues.Remove(pValue))
                     {
-                        result.AddRemovedValues(cell.RowIndex, cell.ColumnIndex, pValue);
+                        if (result != null)
+                        {
+                            result.AddRemovedValues(cell.RowIndex, cell.ColumnIndex, pValue);
+                        }
                         removed = true;
                     }
                 }
@@ -457,11 +473,11 @@ namespace SudokuSolver
             return removedCount;
         }
 
-        private static void FilterInitialProbableValues(StrategyResult result, Range range)
+        private static void FilterInitialProbableValues(Range range)
         {
             HashSet<int> existsValues = range.GetValuesHashSet();
             Range emptyCells = range.SelectEmptyCells();
-            RemoveProbableValues(result, emptyCells, existsValues.ToArray());
+            RemoveProbableValues(null, emptyCells, existsValues.ToArray());
         }
 
         // Перебор возможных комбинаций неповторяющихся значений из массива 

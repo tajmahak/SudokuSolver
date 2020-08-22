@@ -84,7 +84,16 @@ namespace SudokuSolver
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
                 ShowTable(stage, true);
-                ShowStrategy(stage.Result);
+
+
+
+                StrategyResult nextResult = null;
+                if (currentNumber < sudoku.Stages.Count)
+                {
+                    nextResult = sudoku.Stages[currentNumber].Result;
+                }
+
+                ShowStrategy(nextResult);
             }
         }
 
@@ -109,16 +118,19 @@ namespace SudokuSolver
 
         private void ShowStrategy(StrategyResult result)
         {
-            for (int i = 0; i < strategyList.Items.Count; i++)
+            strategyList.SelectedIndex = -1;
+            if (result != null)
             {
-                Item<string, StrategyType> item = (Item<string, StrategyType>)strategyList.Items[i];
-                if (item.Value == result.StrategyType)
+                for (int i = 0; i < strategyList.Items.Count; i++)
                 {
-                    strategyList.SelectedIndex = i;
-                    return;
+                    Item<string, StrategyType> item = (Item<string, StrategyType>)strategyList.Items[i];
+                    if (item.Value == result.StrategyType)
+                    {
+                        strategyList.SelectedIndex = i;
+                        return;
+                    }
                 }
             }
-            strategyList.SelectedIndex = -1;
         }
 
         private void SetLabel(Label label, Cell cell, bool showResult)
@@ -166,17 +178,16 @@ namespace SudokuSolver
                 if (relationCell != null)
                 {
                     label.BackColor = Color.Green;
-
                 }
-                if (affectedCell != null)
+                else if (affectedCell != null)
                 {
                     label.BackColor = Color.Yellow;
                 }
-                if (relationValueCell != null)
+                else if (relationValueCell != null)
                 {
                     label.BackColor = Color.Aqua;
                 }
-                if (removedValueCell != null)
+                else if (removedValueCell != null)
                 {
                     label.BackColor = Color.Pink;
                 }
