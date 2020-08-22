@@ -13,7 +13,7 @@ namespace SudokuSolver
             StrategyType[] array = (StrategyType[])Enum.GetValues(typeof(StrategyType));
 
             // Отсеивание инициализирующих стратегий
-            array = Array.FindAll(array, x => !(x == StrategyType.CreateTable || x == StrategyType.InitializeProbableValues));
+            array = Array.FindAll(array, x => !(x == StrategyType.None || x == StrategyType.CreateTable || x == StrategyType.InitializeProbableValues));
 
             return array;
         }
@@ -42,7 +42,7 @@ namespace SudokuSolver
         [Strategy(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
         private static StrategyResult SetValueToSolvedCell(Range range)
         {
-            var result = new StrategyResult();
+            StrategyResult result = new StrategyResult();
 
             Cell cell = range.Find(x => x.ProbableValues.Count == 1);
 
@@ -67,29 +67,32 @@ namespace SudokuSolver
             return result;
         }
 
-        //[Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
-        //private static StrategyResult HiddenSingles(Range range)
-        //{
-        //    // https://www.sudokuwiki.org/Getting_Started
+        [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
+        private static StrategyResult HiddenSingles(Range range)
+        {
+            // https://www.sudokuwiki.org/Getting_Started
 
-        //    // если в диапазоне из возможных значений ячейки находится то, которое не повторяется 
-        //    // в других ячейках, то единственным вариантом для ячейки будет именно это значение
+            // если в диапазоне из возможных значений ячейки находится то, которое не повторяется 
+            // в других ячейках, то единственным вариантом для ячейки будет именно это значение
 
-        //    Range emptyCells = range.SelectEmptyCells();
-        //    foreach (int pVal in emptyCells.GetProbableValuesHashSet())
-        //    {
-        //        Range candidateRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
-        //        if (candidateRange.Count == 1)
-        //        {
-        //            Cell cell = candidateRange[0];
-        //            cell.ProbableValues.Clear();
-        //            cell.ProbableValues.Add(pVal);
-        //            return true;
-        //        }
-        //    }
+            StrategyResult result = new StrategyResult(StrategyType.HiddenSingles);
 
-        //    return false;
-        //}
+            Range emptyCells = range.SelectEmptyCells();
+            foreach (int pVal in emptyCells.GetProbableValuesHashSet())
+            {
+                Range candidateRange = emptyCells.Select(x => x.ProbableValues.Contains(pVal));
+                if (candidateRange.Count == 1)
+                {
+                    Cell cell = candidateRange[0];
+                    cell.ProbableValues.Clear();
+                    cell.ProbableValues.Add(pVal);
+                    result.Success = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
 
         //[Strategy(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
         //private static StrategyResult NakedPairsTriples(Range range)
