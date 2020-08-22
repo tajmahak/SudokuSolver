@@ -79,18 +79,14 @@ namespace SudokuSolver
             initResult.Success = true;
             AddStage(table, initResult);
 
-            StrategyType[] strategyTypes = StrategyHelper.GetStrategies();
+            StrategyInfo[] strategies = StrategyHelper.GetStrategies();
             while (true)
             {
                 table = CloneLastTable();
-
-                StrategyResult result = null;
                 bool success = false;
-                foreach (StrategyType strategyType in strategyTypes)
+                foreach (StrategyInfo strategy in strategies)
                 {
-                    StrategyInfo strategyInfo = StrategyHelper.GetStrategy(strategyType);
-                    result = ApplyStrategy(strategyInfo, table);
-
+                    StrategyResult result = ApplyStrategy(strategy, table);
                     if (result != null && result.Success)
                     {
                         success = true;

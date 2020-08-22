@@ -43,15 +43,15 @@ namespace SudokuSolver
 
         public void LoadStrategyList()
         {
-            StrategyType[] strategies = StrategyHelper.GetStrategies();
+            StrategyInfo[] strategies = StrategyHelper.GetStrategies();
 
             strategyList.Items.Clear();
 
-            foreach (StrategyType strategy in strategies)
+            foreach (StrategyInfo strategy in strategies)
             {
                 Item<string, StrategyType> item = new Item<string, StrategyType>();
                 item.Key = strategy.ToString();
-                item.Value = strategy;
+                item.Value = strategy.StrategyType;
 
                 strategyList.Items.Add(item);
             }

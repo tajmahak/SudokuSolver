@@ -12,5 +12,10 @@
             StrategyMethod = strategyMethod;
             StrategyArea = strategyArea;
         }
+
+        public override string ToString()
+        {
+            return StrategyType.ToString();
+        }
     }
 }

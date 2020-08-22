@@ -8,18 +8,10 @@ namespace SudokuSolver
 {
     internal static class StrategyHelper
     {
-        public static StrategyType[] GetStrategies()
+        public static StrategyInfo[] GetStrategies()
         {
-            StrategyType[] array = (StrategyType[])Enum.GetValues(typeof(StrategyType));
+            List<StrategyInfo> strategies = new List<StrategyInfo>();
 
-            // Отсеивание инициализирующих стратегий
-            array = Array.FindAll(array, x => !(x == StrategyType.CreateTable || x == StrategyType.InitializeProbableValues));
-
-            return array;
-        }
-
-        public static StrategyInfo GetStrategy(StrategyType strategyType)
-        {
             MethodInfo[] methods = typeof(StrategyHelper).GetMethods(BindingFlags.NonPublic | BindingFlags.Static);
             foreach (MethodInfo method in methods)
             {
@@ -27,20 +19,18 @@ namespace SudokuSolver
                 if (attrs.Length > 0)
                 {
                     StrategyAttribute attr = (StrategyAttribute)attrs[0];
-                    if (attr.StrategyType == strategyType)
-                    {
-                        StrategyMethod strategyMethod = (StrategyMethod)Delegate.CreateDelegate(typeof(StrategyMethod), method);
-                        return new StrategyInfo(attr.StrategyType, strategyMethod, attr.StrategyArea);
-                    }
+                    StrategyMethod strategyMethod = (StrategyMethod)Delegate.CreateDelegate(typeof(StrategyMethod), method);
+                    StrategyInfo strategyInfo = new StrategyInfo(attr.StrategyType, strategyMethod, attr.StrategyArea);
+                    strategies.Add(strategyInfo);
                 }
             }
 
-            throw new Exception("Стратегия не найдена.");
+            return strategies.ToArray();
         }
 
 
         [Strategy(StrategyType.SetValueToSolvedCell, StrategyArea.Table)]
-        private static void SetValueToSolvedCell(StrategyResult result, Range range)
+        public static void SetValueToSolvedCell(StrategyResult result, Range range)
         {
             Cell cell = range.Find(x => x.ProbableValues.Count == 1);
 
@@ -64,7 +54,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
-        private static void HiddenSingles(StrategyResult result, Range range)
+        public static void HiddenSingles(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Getting_Started
 
@@ -87,7 +77,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.NakedPairsTriples, StrategyArea.Block | StrategyArea.Line)]
-        private static void NakedPairsTriples(StrategyResult result, Range range)
+        public static void NakedPairsTriples(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NP
 
@@ -95,7 +85,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.HiddenPairsTriples, StrategyArea.Block | StrategyArea.Line)]
-        private static void HiddenPairsTriples(StrategyResult result, Range range)
+        public static void HiddenPairsTriples(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Hidden_Candidates#HP
 
@@ -103,7 +93,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.NakedQuards, StrategyArea.Block | StrategyArea.Line)]
-        private static void NakedQuards(StrategyResult result, Range range)
+        public static void NakedQuards(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
@@ -111,7 +101,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.HiddenQuards, StrategyArea.Block | StrategyArea.Line)]
-        private static void HiddenQuards(StrategyResult result, Range range)
+        public static void HiddenQuards(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Naked_Candidates#NQ
 
@@ -119,7 +109,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.PointingPairs, StrategyArea.Block)]
-        private static void PointingPairs(StrategyResult result, Range range)
+        public static void PointingPairs(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#IR
 
@@ -157,7 +147,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.BoxLineReduction, StrategyArea.Block)]
-        private static void BoxLineReduction(StrategyResult result, Range range)
+        public static void BoxLineReduction(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Intersection_Removal#LBR
 
@@ -231,7 +221,7 @@ namespace SudokuSolver
         }
 
         [Strategy(StrategyType.XWing, StrategyArea.Line)]
-        private static void XWing(StrategyResult result, Range range)
+        public static void XWing(StrategyResult result, Range range)
         {
             Table table = range.Table;
             Range emptyCells = range.SelectEmptyCells();
@@ -303,6 +293,12 @@ namespace SudokuSolver
                     }
                 }
             }
+        }
+
+        [Strategy(StrategyType.XWing, StrategyArea.Line)]
+        public static void YWing(StrategyResult result, Range range)
+        {
+
         }
 
 
