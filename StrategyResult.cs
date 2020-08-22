@@ -15,8 +15,6 @@ namespace SudokuSolver
 
         public List<Cell> RelationCells { get; private set; } = new List<Cell>();
 
-        public List<Cell> AffectedCells { get; private set; } = new List<Cell>();
-
         public List<Cell> RelationValues { get; private set; } = new List<Cell>();
 
         public List<Cell> RemovedValues { get; private set; } = new List<Cell>();
@@ -31,34 +29,16 @@ namespace SudokuSolver
             }
         }
 
+        public void AddRelationCell(Cell cell)
+        {
+            AddRelationCell(cell.RowIndex, cell.ColumnIndex);
+        }
+
         public void AddRelationCell(ICollection<Cell> cells)
         {
             foreach (Cell cell in cells)
             {
                 AddRelationCell(cell.RowIndex, cell.ColumnIndex);
-            }
-        }
-
-
-        public void AddAffectedCell(int row, int column)
-        {
-            if (!AffectedCells.Exists(x => x.RowIndex == row && x.ColumnIndex == column))
-            {
-                Cell cell = new Cell(-1, row, column);
-                AffectedCells.Add(cell);
-            }
-        }
-
-        public void AddAffectedCell(Cell cell)
-        {
-            AddAffectedCell(cell.RowIndex, cell.ColumnIndex);
-        }
-
-        public void AddAffectedCell(ICollection<Cell> cells)
-        {
-            foreach (Cell cell in cells)
-            {
-                AddAffectedCell(cell.RowIndex, cell.ColumnIndex);
             }
         }
 
@@ -90,7 +70,7 @@ namespace SudokuSolver
             }
         }
 
-      
+
         public void AddRemovedValues(int row, int column, params int[] values)
         {
             Cell cell = RemovedValues.Find(x => x.RowIndex == row && x.ColumnIndex == column);
@@ -109,11 +89,6 @@ namespace SudokuSolver
         public Cell GetRelationCell(int row, int column)
         {
             return RelationCells.Find(x => x.RowIndex == row && x.ColumnIndex == column);
-        }
-
-        public Cell GetAffectedCell(int row, int column)
-        {
-            return AffectedCells.Find(x => x.RowIndex == row && x.ColumnIndex == column);
         }
 
         public Cell GetRelationValueCell(int row, int column)

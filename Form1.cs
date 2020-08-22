@@ -184,17 +184,12 @@ namespace SudokuSolver
                 StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
 
                 Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
-                Cell affectedCell = nextResult.GetAffectedCell(cell.RowIndex, cell.ColumnIndex);
                 Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
                 Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
 
                 if (relationCell != null)
                 {
                     label.BackColor = Settings.RelationCellColor;
-                }
-                if (affectedCell != null)
-                {
-                    label.BackColor = Settings.AffectedCellColor;
                 }
                 if (relationValueCell != null)
                 {

@@ -2,11 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SudokuSolver.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AffectedCellColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">255, 253, 210</Value>
-    </Setting>
     <Setting Name="RelationCellColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">LightGreen</Value>
+      <Value Profile="(Default)">255, 250, 157</Value>
     </Setting>
   </Settings>
 </SettingsFile>

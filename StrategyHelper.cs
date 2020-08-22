@@ -93,7 +93,7 @@ namespace SudokuSolver
                 RemoveProbableValues(null, column, value);
 
                 result.Success = true;
-                result.AddAffectedCell(cell);
+                result.AddRelationCell(cell);
             }
         }
 
@@ -101,9 +101,6 @@ namespace SudokuSolver
         public static void HiddenSingles(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Getting_Started
-
-            // если в диапазоне из возможных значений ячейки находится то, которое не повторяется 
-            // в других ячейках, то единственным вариантом для ячейки будет именно это значение
 
             Range emptyCells = range.SelectEmptyCells();
             foreach (int pValue in emptyCells.GetProbableValuesHashSet())
@@ -113,12 +110,11 @@ namespace SudokuSolver
                 {
                     Cell cell = candidateRange[0];
                     result.Success = KeepProbableValues(result, candidateRange, pValue);
-                    result.AddRelationValues(cell, pValue);
-
-                    //cell.ProbableValues.Clear();
-                    //cell.ProbableValues.Add(pVal);
-                    //result.Success = true;
-                    break;
+                    if (result.Success)
+                    {
+                        result.AddRelationValues(cell, pValue);
+                    }
+                    return;
                 }
             }
         }
@@ -265,6 +261,11 @@ namespace SudokuSolver
                     if (removeValueRange.Count > 0)
                     {
                         result.Success = RemoveProbableValues(result, removeValueRange, pValue);
+                        if (result.Success)
+                        {
+                            Range relationRange = emptyBlockCells.Select(x => x.ProbableValues.Contains(pValue));
+                            result.AddRelationValues(relationRange, pValue);
+                        }
                         return;
                     }
                 }
@@ -308,6 +309,13 @@ namespace SudokuSolver
                         {
                             Range candidateCells = emptyCells.Select(x => !containingCells.Contains(x));
                             result.Success = RemoveProbableValues(result, candidateCells, cell.ProbableValues.ToArray());
+                            if (result.Success)
+                            {
+                                foreach (int value in containingCells.GetProbableValuesHashSet())
+                                {
+                                    result.AddRelationValues(containingCells.Select(x => x.ProbableValues.Contains(value)), value);
+                                }
+                            }
                             return;
                         }
                     }
@@ -320,27 +328,34 @@ namespace SudokuSolver
             Range emptyCells = range.SelectEmptyCells();
             int[] probableValues = emptyCells.GetProbableValuesHashSet().ToArray();
 
-            Range findRange = null;
+            Range candidateRange = null;
             int[] findCombination = null;
             for (int combinationLength = 2; combinationLength <= maxDepth; combinationLength++)
             {
                 IterateCombinations(probableValues, combinationLength, (combination) =>
                 {
-                    if (findRange == null)
+                    if (candidateRange == null)
                     {
-                        Range candidateRange = emptyCells.Select(x => x.ContainsAnyValue(combination));
-                        if (combinationLength == candidateRange.Count)
+                        Range findRange = emptyCells.Select(x => x.ContainsAnyValue(combination));
+                        if (combinationLength == findRange.Count)
                         {
-                            findRange = candidateRange;
+                            candidateRange = findRange;
                             findCombination = combination;
                         }
                     }
                 });
             }
 
-            if (findRange != null)
+            if (candidateRange != null)
             {
-                result.Success = KeepProbableValues(result, findRange, findCombination);
+                result.Success = KeepProbableValues(result, candidateRange, findCombination);
+                if (result.Success)
+                {
+                    foreach (int value in findCombination)
+                    {
+                        result.AddRelationValues(candidateRange.Select(x => x.ProbableValues.Contains(value)), value);
+                    }
+                }
             }
         }
 
@@ -417,8 +432,7 @@ namespace SudokuSolver
                         if (result.Success)
                         {
                             Range affectedRange = table.Select(x => checkColumns.Contains(x.ColumnIndex) && checkRows.Contains(x.RowIndex));
-                            //result.AddRelationCell(candidateRange);
-                            result.AddAffectedCell(affectedRange);
+                            result.AddRelationCell(affectedRange);
                             result.AddRelationValues(affectedRange, pValue);
                         }
                         return;
