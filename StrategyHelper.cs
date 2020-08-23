@@ -96,6 +96,7 @@ namespace SudokuSolver
             }
         }
 
+        
         [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
         public static void HiddenSingles(StrategyResult result, Range range)
         {
@@ -185,8 +186,8 @@ namespace SudokuSolver
                     if (result.Success)
                     {
                         result.AddRelationValues(checkRange, pValue);
+                        break;
                     }
-                    return;
                 }
             }
         }
@@ -270,21 +271,27 @@ namespace SudokuSolver
             }
         }
 
+        
         [Strategy(StrategyType.XWing, StrategyArea.Line)]
         public static void XWing(StrategyResult result, Range range)
         {
+            // https://www.sudokuwiki.org/X_Wing_Strategy
+
             XWingStrategy(result, range, 2);
         }
 
         [Strategy(StrategyType.YWing, StrategyArea.Line)]
         public static void YWing(StrategyResult result, Range range)
         {
+            // https://www.sudokuwiki.org/Y_Wing_Strategy
 
         }
 
         [Strategy(StrategyType.Swordfish, StrategyArea.Line)]
         public static void Swordfish(StrategyResult result, Range range)
         {
+            // https://www.sudokuwiki.org/Sword_Fish_Strategy
+
             XWingStrategy(result, range, 3);
         }
 
