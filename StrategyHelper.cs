@@ -83,13 +83,13 @@ namespace SudokuSolver
                 cell.ProbableValues.Clear();
 
                 Range block = range.Select(x => x != cell && x.BlockIndex == cell.BlockIndex);
-                RemoveProbableValues(null, block, value);
+                RemoveProbableValues(result, block, value);
 
                 Range row = range.Select(x => x != cell && x.RowIndex == cell.RowIndex);
-                RemoveProbableValues(null, row, value);
+                RemoveProbableValues(result, row, value);
 
                 Range column = range.Select(x => x != cell && x.ColumnIndex == cell.ColumnIndex);
-                RemoveProbableValues(null, column, value);
+                RemoveProbableValues(result, column, value);
 
                 result.Success = true;
                 result.AddRelationCell(cell);
@@ -107,11 +107,10 @@ namespace SudokuSolver
                 Range candidateRange = emptyCells.Select(x => x.ProbableValues.Contains(pValue));
                 if (candidateRange.Count == 1)
                 {
-                    Cell cell = candidateRange[0];
                     result.Success = KeepProbableValues(result, candidateRange, pValue);
                     if (result.Success)
                     {
-                        result.AddRelationValues(cell, pValue);
+                        result.AddRelationValues(candidateRange, pValue);
                     }
                     return;
                 }
