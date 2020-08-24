@@ -10,11 +10,6 @@ namespace SudokuSolver
 {
     public partial class Form1 : Form
     {
-        private readonly Sudoku sudoku = new Sudoku(3);
-        private Settings Settings => Settings.Default;
-
-        private int currentNumber;
-
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +30,10 @@ namespace SudokuSolver
                 fileList.SelectedIndex = 0;
             }
         }
-
+      
+        private readonly Sudoku sudoku = new Sudoku(3);
+        private Settings Settings => Settings.Default;
+        private int currentNumber;
 
         private void LoadFileList()
         {
@@ -94,8 +92,6 @@ namespace SudokuSolver
                 infoLabel.Text = $"{stageNumber.Value} / {stageNumber.Maximum}";
                 Stage stage = sudoku.Stages[number - 1];
                 ShowTable(stage, true);
-
-
 
                 StrategyResult nextResult = null;
                 if (currentNumber < sudoku.Stages.Count)
