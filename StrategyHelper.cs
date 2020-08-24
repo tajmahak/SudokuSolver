@@ -42,7 +42,7 @@ namespace SudokuSolver
             foreach (Cell cell in table.Cells)
             {
                 cell.ProbableValues.Clear();
-                if (cell.Value == null)
+                if (!cell.HasValue)
                 {
                     for (int v = 1; v <= table.Length; v++)
                     {

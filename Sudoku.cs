@@ -55,12 +55,10 @@ namespace SudokuSolver
                 for (int c = 0; c < table.Length; c++)
                 {
                     string value = data[index++].ToString();
-                    if (value != "0")
-                    {
-                        Cell cell = table[r, c];
-                        cell.IsDefault = true;
-                        cell.Value = int.Parse(value);
-                    }
+
+                    Cell cell = table[r, c];
+                    cell.IsDefault = true;
+                    cell.Value = int.Parse(value);
                 }
             }
 

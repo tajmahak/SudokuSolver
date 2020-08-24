@@ -81,7 +81,7 @@ namespace SudokuSolver
 
         public bool IsFilled()
         {
-            return cellsList.TrueForAll(x => x.Value != null);
+            return cellsList.TrueForAll(x => x.HasValue);
         }
 
         public Table Clone()

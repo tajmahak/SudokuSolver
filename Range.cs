@@ -29,23 +29,22 @@ namespace SudokuSolver
 
         public Range SelectEmptyCells()
         {
-            return Select(x => x.Value == null);
+            return Select(x => !x.HasValue);
         }
 
         public Range SelectFilledCells()
         {
-            return Select(x => x.Value != null);
+            return Select(x => x.HasValue);
         }
 
         public HashSet<int> GetValuesHashSet()
         {
             HashSet<int> hashSet = new HashSet<int>();
-            for (int i = 0; i < Count; i++)
+            foreach (Cell cell in this)
             {
-                int? value = this[i].Value;
-                if (value != null)
+                if (cell.HasValue)
                 {
-                    hashSet.Add(value.Value);
+                    hashSet.Add(cell.Value);
                 }
             }
             return hashSet;
@@ -89,16 +88,15 @@ namespace SudokuSolver
         public bool GetIsCorrect()
         {
             HashSet<int> hashSet = new HashSet<int>();
-            for (int i = 0; i < Count; i++)
+            foreach (Cell cell in this)
             {
-                int? value = this[i].Value;
-                if (value != null)
+                if (cell.HasValue)
                 {
-                    if (hashSet.Contains(value.Value))
+                    if (hashSet.Contains(cell.Value))
                     {
                         return false;
                     }
-                    hashSet.Add(value.Value);
+                    hashSet.Add(cell.Value);
                 }
             }
             return true;

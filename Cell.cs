@@ -5,14 +5,6 @@ namespace SudokuSolver
 {
     internal class Cell
     {
-        public int BlockIndex { get; private set; }
-        public int RowIndex { get; private set; }
-        public int ColumnIndex { get; private set; }
-
-        public int? Value { get; set; }
-        public HashSet<int> ProbableValues { get; private set; }
-        public bool IsDefault { get; set; }
-
         public Cell(int blockIndex, int rowIndex, int columnIndex)
         {
             BlockIndex = blockIndex;
@@ -22,11 +14,19 @@ namespace SudokuSolver
             ProbableValues = new HashSet<int>();
         }
 
+        public int BlockIndex { get; private set; }
+        public int RowIndex { get; private set; }
+        public int ColumnIndex { get; private set; }
+        public int Value { get; set; }
+        public bool HasValue => Value != 0;
+        public HashSet<int> ProbableValues { get; private set; }
+        public bool IsDefault { get; set; }
+
         public bool ContainsAnyValue(HashSet<int> values)
         {
-            if (Value != null)
+            if (HasValue)
             {
-                if (values.Contains(Value.Value))
+                if (values.Contains(Value))
                 {
                     return true;
                 }
@@ -88,7 +88,7 @@ namespace SudokuSolver
 
         public void Clear()
         {
-            Value = null;
+            Value = 0;
             ProbableValues.Clear();
         }
 
@@ -96,7 +96,7 @@ namespace SudokuSolver
         {
             StringBuilder str = new StringBuilder();
             str.Append($"{BlockIndex}: ({RowIndex};{ColumnIndex}) = ");
-            if (Value != null)
+            if (HasValue)
             {
                 str.Append(Value);
             }

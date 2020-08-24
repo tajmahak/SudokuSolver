@@ -131,7 +131,23 @@ namespace SudokuSolver
             control.Clear();
             control.BackColor = Color.White;
 
-            if (cell.Value == null)
+            if (cell.HasValue)
+            {
+                control.Font = new Font("Consolas", 20);
+                if (cell.IsDefault)
+                {
+                    control.ForeColor = Color.Black;
+                }
+                else
+                {
+                    control.ForeColor = Color.DarkSlateBlue;
+                }
+
+                control.Text = cell.Value.ToString();
+                control.Select(0, 1);
+                control.SelectionAlignment = HorizontalAlignment.Center;
+            }
+            else
             {
                 control.Font = new Font("Consolas", 9);
                 control.ForeColor = Color.Gray;
@@ -144,53 +160,37 @@ namespace SudokuSolver
                 {
                     control.Text = GetProbableValues(cell);
                 }
-            }
-            else
-            {
-                control.Font = new Font("Consolas", 20);
-                if (cell.IsDefault)
-                {
-                    control.ForeColor = Color.Black;
-                }
-                else
-                {
-                    control.ForeColor = Color.DarkSlateBlue;
-                }
 
-                control.Text = cell.Value.Value.ToString();
-                control.Select(0, 1);
-                control.SelectionAlignment = HorizontalAlignment.Center;
-            }
-
-            if (showResult && currentNumber < sudoku.Stages.Count)
-            {
-                StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
-
-                Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
-                if (relationCell != null)
+                if (showResult && currentNumber < sudoku.Stages.Count)
                 {
-                    control.BackColor = Settings.RelationCellColor;
-                }
+                    StrategyResult nextResult = sudoku.Stages[currentNumber].Result; // currentNumber = index - 1
 
-                Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
-                if (relationValueCell != null)
-                {
-                    foreach (int value in relationValueCell.ProbableValues)
+                    Cell relationCell = nextResult.GetRelationCell(cell.RowIndex, cell.ColumnIndex);
+                    if (relationCell != null)
                     {
-                        SelectProbableValue(control, value);
-                        control.SelectionColor = Color.DarkGreen;
-                        control.SelectionBackColor = Color.LightGreen;
+                        control.BackColor = Settings.RelationCellColor;
                     }
-                }
 
-                Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
-                if (removedValueCell != null)
-                {
-                    foreach (int value in removedValueCell.ProbableValues)
+                    Cell relationValueCell = nextResult.GetRelationValueCell(cell.RowIndex, cell.ColumnIndex);
+                    if (relationValueCell != null)
                     {
-                        SelectProbableValue(control, value);
-                        control.SelectionColor = Color.DarkRed;
-                        control.SelectionBackColor = Color.Pink;
+                        foreach (int value in relationValueCell.ProbableValues)
+                        {
+                            SelectProbableValue(control, value);
+                            control.SelectionColor = Color.DarkGreen;
+                            control.SelectionBackColor = Color.LightGreen;
+                        }
+                    }
+
+                    Cell removedValueCell = nextResult.GetRemovedValueCell(cell.RowIndex, cell.ColumnIndex);
+                    if (removedValueCell != null)
+                    {
+                        foreach (int value in removedValueCell.ProbableValues)
+                        {
+                            SelectProbableValue(control, value);
+                            control.SelectionColor = Color.DarkRed;
+                            control.SelectionBackColor = Color.Pink;
+                        }
                     }
                 }
             }
@@ -270,7 +270,11 @@ namespace SudokuSolver
                 {
                     Cell cell = table[row, column];
 
-                    if (cell.Value == null)
+                    if (cell.HasValue)
+                    {
+                        str.Append(cell.Value);
+                    }
+                    else
                     {
                         str.Append('[');
                         foreach (int pval in cell.ProbableValues)
@@ -278,10 +282,6 @@ namespace SudokuSolver
                             str.Append(pval);
                         }
                         str.Append(']');
-                    }
-                    else
-                    {
-                        str.Append(cell.Value.Value);
                     }
                     str.Append('\t');
                 }
@@ -300,15 +300,7 @@ namespace SudokuSolver
                 for (int column = 0; column < table.Length; column++)
                 {
                     Cell cell = table[row, column];
-
-                    if (cell.Value == null)
-                    {
-                        str.Append("0");
-                    }
-                    else
-                    {
-                        str.Append(cell.Value.Value);
-                    }
+                    str.Append(cell.Value);
                 }
             }
 
