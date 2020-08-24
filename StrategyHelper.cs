@@ -96,7 +96,7 @@ namespace SudokuSolver
             }
         }
 
-        
+
         [Strategy(StrategyType.HiddenSingles, StrategyArea.Block | StrategyArea.Line)]
         public static void HiddenSingles(StrategyResult result, Range range)
         {
@@ -271,7 +271,7 @@ namespace SudokuSolver
             }
         }
 
-        
+
         [Strategy(StrategyType.XWing, StrategyArea.Line)]
         public static void XWing(StrategyResult result, Range range)
         {
@@ -280,10 +280,54 @@ namespace SudokuSolver
             XWingStrategy(result, range, 2);
         }
 
+        [Strategy(StrategyType.SimpleColouring, StrategyArea.Table)]
+        public static void SimpleColouring(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/Singles_Chains
+        }
+
         [Strategy(StrategyType.YWing, StrategyArea.Line)]
         public static void YWing(StrategyResult result, Range range)
         {
             // https://www.sudokuwiki.org/Y_Wing_Strategy
+
+
+
+            //Table table = range.Table;
+            //range = range.Table.SelectColumn(1);
+
+            //Range cells = range.SelectEmptyCells().Select(x => x.ProbableValues.Count == 2);
+            //int columnIndex = cells.GetColumnsHashSet().ToArray()[0];
+
+            //for (int i = 0; i < cells.Count - 1; i++)
+            //{
+            //    Cell cell1 = cells[i];
+            //    for (int j = i + 1; j < cells.Count; j++)
+            //    {
+            //        Cell cell2 = cells[j];
+            //        HashSet<int> pValues = new Range(null, new Cell[] { cell1, cell2 }).GetProbableValuesHashSet();
+            //        foreach (int pValue in pValues.ToArray())
+            //        {
+            //            if (cell1.ProbableValues.Contains(pValue) && cell2.ProbableValues.Contains(pValue))
+            //            {
+            //                pValues.Remove(pValue);
+            //            }
+            //        }
+
+            //        Range bbb = table.Select(x => x.ColumnIndex != columnIndex && x.ContainsAllValues(pValues) && x.ProbableValues.Count == 2);
+            //        if (bbb.Count == 1)
+            //        {
+            //            Cell cell3 = bbb[0];
+            //        }
+
+
+            //    }
+            //}
+
+
+
+
+
 
         }
 
@@ -293,6 +337,12 @@ namespace SudokuSolver
             // https://www.sudokuwiki.org/Sword_Fish_Strategy
 
             XWingStrategy(result, range, 3);
+        }
+
+        [Strategy(StrategyType.XYZWing, StrategyArea.Table)]
+        public static void XYZWing(StrategyResult result, Range range)
+        {
+            // https://www.sudokuwiki.org/XYZ_Wing
         }
 
 

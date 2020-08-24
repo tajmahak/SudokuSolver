@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace SudokuSolver
 {
@@ -93,7 +94,23 @@ namespace SudokuSolver
 
         public override string ToString()
         {
-            return $"{BlockIndex}: ({RowIndex};{ColumnIndex}) = {Value} [{ProbableValues.Count}]";
+            StringBuilder str = new StringBuilder();
+            str.Append($"{BlockIndex}: ({RowIndex};{ColumnIndex}) = ");
+            if (Value != null)
+            {
+                str.Append(Value);
+            }
+            else
+            {
+                str.Append("[");
+                foreach (int pValue in ProbableValues)
+                {
+                    str.Append(pValue);
+                }
+                str.Append("]");
+            }
+
+            return str.ToString();
         }
     }
 }

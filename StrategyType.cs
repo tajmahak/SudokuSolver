@@ -16,7 +16,9 @@
         BoxLineReduction,
 
         XWing,
+        SimpleColouring,
         YWing,
         Swordfish,
+        XYZWing,
     }
 }
